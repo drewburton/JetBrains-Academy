@@ -1,0 +1,12 @@
+type: code
+files:
+- name: src/Main.java
+  visible: true
+  text: |-
+    public static int getNumberOfMaxParam(int a, int b, int c) {
+        // write a body here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/2726
+status: Solved
+record: -1

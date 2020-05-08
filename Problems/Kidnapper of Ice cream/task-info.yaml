@@ -1,0 +1,23 @@
+type: code
+files:
+- name: src/Main.java
+  visible: true
+  text: |-
+    class Main {
+        public static void main(String[] args) {
+            // put your code here
+        }
+    }
+  learner_created: false
+- name: src/hyperskill-3654-test-04.txt
+  visible: true
+  learner_created: true
+- name: src/hyperskill-3654-test-06.txt
+  visible: true
+  learner_created: true
+- name: src/hyperskill-3654-test-05.txt
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/3654
+status: Solved
+record: -1

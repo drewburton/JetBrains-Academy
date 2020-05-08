@@ -1,0 +1,39 @@
+38
+push 0
+max
+push 1
+max
+push 2
+max
+push 3
+max
+push 4
+max
+push 5
+max
+push 4
+max
+push 3
+max
+push 2
+max
+push 1
+max
+pop
+max
+pop
+max
+pop
+max
+pop
+max
+pop
+max
+pop
+max
+pop
+max
+pop
+max
+pop
+max

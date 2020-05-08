@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Encryption-Decryption/task" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Account" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Account and its owner" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Accounts" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Adding values" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Application as a class" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Army" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Assignments" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Avoid division by zero" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Binary search" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Book" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Books" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Calculator - 2" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Catching some exceptions" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Cats are robots" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Classes for Hospital" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Complex" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Complex numbers" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Complex numbers (1)" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Convert to bytes" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Converting and multiplying" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Count words" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Exactly one parameter is positive" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Find the first occurrence of the word  the" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Find the max of three numbers" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Fix the program" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Fix the program (1)" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Fix the program (2)" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Fixing the main method" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Fixing the main method (1)" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/From 0 to 4" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Get first and last elements" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Getting the fullname" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Hello, Java" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Hiring a chef" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/In a box" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Inner boxes" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Integer part of a number" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Inverse boolean flags" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Number of occurrences" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Parameters and their values" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Parse url" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Preparing full name" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Print  We are robots!" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Print strings in the reverse order" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Reverse input text" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/String to double conversion" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/The Hello World program" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/The index of an argument" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/The result of a Tic-Tac-Toe game" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/Vowel or not" />
+            <option value="$PROJECT_DIR$/Encryption-Decryption/Problems/We need to learn Java" />
+            <option value="$PROJECT_DIR$/Problems/Avoid NPE" />
+            <option value="$PROJECT_DIR$/Problems/Blacklist" />
+            <option value="$PROJECT_DIR$/Problems/Boxes are not just objects!" />
+            <option value="$PROJECT_DIR$/Problems/Check the value" />
+            <option value="$PROJECT_DIR$/Problems/Creating a map" />
+            <option value="$PROJECT_DIR$/Problems/Creating a set" />
+            <option value="$PROJECT_DIR$/Problems/Digits from 0 to 9 in a single line" />
+            <option value="$PROJECT_DIR$/Problems/Fill the declaration" />
+            <option value="$PROJECT_DIR$/Problems/Getting the max element of a stack" />
+            <option value="$PROJECT_DIR$/Problems/Greedy load balance" />
+            <option value="$PROJECT_DIR$/Problems/Kidnapper of Ice cream" />
+            <option value="$PROJECT_DIR$/Problems/Only true or false" />
+            <option value="$PROJECT_DIR$/Problems/Output elements" />
+            <option value="$PROJECT_DIR$/Problems/Pastry packing optimization" />
+            <option value="$PROJECT_DIR$/Problems/Removing elements" />
+            <option value="$PROJECT_DIR$/Problems/Return empty string when argument is null" />
+            <option value="$PROJECT_DIR$/Problems/Reversing input numbers" />
+            <option value="$PROJECT_DIR$/Problems/Safe converting" />
+            <option value="$PROJECT_DIR$/Problems/Size of parts" />
+            <option value="$PROJECT_DIR$/Problems/Tricky sub-maps" />
+            <option value="$PROJECT_DIR$/Problems/Which brackets are balanced" />
+            <option value="$PROJECT_DIR$/Problems/Working with queue" />
+            <option value="$PROJECT_DIR$/Smart Calculator/Smart Calculator/task" />
+            <option value="$PROJECT_DIR$/Smart Calculator/task" />
+            <option value="$PROJECT_DIR$/Testing" />
+            <option value="$PROJECT_DIR$/util" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
