@@ -10,7 +10,7 @@ public class Translator {
     }
 
     private String translate() {
-        
+
         return infix;
     }
 
