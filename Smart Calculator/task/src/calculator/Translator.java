@@ -20,14 +20,77 @@ public class Translator {
 
         for (int i = 0; i < infix.length(); i++) {
             char c = infix.charAt(i);
-            if (Character.isDigit(c)) {
+            if (Character.isDigit(c) || c == '(') {
+                int v = i;
+                while (v < infix.length() && !Character.isDigit(infix.charAt(v))) {
+                    v++;
+                    System.out.println(v);
+                }
+                postfix.add((char) (Integer.parseInt(infix.substring(i, v + 1)) + 48));
+            } else if (Character.isAlphabetic(c)) {
+                int v = i;
+                while (v < infix.length() && !Character.isAlphabetic(infix.charAt(v))) {
+                    v++;
+                }
+                Integer variable = Main.variables.get(infix.substring(i, v));
+                if (variable != null) {
 
+                } else {
+                    System.out.println("Unknown variable");
+                    postfix = null;
+                    return;
+                }
+            } else if (stack.size() == 0 || stack.peekLast() == '(' ||
+                    isHigherPrecedence(c, stack.peekLast())) {
+                stack.add(c);
+            } else if (c == ')') {
+                do {
+                    postfix.add(stack.removeLast());
+                } while(!isHigherPrecedence(c, stack.peekLast()) || stack.peekLast() == '(');
+                stack.removeLast();
+            } else if (!isHigherPrecedence(c, stack.peekLast())) {
+                try {
+                    do {
+                        postfix.add(stack.removeLast());
+                        if (stack.size() == 0) {
+                            break;
+                        }
+                    } while (!isHigherPrecedence(c, stack.peekLast()) || stack.peekLast() == '(');
+                } catch (Exception e) {
+                    System.out.println("size: " + stack.size() + " incoming: " + c);
+                    return;
+                }
+                stack.add(c);
+            } else {
+                System.out.println("failure");
             }
+        }
+        while (stack.size() > 0) {
+            var operator = stack.removeLast();
+            if (operator == '(' || operator == ')') {
+                System.out.println("Invalid expression");
+                postfix = null;
+                return;
+            }
+            postfix.add(operator);
         }
     }
 
     private boolean isHigherPrecedence(char operator1, char operator2) {
-        return false;
+        return getPrecedence(operator1) > getPrecedence(operator2);
+    }
+
+    private int getPrecedence(char operator) {
+        switch (operator) {
+            case '*':
+            case '/':
+                return 2;
+            case '+':
+            case '-':
+                return 1;
+            default:
+                return 0;
+        }
     }
 
     public ArrayDeque<Character> getPostfix() {
@@ -35,12 +98,15 @@ public class Translator {
     }
 }
 
-//  todo: Add operands (numbers and variables) to the result (postfix notation) as they arrive.
-//  todo: If the stack is empty or contains a left parenthesis on top, push the incoming operator on the stack.
-//  todo: If the incoming operator has higher precedence than the top of the stack, push it on the stack.
-//  todo: If the incoming operator has lower or equal precedence than the top of the operator stack,
+//  Add operands (numbers and variables) to the result (postfix notation) as they arrive.
+
+//  If the stack is empty or contains a left parenthesis on top, push the incoming operator on the stack.
+//  If the incoming operator has higher precedence than the top of the stack, push it on the stack.
+
+//  If the incoming operator has lower or equal precedence than the top of the operator stack,
 //      pop the stack and add operators to the result until you see an operator that has
 //      a smaller precedence or a left parenthesis on the top of the stack; then add the incoming operator to the stack.
-//  todo: If the incoming element is a right parenthesis, pop the stack and add operators
+//  If the incoming element is a right parenthesis, pop the stack and add operators
 //      to the result until you see a left parenthesis. Discard the pair of parentheses.
+
 //  todo: At the end of the expression, pop the stack and add all operators to the result.
