@@ -1,5 +1,6 @@
 package calculator;
 
+import java.math.BigInteger;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.regex.Matcher;
@@ -35,9 +36,9 @@ public class Translator {
                         && !isOperator(infix.charAt(v))) {
                     v++;
                 }
-                Integer variable = Main.variables.get(infix.substring(i, v));
+                BigInteger variable = Main.variables.get(infix.substring(i, v));
                 if (variable != null) {
-                    postfix.add(variable + "");
+                    postfix.add(variable.toString());
                 } else {
                     System.out.println("Unknown variable: " + infix.substring(i, v));
                     postfix = null;

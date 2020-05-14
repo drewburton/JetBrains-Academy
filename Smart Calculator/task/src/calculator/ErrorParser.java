@@ -1,5 +1,6 @@
 package calculator;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -77,13 +78,13 @@ public class ErrorParser extends Calculator {
             // of the new variable to the value found at the other one
             String[] assignment = input.split("=");
             try {
-                Main.variables.put(assignment[0], Integer.parseInt(assignment[1]));
+                Main.variables.put(assignment[0], new BigInteger(assignment[1]));
                 return false;
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Invalid assignment");
                 return false;
             } catch(Exception e) {
-                Integer setter = Main.variables.get(assignment[1]);
+                BigInteger setter = Main.variables.get(assignment[1]);
 
                 if (setter == null) {
                     System.out.println("Unknown variable");
