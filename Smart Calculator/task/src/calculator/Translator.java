@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class Translator {
     private String infix;
-    private ArrayDeque<Character> postfix;
+    private ArrayDeque<String> postfix;
 
     public Translator(String infix) {
         this.infix = infix;
@@ -25,19 +25,19 @@ public class Translator {
                 while (v < infix.length() && Character.isDigit(infix.charAt(v))) {
                     v++;
                 }
-                postfix.add((char) (Integer.parseInt(infix.substring(i, v)) + 48));
+                postfix.add(infix.substring(i, v));
                 i = v - 1;
             } else if (c == '(') {
                 stack.add(c);
             } else if (Character.isAlphabetic(c)) {
                 int v = i + 1;
                 while (v < infix.length() && !Character.isAlphabetic(infix.charAt(v))
-                        && !Calculator.isOperator(infix.charAt(v))) {
+                        && !isOperator(infix.charAt(v))) {
                     v++;
                 }
                 Integer variable = Main.variables.get(infix.substring(i, v));
                 if (variable != null) {
-                    postfix.add((char) (variable + 48));
+                    postfix.add(variable + "");
                 } else {
                     System.out.println("Unknown variable: " + infix.substring(i, v));
                     postfix = null;
@@ -49,7 +49,7 @@ public class Translator {
             } else if (c == ')') {
                 try {
                     do {
-                        postfix.add(stack.removeLast());
+                        postfix.add(stack.removeLast() + "");
                     } while (stack.peekLast() != '(');
                 } catch (Exception e) {
                     System.out.println("Invalid expression");
@@ -59,7 +59,7 @@ public class Translator {
                 stack.removeLast();
             } else if (!isHigherPrecedence(c, stack.peekLast())) {
                     do {
-                        postfix.add(stack.removeLast());
+                        postfix.add(stack.removeLast() + "");
                         if (stack.size() == 0) {
                             break;
                         }
@@ -76,7 +76,7 @@ public class Translator {
                 postfix = null;
                 return;
             }
-            postfix.add(operator);
+            postfix.add(operator + "");
         }
     }
 
@@ -97,8 +97,20 @@ public class Translator {
         }
     }
 
-    public ArrayDeque<Character> getPostfix() {
+    public ArrayDeque<String> getPostfix() {
         return postfix;
+    }
+
+    private boolean isOperator(char c) {
+        switch (c) {
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                return true;
+            default:
+                return false;
+        }
     }
 }
 

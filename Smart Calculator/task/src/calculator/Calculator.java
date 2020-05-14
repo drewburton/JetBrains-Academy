@@ -1,6 +1,7 @@
 package calculator;
 
 import javax.xml.stream.XMLStreamConstants;
+import java.math.BigInteger;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -14,20 +15,14 @@ public class Calculator {
 
     public void calculate(String input) {
         String simplified = simplifyOperators(input);
-        ErrorParser parser = new ErrorParser(simplified);
 
+        ErrorParser parser = new ErrorParser(simplified);
         if (!parser.isCorrectInput()) {
             return;
         }
 
         Translator translator = new Translator(simplified);
         calculatePostfix(translator.getPostfix());
-
-/*        var addCalc = new AdditionCalculator(simplified);
-        Integer answer = addCalc.getAnswer();
-        if (answer != null) {
-            System.out.println(addCalc.getAnswer() == null ? "" : addCalc.getAnswer());
-        }*/
     }
 
     private String simplifyOperators(String input) {
@@ -42,38 +37,37 @@ public class Calculator {
         return singleOperators;
     }
 
-    private void calculatePostfix(ArrayDeque<Character> postfix) {
+    private void calculatePostfix(ArrayDeque<String> postfix) {
         if (postfix == null) {
             return;
         }
 
-        ArrayDeque<Integer> stack = new ArrayDeque<>();
-        if (postfix.peekFirst() == '8' && postfix.contains('*')) {
-           //System.out.println(postfix.toString());
-        }
+        ArrayDeque<BigInteger> stack = new ArrayDeque<>();
         postfix.forEach(v -> {
-            if (Character.isDigit(v)) {
-                stack.add(Integer.parseInt(v + ""));
-            } else if (!isOperator(v)) {
-                stack.add(v - 48);
-            } else {
-                int num1, num2;
+            try {
+                stack.add(new BigInteger(v));
+            } catch(Exception e) {
+                BigInteger num1, num2;
                 try {
                     num1 = stack.removeLast();
                     num2 = stack.removeLast();
-                } catch(Exception e) {
+                } catch (Exception e2) {
                     System.out.println(postfix.toString());
                     return;
                 }
 
-                switch(v) {
-                    case '+': stack.add(num2 + num1);
+                switch (v) {
+                    case "+":
+                        stack.add(num2.add(num1));
                         break;
-                    case '-': stack.add(num2 - num1);
+                    case "-":
+                        stack.add(num2.subtract(num1));
                         break;
-                    case '*': stack.add(num2 * num1);
+                    case "*":
+                        stack.add(num2.multiply(num1));
                         break;
-                    case '/': stack.add(num2 / num1);
+                    case "/":
+                        stack.add(num2.divide(num1));
                         break;
                     default:
                         System.out.println("Invalid expression");
@@ -84,15 +78,5 @@ public class Calculator {
         System.out.println(stack.removeLast());
     }
 
-    public static boolean isOperator(char c) {
-        switch (c) {
-            case '+':
-            case '-':
-            case '*':
-            case '/':
-                return true;
-            default:
-                return false;
-        }
-    }
+
 }
