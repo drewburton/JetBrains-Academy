@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GameOfLife.iml" filepath="$PROJECT_DIR$/.idea/modules/GameOfLife.iml" group="GameOfLife" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Game of Life/task/Game_of_Life-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Game of Life/task/Game_of_Life-task.iml" group="GameOfLife/Game_of_Life-task" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Game of Life/task/Game_of_Life-task_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Game of Life/task/Game_of_Life-task_main.iml" group="GameOfLife/Game_of_Life-task" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Game of Life/task/Game_of_Life-task_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Game of Life/task/Game_of_Life-task_test.iml" group="GameOfLife/Game_of_Life-task" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util.iml" group="GameOfLife/util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_main.iml" group="GameOfLife/util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_test.iml" group="GameOfLife/util" />
+    </modules>
+  </component>
+</project>
