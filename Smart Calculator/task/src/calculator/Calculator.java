@@ -1,5 +1,6 @@
 package calculator;
 
+import javax.xml.stream.XMLStreamConstants;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -47,13 +48,23 @@ public class Calculator {
         }
 
         ArrayDeque<Integer> stack = new ArrayDeque<>();
-
+        if (postfix.peekFirst() == '8' && postfix.contains('*')) {
+           //System.out.println(postfix.toString());
+        }
         postfix.forEach(v -> {
             if (Character.isDigit(v)) {
                 stack.add(Integer.parseInt(v + ""));
+            } else if (!isOperator(v)) {
+                stack.add(v - 48);
             } else {
-                int num1 = stack.removeLast();
-                int num2 = stack.removeLast();
+                int num1, num2;
+                try {
+                    num1 = stack.removeLast();
+                    num2 = stack.removeLast();
+                } catch(Exception e) {
+                    System.out.println(postfix.toString());
+                    return;
+                }
 
                 switch(v) {
                     case '+': stack.add(num2 + num1);
@@ -71,5 +82,17 @@ public class Calculator {
             }
         });
         System.out.println(stack.removeLast());
+    }
+
+    public static boolean isOperator(char c) {
+        switch (c) {
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                return true;
+            default:
+                return false;
+        }
     }
 }

@@ -19,7 +19,7 @@ public class ErrorParser extends Calculator {
     }
 
     private boolean checkArgs() {
-        Pattern command = Pattern.compile("/");
+        Pattern command = Pattern.compile("^/");
         Matcher commandMatcher = command.matcher(input);
         if (!commandMatcher.find()) {
             return true;

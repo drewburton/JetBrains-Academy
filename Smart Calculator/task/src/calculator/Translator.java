@@ -20,23 +20,26 @@ public class Translator {
 
         for (int i = 0; i < infix.length(); i++) {
             char c = infix.charAt(i);
-            if (Character.isDigit(c) || c == '(') {
-                int v = i;
-                while (v < infix.length() && !Character.isDigit(infix.charAt(v))) {
+            if (Character.isDigit(c)) {
+                int v = i + 1;
+                while (v < infix.length() && Character.isDigit(infix.charAt(v))) {
                     v++;
-                    System.out.println(v);
                 }
-                postfix.add((char) (Integer.parseInt(infix.substring(i, v + 1)) + 48));
+                postfix.add((char) (Integer.parseInt(infix.substring(i, v)) + 48));
+                i = v - 1;
+            } else if (c == '(') {
+                stack.add(c);
             } else if (Character.isAlphabetic(c)) {
-                int v = i;
-                while (v < infix.length() && !Character.isAlphabetic(infix.charAt(v))) {
+                int v = i + 1;
+                while (v < infix.length() && !Character.isAlphabetic(infix.charAt(v))
+                        && !Calculator.isOperator(infix.charAt(v))) {
                     v++;
                 }
                 Integer variable = Main.variables.get(infix.substring(i, v));
                 if (variable != null) {
-
+                    postfix.add((char) (variable + 48));
                 } else {
-                    System.out.println("Unknown variable");
+                    System.out.println("Unknown variable: " + infix.substring(i, v));
                     postfix = null;
                     return;
                 }
@@ -44,22 +47,23 @@ public class Translator {
                     isHigherPrecedence(c, stack.peekLast())) {
                 stack.add(c);
             } else if (c == ')') {
-                do {
-                    postfix.add(stack.removeLast());
-                } while(!isHigherPrecedence(c, stack.peekLast()) || stack.peekLast() == '(');
+                try {
+                    do {
+                        postfix.add(stack.removeLast());
+                    } while (stack.peekLast() != '(');
+                } catch (Exception e) {
+                    System.out.println("Invalid expression");
+                    postfix = null;
+                    return;
+                }
                 stack.removeLast();
             } else if (!isHigherPrecedence(c, stack.peekLast())) {
-                try {
                     do {
                         postfix.add(stack.removeLast());
                         if (stack.size() == 0) {
                             break;
                         }
-                    } while (!isHigherPrecedence(c, stack.peekLast()) || stack.peekLast() == '(');
-                } catch (Exception e) {
-                    System.out.println("size: " + stack.size() + " incoming: " + c);
-                    return;
-                }
+                    } while (!isHigherPrecedence(c, stack.peekLast()) || stack.peekLast() != '(');
                 stack.add(c);
             } else {
                 System.out.println("failure");
