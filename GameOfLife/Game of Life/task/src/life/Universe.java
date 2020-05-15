@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class Universe {
-    private int size;
+    private final int size;
 
     Generation currentGeneration;
 
@@ -32,9 +32,7 @@ public class Universe {
         int generations = 10;
         Thread universeThread = new Thread();
 
-        for (int i = 0; i < generations; i++) {
-            int generation = 1;
-
+        for (int i = 1; i <= generations; i++) {
             // clears console output
             try {
                 if (System.getProperty("os.name").contains("Windows")) {
@@ -45,7 +43,7 @@ public class Universe {
             } catch (IOException | InterruptedException e) {
             }
 
-            System.out.println("Generation: " + generation);
+            System.out.println("Generation: #" + i);
             System.out.println("Alive: " + currentGeneration.getAlive());
 
             // prints generation
@@ -53,7 +51,9 @@ public class Universe {
 
             advanceGeneration();
             try {
-                universeThread.wait(1000L);
+                synchronized (universeThread) {
+                    universeThread.wait(1000L);
+                }
             } catch(InterruptedException e) {
                System.out.println("Universe Interrupted");
                return;
