@@ -18,6 +18,18 @@ public class Generation {
         }
     }
 
+    public int getAlive() {
+        int alive = 0;
+        for (int r = 0; r < map.length; r++) {
+            for (int c = 0; c < map.length; c++) {
+               if (map[r][c]) {
+                   alive++;
+               }
+            }
+        }
+        return alive;
+    }
+
     public Generation getNextGeneration() {
         boolean[][] next = new boolean[map.length][map.length];
 
