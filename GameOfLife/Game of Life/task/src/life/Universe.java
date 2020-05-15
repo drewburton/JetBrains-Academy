@@ -15,7 +15,7 @@ public class Universe {
     }
 
     public void generateNew() {
-        Random random = new Random(seed);
+        Random random = new Random();
 
         boolean[][] map = new boolean[size][size];
         for (int r = 0; r < size; r++) {
@@ -31,36 +31,35 @@ public class Universe {
     }
 
     public void runUniverse(int generations) {
-//        Thread universeThread = new Thread();
+        generations = 10;
+        Thread universeThread = new Thread();
 
-        for (int i = 0; i < generations; i++) {
-            advanceGeneration();
-        }
+        for (int i = 1; i <= generations; i++) {
             // clears console output
-//            try {
-//                if (System.getProperty("os.name").contains("Windows")) {
-//                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-//                } else {
-//                    Runtime.getRuntime().exec("clear");
-//                }
-//            } catch (IOException | InterruptedException e) {
-//            }
+            try {
+                if (System.getProperty("os.name").contains("Windows")) {
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                } else {
+                    Runtime.getRuntime().exec("clear");
+                }
+            } catch (IOException | InterruptedException e) {
+            }
 
-            //System.out.println("Generation: #" + i);
-            //System.out.println("Alive: " + currentGeneration.getAlive());
+            System.out.println("Generation: #" + i);
+            System.out.println("Alive: " + currentGeneration.getAlive());
 
-            // prints generation
+            //prints generation
             currentGeneration.print();
 
-//            advanceGeneration();
-//            try {
-//                synchronized (universeThread) {
-//                    universeThread.wait(1000L);
-//                }
-//            } catch(InterruptedException e) {
-//               System.out.println("Universe Interrupted");
-//               return;
-//            }
-        //}
+            advanceGeneration();
+            try {
+                synchronized (universeThread) {
+                    universeThread.wait(1000L);
+                }
+            } catch(InterruptedException e) {
+               System.out.println("Universe Interrupted");
+               return;
+            }
+        }
     }
 }
