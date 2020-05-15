@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GameOfLifeTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-05-15T16:35:49" hostname="LAPTOP-016GJG3B" time="10.389">
+<testsuite name="GameOfLifeTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-05-15T16:39:00" hostname="LAPTOP-016GJG3B" time="10.402">
   <properties/>
-  <testcase name="start" classname="GameOfLifeTest" time="10.389">
-    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;&gt;4 4 0&#10;Generation: #1&#10;Alive: 7&#10; OOO&#10;OO O&#10;O   &#10;    &#10;Generation: #2&#10;Alive: 9&#10; O O&#10;    &#10;OO O&#10;OOOO&#10;Generation: #3&#10;Alive: 4&#10; O O&#10; O O&#10;    &#10;    &#10;Generation: #4&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #5&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #6&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #7&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #8&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #9&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #10&#10;Alive: 0" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
+  <testcase name="start" classname="GameOfLifeTest" time="10.402">
+    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;&gt;4 4 0&#10;Generation: #1&#10;Alive: 8&#10;   O&#10;  OO&#10;  OO&#10;OO O&#10;Generation: #2&#10;Alive: 3&#10; O  &#10;O   &#10;    &#10; O  &#10;Generation: #3&#10;Alive: 2&#10;OO  &#10;    &#10;    &#10;    &#10;Generation: #4&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #5&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #6&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #7&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #8&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #9&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #10&#10;Alive: 0" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
 
 Please find below the output of your program during this failed test.
 Note that the '&gt;' character indicates the beginning of the input line.
@@ -11,21 +11,21 @@ Note that the '&gt;' character indicates the beginning of the input line.
 
 &gt;4 4 0
 Generation: #1
-Alive: 7
- OOO
+Alive: 8
+   O
+  OO
+  OO
 OO O
+Generation: #2
+Alive: 3
+ O  
 O   
     
-Generation: #2
-Alive: 9
- O O
-    
-OO O
-OOOO
+ O  
 Generation: #3
-Alive: 4
- O O
- O O
+Alive: 2
+OO  
+    
     
     
 Generation: #4
@@ -122,21 +122,21 @@ Alive: 0
 Start test 1?[0m
 >4 4 0
 Generation: #1
-Alive: 7
- OOO
+Alive: 8
+   O
+  OO
+  OO
 OO O
+Generation: #2
+Alive: 3
+ O  
 O   
     
-Generation: #2
-Alive: 9
- O O
-    
-OO O
-OOOO
+ O  
 Generation: #3
-Alive: 4
- O O
- O O
+Alive: 2
+OO  
+    
     
     
 Generation: #4

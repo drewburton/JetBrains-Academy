@@ -53,9 +53,7 @@ public class Universe {
 
             advanceGeneration();
             try {
-                synchronized (universeThread) {
-                    universeThread.wait(1000L);
-                }
+                universeThread.sleep(1000L);
             } catch(InterruptedException e) {
                System.out.println("Universe Interrupted");
                return;
