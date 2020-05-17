@@ -1,71 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GameOfLifeTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-05-15T16:39:00" hostname="LAPTOP-016GJG3B" time="10.402">
+<testsuite name="GameOfLifeTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-05-17T19:47:41" hostname="LAPTOP-016GJG3B" time="0.714">
   <properties/>
-  <testcase name="start" classname="GameOfLifeTest" time="10.402">
-    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;&gt;4 4 0&#10;Generation: #1&#10;Alive: 8&#10;   O&#10;  OO&#10;  OO&#10;OO O&#10;Generation: #2&#10;Alive: 3&#10; O  &#10;O   &#10;    &#10; O  &#10;Generation: #3&#10;Alive: 2&#10;OO  &#10;    &#10;    &#10;    &#10;Generation: #4&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #5&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #6&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #7&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #8&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #9&#10;Alive: 0&#10;    &#10;    &#10;    &#10;    &#10;Generation: #10&#10;Alive: 0" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
+  <testcase name="start" classname="GameOfLifeTest" time="0.714">
+    <failure message="java.lang.AssertionError: Wrong answer in test #6&#10;&#10;The 'GenerationLabel' label doesn't contain an integer." type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #6
 
-Please find below the output of your program during this failed test.
-Note that the '&gt;' character indicates the beginning of the input line.
-
----
-
-&gt;4 4 0
-Generation: #1
-Alive: 8
-   O
-  OO
-  OO
-OO O
-Generation: #2
-Alive: 3
- O  
-O   
-    
- O  
-Generation: #3
-Alive: 2
-OO  
-    
-    
-    
-Generation: #4
-Alive: 0
-    
-    
-    
-    
-Generation: #5
-Alive: 0
-    
-    
-    
-    
-Generation: #6
-Alive: 0
-    
-    
-    
-    
-Generation: #7
-Alive: 0
-    
-    
-    
-    
-Generation: #8
-Alive: 0
-    
-    
-    
-    
-Generation: #9
-Alive: 0
-    
-    
-    
-    
-Generation: #10
-Alive: 0
+The 'GenerationLabel' label doesn't contain an integer.
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.hyperskill.hstest.v6.stage.BaseStageTest.start(BaseStageTest.java:172)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -76,6 +15,8 @@ Alive: 0
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
 	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
 	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
@@ -118,69 +59,21 @@ Alive: 0
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <system-out><![CDATA[?[1;31m
+  <system-out><![CDATA[600
+600
+600
+?[1;31m
 Start test 1?[0m
->4 4 0
-Generation: #1
-Alive: 8
-   O
-  OO
-  OO
-OO O
-Generation: #2
-Alive: 3
- O  
-O   
-    
- O  
-Generation: #3
-Alive: 2
-OO  
-    
-    
-    
-Generation: #4
-Alive: 0
-    
-    
-    
-    
-Generation: #5
-Alive: 0
-    
-    
-    
-    
-Generation: #6
-Alive: 0
-    
-    
-    
-    
-Generation: #7
-Alive: 0
-    
-    
-    
-    
-Generation: #8
-Alive: 0
-    
-    
-    
-    
-Generation: #9
-Alive: 0
-    
-    
-    
-    
-Generation: #10
-Alive: 0
-    
-    
-    
-    
+?[1;31m
+Start test 2?[0m
+?[1;31m
+Start test 3?[0m
+?[1;31m
+Start test 4?[0m
+?[1;31m
+Start test 5?[0m
+?[1;31m
+Start test 6?[0m
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
