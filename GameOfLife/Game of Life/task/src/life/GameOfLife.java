@@ -21,12 +21,12 @@ public class GameOfLife extends JFrame{
         labels.setAlignmentX(0);
         labels.setAlignmentY(0);
 
-        generationLabel = new JLabel("Generation #");
+        generationLabel = new JLabel("Generation #1");
         generationLabel.setName("GenerationLabel");
         generationLabel.setVerticalAlignment(SwingConstants.TOP);
         labels.add(generationLabel);
 
-        aliveLabel = new JLabel("Alive: ");
+        aliveLabel = new JLabel("Alive: 0");
         aliveLabel.setName("AliveLabel");
         labels.add(aliveLabel);
 
