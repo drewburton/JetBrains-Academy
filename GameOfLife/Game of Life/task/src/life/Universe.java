@@ -59,7 +59,7 @@ public class Universe extends Thread{
             game.createMap(currentGeneration, generationCount);
             advanceGeneration();
             try {
-                sleep(300L);
+                sleep(100L);
             } catch (InterruptedException e) {
                 break;
             }
