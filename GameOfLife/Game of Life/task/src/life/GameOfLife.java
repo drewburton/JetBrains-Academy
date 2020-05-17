@@ -12,7 +12,7 @@ public class GameOfLife extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
         setVisible(true);
-        setResizable(false);
+        setResizable(true);
 
         JPanel labels = new JPanel();
         BoxLayout layout = new BoxLayout(labels, BoxLayout.Y_AXIS);
@@ -41,16 +41,16 @@ public class GameOfLife extends JFrame{
     }
 
     private void drawLines(Graphics g, Generation gen) {
-        g.drawRect(10, 10, this.getWidth() - 40, this.getHeight() - 100);
+        //g.drawRect(10, 10, this.getWidth() - 40, this.getHeight() - 100);
         int rectWidth = (this.getWidth() - 40) / gen.getGeneration().length;
         int rectHeight = (this.getHeight() - 100) / gen.getGeneration().length;
 
-        for (int i = 1; i < gen.getGeneration().length; i++) {
+        for (int i = 0; i <= gen.getGeneration().length; i++) {
             // draw vertical lines
-            g.drawLine(10 + rectWidth * i, 10, 10 + rectWidth * i, this.getHeight() - 100 + 10);
+            g.drawLine(10 + rectWidth * i, 10, 10 + rectWidth * i, 10 + rectHeight * gen.getGeneration().length);
 
             // draw horizontal lines
-            g.drawLine(10, 10 + rectHeight * i, this.getWidth() - 40 + 10, 10 + rectHeight * i);
+            g.drawLine(10, 10 + rectHeight * i, 10 + rectWidth * gen.getGeneration().length, 10 + rectHeight * i);
         }
 
         boolean[][] map = gen.getGeneration();

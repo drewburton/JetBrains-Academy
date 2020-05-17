@@ -18,7 +18,13 @@ public class Universe extends Thread{
     }
 
     public Universe(GameOfLife game) {
-        size = 20;
+        size = 100;
+        seed = -1;
+        this.game = game;
+    }
+
+    public Universe(int size, GameOfLife game) {
+        this.size = size;
         seed = -1;
         this.game = game;
     }
@@ -53,7 +59,7 @@ public class Universe extends Thread{
             game.createMap(currentGeneration, generationCount);
             advanceGeneration();
             try {
-                sleep(1000L);
+                sleep(300L);
             } catch (InterruptedException e) {
                 break;
             }
