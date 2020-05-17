@@ -218,32 +218,192 @@ files:
         }
     }
   learner_created: false
-- name: src/life/GameOfLife.java
+- name: src/life/Universe.java
   visible: true
   text: |
     package life;
 
-    import javax.swing.*;
+    import java.io.IOException;
+    import java.util.Random;
 
-    public class GameOfLife extends JFrame {
-        public GameOfLife() {
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setSize(300, 300);
-            setVisible(true);
+    public class Universe {
+        private final int size;
+        private final int seed;
+
+        Generation currentGeneration;
+
+        public Universe(int size, int seed) {
+            this.size = size;
+            this.seed = seed;
+        }
+
+        public void generateNew() {
+            Random random = new Random();
+
+            boolean[][] map = new boolean[size][size];
+            for (int r = 0; r < size; r++) {
+                for (int c = 0; c < size; c++) {
+                    map[r][c] = random.nextBoolean();
+                }
+            }
+            currentGeneration = new Generation(map);
+        }
+
+        public void advanceGeneration() {
+            currentGeneration = currentGeneration.getNextGeneration();
+        }
+
+        public void runUniverse(int generations) {
+            generations = 10;
+            Thread universeThread = new Thread();
+
+            for (int i = 1; i <= generations; i++) {
+                // clears console output
+                try {
+                    if (System.getProperty("os.name").contains("Windows")) {
+                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    } else {
+                        Runtime.getRuntime().exec("clear");
+                    }
+                } catch (IOException | InterruptedException e) {
+                }
+
+                System.out.println("Generation: #" + i);
+                System.out.println("Alive: " + currentGeneration.getAlive());
+
+                //prints generation
+                currentGeneration.print();
+
+                advanceGeneration();
+                try {
+                    universeThread.sleep(1000L);
+    //                synchronized (universeThread) {
+    //                    universeThread.wait(1000L);
+    //                }
+                } catch(InterruptedException e) {
+                   System.out.println("Universe Interrupted");
+                   return;
+                }
+            }
         }
     }
-  learner_created: false
-- name: src/life/ApplicationRunner.java
+  learner_created: true
+- name: src/life/Generation.java
   visible: true
   text: |
     package life;
 
-    public class ApplicationRunner {
+    import javafx.geometry.Point2D;
+
+    public class Generation {
+        private boolean[][] map;
+
+        public Generation(boolean[][] map) {
+            this.map = map.clone();
+        }
+
+        public void print() {
+            for (int r = 0; r < map.length; r++) {
+                for (int c = 0; c < map.length; c++) {
+                    System.out.print(map[r][c] ? "O" : " ");
+                }
+                System.out.println();
+            }
+        }
+
+        public int getAlive() {
+            int alive = 0;
+            for (int r = 0; r < map.length; r++) {
+                for (int c = 0; c < map.length; c++) {
+                   if (map[r][c]) {
+                       alive++;
+                   }
+                }
+            }
+            return alive;
+        }
+
+        public Generation getNextGeneration() {
+            boolean[][] next = new boolean[map.length][map.length];
+
+            for (int r = 0; r < map.length; r++) {
+                for (int c = 0; c < map.length; c++) {
+                   Point2D cell = new Point2D(r, c);
+                   if (map[r][c] && willCellSurvive(cell)) {
+                       next[r][c] = true;
+                   } else if (map[r][c]) {
+                       next[r][c] = false;
+                   } else if (willCellRevive(cell)) {
+                       next[r][c] = true;
+                   }
+                }
+            }
+
+            return new Generation(next);
+        }
+
+        private boolean willCellRevive(Point2D cell) {
+            if (getNeighbors(cell) == 3) {
+                return true;
+            }
+            return false;
+        }
+
+        private boolean willCellSurvive(Point2D cell) {
+            if (getNeighbors(cell) == 2 || getNeighbors(cell) == 3) {
+                return true;
+            }
+            return false;
+        }
+
+        private int getNeighbors(Point2D cell) {
+            int neighbors = 0;
+
+            for (int l = -1; l <= 1; l++) {
+                for (int u = -1; u <= 1; u++) {
+                    if (l == 0 && u == 0) {
+                        continue;
+                    }
+                    int r = getWrapAround((int) cell.getX(), l);
+                    int c = getWrapAround((int) cell.getY(), u);
+                    neighbors += map[r][c] ? 1 : 0;
+                }
+            }
+            return neighbors;
+        }
+
+        private int getWrapAround(int cell, int offset) {
+            if (cell + offset >= map.length) {
+                return cell + offset - map.length;
+            } else if (cell + offset < 0) {
+                return cell + offset + map.length;
+            }
+            return cell + offset;
+        }
+    }
+  learner_created: true
+- name: src/life/Main.java
+  visible: true
+  text: |
+    package life;
+
+    import java.util.Scanner;
+
+    public class Main {
         public static void main(String[] args) {
-            new GameOfLife();
+            Scanner scanner = new Scanner(System.in);
+            int size = scanner.nextInt();
+            int seed = scanner.nextInt();
+            int generations = scanner.nextInt();
+
+            Universe universe = new Universe(size, seed);
+            universe.generateNew();
+            universe.runUniverse(generations);
         }
+
+
     }
-  learner_created: false
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/54/stages/298/implement
 status: Unchecked
 record: -1
