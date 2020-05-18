@@ -9,22 +9,17 @@ public class Generation {
         this.map = map.clone();
     }
 
-    public void print() {
-        for (int r = 0; r < map.length; r++) {
-            for (int c = 0; c < map.length; c++) {
-                System.out.print(map[r][c] ? "O" : " ");
-            }
-            System.out.println();
-        }
+    public boolean[][] getGeneration() {
+        return map.clone();
     }
 
     public int getAlive() {
         int alive = 0;
         for (int r = 0; r < map.length; r++) {
             for (int c = 0; c < map.length; c++) {
-               if (map[r][c]) {
-                   alive++;
-               }
+                if (map[r][c]) {
+                    alive++;
+                }
             }
         }
         return alive;
@@ -35,14 +30,14 @@ public class Generation {
 
         for (int r = 0; r < map.length; r++) {
             for (int c = 0; c < map.length; c++) {
-               Point2D cell = new Point2D(r, c);
-               if (map[r][c] && willCellSurvive(cell)) {
-                   next[r][c] = true;
-               } else if (map[r][c]) {
-                   next[r][c] = false;
-               } else if (willCellRevive(cell)) {
-                   next[r][c] = true;
-               }
+                Point2D cell = new Point2D(r, c);
+                if (map[r][c] && willCellSurvive(cell)) {
+                    next[r][c] = true;
+                } else if (map[r][c]) {
+                    next[r][c] = false;
+                } else if (willCellRevive(cell)) {
+                    next[r][c] = true;
+                }
             }
         }
 
