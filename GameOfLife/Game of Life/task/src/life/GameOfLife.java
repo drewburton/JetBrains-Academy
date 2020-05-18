@@ -13,6 +13,7 @@ public class GameOfLife extends JFrame{
         setSize(600, 600);
         setVisible(true);
         setResizable(true);
+        setLocationRelativeTo(null);
 
         JPanel labels = new JPanel();
         BoxLayout layout = new BoxLayout(labels, BoxLayout.Y_AXIS);
