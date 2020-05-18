@@ -9,8 +9,13 @@ public class Generation {
         this.map = map.clone();
     }
 
-    public boolean[][] getGeneration() {
-        return map.clone();
+    public void print() {
+        for (int r = 0; r < map.length; r++) {
+            for (int c = 0; c < map.length; c++) {
+                System.out.print(map[r][c] ? "O" : " ");
+            }
+            System.out.println();
+        }
     }
 
     public int getAlive() {
