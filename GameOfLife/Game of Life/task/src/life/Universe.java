@@ -3,19 +3,39 @@ package life;
 import java.io.IOException;
 import java.util.Random;
 
-public class Universe {
+public class Universe extends Thread{
     private final int size;
     private final int seed;
+    private GameOfLife game;
 
-    Generation currentGeneration;
+    private Generation currentGeneration;
+    private int generationCount;
 
-    public Universe(int size, int seed) {
+    public Universe(int size, int seed, GameOfLife game) {
         this.size = size;
         this.seed = seed;
+        this.game = game;
+    }
+
+    public Universe(GameOfLife game) {
+        size = 100;
+        seed = -1;
+        this.game = game;
+    }
+
+    public Universe(int size, GameOfLife game) {
+        this.size = size;
+        seed = -1;
+        this.game = game;
     }
 
     public void generateNew() {
-        Random random = new Random();
+        Random random;
+        if (seed != -1) {
+            random = new Random(seed);
+        } else {
+            random = new Random();
+        }
 
         boolean[][] map = new boolean[size][size];
         for (int r = 0; r < size; r++) {
@@ -28,10 +48,26 @@ public class Universe {
 
     public void advanceGeneration() {
         currentGeneration = currentGeneration.getNextGeneration();
+        generationCount++;
     }
 
-    public void runUniverse(int generations) {
-        generations = 10;
+    @Override
+    public void run() {
+        generationCount = 1;
+        generateNew();
+        while (!isInterrupted()) {
+            game.createMap(currentGeneration, generationCount);
+            advanceGeneration();
+            try {
+                sleep(100L);
+            } catch (InterruptedException e) {
+                break;
+            }
+        }
+    }
+
+    public void runUniverse() {
+        int generations = 10;
         Thread universeThread = new Thread();
 
         for (int i = 1; i <= generations; i++) {
@@ -49,17 +85,14 @@ public class Universe {
             System.out.println("Alive: " + currentGeneration.getAlive());
 
             //prints generation
-            currentGeneration.print();
+            //currentGeneration.print();
 
             advanceGeneration();
             try {
                 universeThread.sleep(1000L);
-//                synchronized (universeThread) {
-//                    universeThread.wait(1000L);
-//                }
             } catch(InterruptedException e) {
-               System.out.println("Universe Interrupted");
-               return;
+                System.out.println("Universe Interrupted");
+                return;
             }
         }
     }
