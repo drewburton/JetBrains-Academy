@@ -8,6 +8,9 @@ public class GameOfLife extends JFrame{
     JLabel aliveLabel;
     JPanel grid;
 
+    JButton pauseButton;
+    JButton resetButton;
+
     public GameOfLife() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
@@ -15,10 +18,34 @@ public class GameOfLife extends JFrame{
         setResizable(true);
         setLocationRelativeTo(null);
 
-        JPanel labels = new JPanel();
-        BoxLayout layout = new BoxLayout(labels, BoxLayout.Y_AXIS);
-        labels.setLayout(layout);
+        JPanel options = new JPanel();
+        BoxLayout optionsLayout = new BoxLayout(options, BoxLayout.Y_AXIS);
+        options.setLayout(optionsLayout);
 
+        JPanel buttons = new JPanel();
+        BoxLayout buttonsLayout = new BoxLayout(buttons, BoxLayout.X_AXIS);
+        buttons.setLayout(buttonsLayout);
+        buttons.setAlignmentX(0);
+        buttons.setAlignmentY(0);
+
+        pauseButton = new JButton(new ImageIcon(
+                "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\pause.jpg"));
+        pauseButton.setName("PlayToggleButton");
+        pauseButton.setVerticalAlignment(SwingConstants.TOP);
+        buttons.add(pauseButton);
+
+        resetButton = new JButton(new ImageIcon(
+                "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\reset.jpg"));
+        resetButton.setName("ResetButton");
+        resetButton.setVerticalAlignment(SwingConstants.TOP);
+        buttons.add(resetButton);
+
+        options.add(buttons);
+
+
+        JPanel labels = new JPanel();
+        BoxLayout labelsLayout = new BoxLayout(labels, BoxLayout.Y_AXIS);
+        labels.setLayout(labelsLayout);
         labels.setAlignmentX(0);
         labels.setAlignmentY(0);
 
@@ -31,12 +58,19 @@ public class GameOfLife extends JFrame{
         aliveLabel.setName("AliveLabel");
         labels.add(aliveLabel);
 
-        add(labels);
+        options.add(Box.createVerticalStrut(30));
+        options.add(labels);
+        
+        add(options);
+
 
         grid = new JPanel();
         add(grid);
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+
+        options.revalidate();
+        buttons.revalidate();
         labels.revalidate();
         grid.revalidate();
     }
@@ -44,7 +78,7 @@ public class GameOfLife extends JFrame{
     private void drawLines(Graphics g, Generation gen) {
         //g.drawRect(10, 10, this.getWidth() - 40, this.getHeight() - 100);
         int rectWidth = (this.getWidth() - 40) / gen.getGeneration().length;
-        int rectHeight = (this.getHeight() - 100) / gen.getGeneration().length;
+        int rectHeight = (this.getHeight() - 150) / gen.getGeneration().length;
 
         for (int i = 0; i <= gen.getGeneration().length; i++) {
             // draw vertical lines
