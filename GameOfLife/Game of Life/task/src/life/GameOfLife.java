@@ -11,6 +11,9 @@ public class GameOfLife extends JFrame{
     JButton pauseButton;
     JButton resetButton;
 
+    private boolean reset = false;
+    private boolean paused = false;
+
     public GameOfLife() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
@@ -22,47 +25,14 @@ public class GameOfLife extends JFrame{
         BoxLayout optionsLayout = new BoxLayout(options, BoxLayout.Y_AXIS);
         options.setLayout(optionsLayout);
 
-        JPanel buttons = new JPanel();
-        BoxLayout buttonsLayout = new BoxLayout(buttons, BoxLayout.X_AXIS);
-        buttons.setLayout(buttonsLayout);
-        buttons.setAlignmentX(0);
-        buttons.setAlignmentY(0);
-
-        pauseButton = new JButton(new ImageIcon(
-                "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\pause.jpg"));
-        pauseButton.setName("PlayToggleButton");
-        pauseButton.setVerticalAlignment(SwingConstants.TOP);
-        buttons.add(pauseButton);
-
-        resetButton = new JButton(new ImageIcon(
-                "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\reset.jpg"));
-        resetButton.setName("ResetButton");
-        resetButton.setVerticalAlignment(SwingConstants.TOP);
-        buttons.add(resetButton);
-
+        JPanel buttons = createButtons();
         options.add(buttons);
 
-
-        JPanel labels = new JPanel();
-        BoxLayout labelsLayout = new BoxLayout(labels, BoxLayout.Y_AXIS);
-        labels.setLayout(labelsLayout);
-        labels.setAlignmentX(0);
-        labels.setAlignmentY(0);
-
-        generationLabel = new JLabel("Generation #1");
-        generationLabel.setName("GenerationLabel");
-        generationLabel.setVerticalAlignment(SwingConstants.TOP);
-        labels.add(generationLabel);
-
-        aliveLabel = new JLabel("Alive: 0");
-        aliveLabel.setName("AliveLabel");
-        labels.add(aliveLabel);
-
+        JPanel labels = createLabels();
         options.add(Box.createVerticalStrut(30));
         options.add(labels);
         
         add(options);
-
 
         grid = new JPanel();
         add(grid);
@@ -112,5 +82,73 @@ public class GameOfLife extends JFrame{
         };
         add(grid);
         grid.revalidate();
+    }
+
+    private JPanel createButtons() {
+        JPanel buttons = new JPanel();
+        BoxLayout buttonsLayout = new BoxLayout(buttons, BoxLayout.X_AXIS);
+        buttons.setLayout(buttonsLayout);
+        buttons.setAlignmentX(0);
+        buttons.setAlignmentY(0);
+
+        pauseButton = new JButton(new ImageIcon(
+                "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\pause.jpg"));
+        pauseButton.setName("PlayToggleButton");
+        pauseButton.setVerticalAlignment(SwingConstants.TOP);
+        buttons.add(pauseButton);
+
+        pauseButton.addActionListener(e -> {
+            if (paused) {
+                paused = false;
+                pauseButton.setIcon(new ImageIcon(
+                        "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\pause.jpg"));
+            } else {
+                paused = true;
+                pauseButton.setIcon(new ImageIcon(
+                        "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\play.png"));
+            }
+        });
+
+        resetButton = new JButton(new ImageIcon(
+                "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\reset.jpg"));
+        resetButton.setName("ResetButton");
+        resetButton.setVerticalAlignment(SwingConstants.TOP);
+        buttons.add(resetButton);
+
+        resetButton.addActionListener(e -> {
+            reset = true;
+        });
+        return buttons;
+    }
+
+    public boolean isReset() {
+        return reset;
+    }
+
+    public void setReset(boolean reset) {
+        this.reset = reset;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    private JPanel createLabels() {
+        JPanel labels = new JPanel();
+        BoxLayout labelsLayout = new BoxLayout(labels, BoxLayout.Y_AXIS);
+        labels.setLayout(labelsLayout);
+        labels.setAlignmentX(0);
+        labels.setAlignmentY(0);
+
+        generationLabel = new JLabel("Generation #1");
+        generationLabel.setName("GenerationLabel");
+        generationLabel.setVerticalAlignment(SwingConstants.TOP);
+        labels.add(generationLabel);
+
+        aliveLabel = new JLabel("Alive: 0");
+        aliveLabel.setName("AliveLabel");
+        labels.add(aliveLabel);
+
+        return labels;
     }
 }

@@ -56,44 +56,26 @@ public class Universe extends Thread{
         generationCount = 1;
         generateNew();
         while (!isInterrupted()) {
-            game.createMap(currentGeneration, generationCount);
-            advanceGeneration();
-            try {
-                sleep(100L);
-            } catch (InterruptedException e) {
-                break;
+            if (!game.isPaused()) {
+                game.createMap(currentGeneration, generationCount);
+                advanceGeneration();
+
+                try {
+                    sleep(100L);
+                } catch (InterruptedException e) {
+                    break;
+                }
             }
+            handleReset();
         }
     }
 
-    public void runUniverse() {
-        int generations = 10;
-        Thread universeThread = new Thread();
-
-        for (int i = 1; i <= generations; i++) {
-            // clears console output
-            try {
-                if (System.getProperty("os.name").contains("Windows")) {
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                } else {
-                    Runtime.getRuntime().exec("clear");
-                }
-            } catch (IOException | InterruptedException e) {
-            }
-
-            System.out.println("Generation: #" + i);
-            System.out.println("Alive: " + currentGeneration.getAlive());
-
-            //prints generation
-            //currentGeneration.print();
-
-            advanceGeneration();
-            try {
-                universeThread.sleep(1000L);
-            } catch(InterruptedException e) {
-                System.out.println("Universe Interrupted");
-                return;
-            }
+    private void handleReset() {
+        if (game.isReset()) {
+            game.setReset(false);
+            generationCount = 1;
+            generateNew();
+            game.createMap(currentGeneration, generationCount);
         }
     }
 }
