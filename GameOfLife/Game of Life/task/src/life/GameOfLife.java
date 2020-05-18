@@ -10,9 +10,11 @@ public class GameOfLife extends JFrame{
 
     JButton pauseButton;
     JButton resetButton;
+    JSlider speedSlider;
 
     private boolean reset = false;
     private boolean paused = false;
+    private int speed = 10;
 
     public GameOfLife() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,8 +27,8 @@ public class GameOfLife extends JFrame{
         BoxLayout optionsLayout = new BoxLayout(options, BoxLayout.Y_AXIS);
         options.setLayout(optionsLayout);
 
-        JPanel buttons = createButtons();
-        options.add(buttons);
+        JPanel interactions = createInteractions();
+        options.add(interactions);
 
         JPanel labels = createLabels();
         options.add(Box.createVerticalStrut(30));
@@ -40,7 +42,7 @@ public class GameOfLife extends JFrame{
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         options.revalidate();
-        buttons.revalidate();
+        interactions.revalidate();
         labels.revalidate();
         grid.revalidate();
     }
@@ -84,18 +86,18 @@ public class GameOfLife extends JFrame{
         grid.revalidate();
     }
 
-    private JPanel createButtons() {
-        JPanel buttons = new JPanel();
-        BoxLayout buttonsLayout = new BoxLayout(buttons, BoxLayout.X_AXIS);
-        buttons.setLayout(buttonsLayout);
-        buttons.setAlignmentX(0);
-        buttons.setAlignmentY(0);
+    private JPanel createInteractions() {
+        JPanel interactions = new JPanel();
+        BoxLayout buttonsLayout = new BoxLayout(interactions, BoxLayout.X_AXIS);
+        interactions.setLayout(buttonsLayout);
+        interactions.setAlignmentX(0);
+        interactions.setAlignmentY(0);
 
         pauseButton = new JButton(new ImageIcon(
                 "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\pause.jpg"));
         pauseButton.setName("PlayToggleButton");
         pauseButton.setVerticalAlignment(SwingConstants.TOP);
-        buttons.add(pauseButton);
+        interactions.add(pauseButton);
 
         pauseButton.addActionListener(e -> {
             if (paused) {
@@ -113,12 +115,23 @@ public class GameOfLife extends JFrame{
                 "C:\\development\\Learning\\Java\\IdeaProjects\\GameOfLife\\Game of Life\\task\\src\\Images\\reset.jpg"));
         resetButton.setName("ResetButton");
         resetButton.setVerticalAlignment(SwingConstants.TOP);
-        buttons.add(resetButton);
+        interactions.add(resetButton);
 
         resetButton.addActionListener(e -> {
             reset = true;
         });
-        return buttons;
+
+        speedSlider = new JSlider();
+        speedSlider.setMinimum(1);
+        speedSlider.setMaximum(15);
+        speedSlider.setValue(10);
+        interactions.add(speedSlider);
+
+        speedSlider.addChangeListener(e -> {
+            speed = speedSlider.getValue();
+        });
+
+        return interactions;
     }
 
     public boolean isReset() {
@@ -131,6 +144,10 @@ public class GameOfLife extends JFrame{
 
     public boolean isPaused() {
         return paused;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 
     private JPanel createLabels() {

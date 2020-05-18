@@ -61,7 +61,7 @@ public class Universe extends Thread{
                 advanceGeneration();
 
                 try {
-                    sleep(100L);
+                    sleep(1000L / game.getSpeed());
                 } catch (InterruptedException e) {
                     break;
                 }
