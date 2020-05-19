@@ -1,2 +1,5 @@
 content:
 - The sum of integers from a to b
+- The number of occurrences
+- Count elements of an array in another one
+- The index of the K occurrence
