@@ -123,7 +123,7 @@ public class GameOfLife extends JFrame{
 
         speedSlider = new JSlider();
         speedSlider.setMinimum(1);
-        speedSlider.setMaximum(15);
+        speedSlider.setMaximum(30);
         speedSlider.setValue(10);
         interactions.add(speedSlider);
 
