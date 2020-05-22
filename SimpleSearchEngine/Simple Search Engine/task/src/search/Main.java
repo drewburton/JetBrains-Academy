@@ -1,13 +1,20 @@
 package search;
 
-import java.io.File;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        File dataFile = new File(args[1]);
+        Scanner scanner = new Scanner(System.in);
 
-        DataStorage storage = new DataStorage(dataFile);
-        DataProcessor processor = new DataProcessor(storage);
-        processor.process();
+        String input = scanner.nextLine();
+        String[] words = input.split(" ");
+        String key = scanner.nextLine();
+        for (int wordsIndex = 0; wordsIndex < words.length; wordsIndex++) {
+            if (key.equals(words[wordsIndex])) {
+                System.out.println(wordsIndex + 1);
+                return;
+            }
+        }
+        System.out.println("Not Found");
     }
 }
