@@ -22,7 +22,7 @@ public class DataProcessor {
                     storage.printAll();
                     break;
                 default:
-                    System.out.println("Not a valid menu option, try again: ");
+                    System.out.println("Incorrect option! Try again.");
             }
         }
         System.out.println("Bye!");
