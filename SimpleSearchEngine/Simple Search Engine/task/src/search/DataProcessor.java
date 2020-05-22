@@ -11,19 +11,20 @@ public class DataProcessor {
 
     public void process() {
         Scanner scanner = new Scanner(System.in);
-        boolean exit = false;
-        while (!exit) {
-            int num = scanner.nextInt();
+        for (int num = scanner.nextInt(); num != 0; num = scanner.nextInt()) {
+            scanner.nextLine();
             switch(num) {
                 case 1:
+                    System.out.println("Enter a name or email to search all suitable people");
+                    storage.findPeople(scanner.nextLine());
                     break;
                 case 2:
-                    break;
-                case 0:
+                    storage.printAll();
                     break;
                 default:
-                    
+                    System.out.println("Not a valid menu option, try again: ");
             }
         }
+        System.out.println("Bye!");
     }
 }
