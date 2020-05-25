@@ -285,6 +285,108 @@ files:
     }
 
   learner_created: false
+- name: src/search/DataStorage.java
+  visible: true
+  text: |
+    package search;
+
+    import java.io.File;
+    import java.io.FileNotFoundException;
+    import java.util.ArrayList;
+    import java.util.Scanner;
+
+    public class DataStorage {
+        File file;
+        ArrayList<String> lines;
+        public DataStorage(File file) {
+            this.file = file;
+            readLines();
+        }
+
+        public void findPeople(String searchTerm) {
+            boolean found = false;
+            for (int i = 0; i < lines.size(); i++) {
+                if (lines.get(i).toLowerCase().matches(".*" + searchTerm.toLowerCase() + ".*")) {
+                    System.out.println(lines.get(i));
+                    found = true;
+                }
+            }
+            if (!found) {
+                System.out.println("No matching people found.");
+            }
+        }
+
+        public void printAll() {
+            System.out.println("=== List of people ===");
+            for (int i = 0; i < lines.size(); i++) {
+                System.out.println(lines.get(i));
+            }
+        }
+
+        private void readLines() {
+            try {
+                Scanner scanner = new Scanner(file);
+
+                lines = new ArrayList<>();
+                while (scanner.hasNextLine()) {
+                    lines.add(scanner.nextLine());
+                }
+                scanner.close();
+            } catch (FileNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+  learner_created: true
+- name: src/search/DataProcessor.java
+  visible: true
+  text: |
+    package search;
+
+    import java.util.Scanner;
+
+    public class DataProcessor {
+        DataStorage storage;
+
+        public DataProcessor(DataStorage storage) {
+            this.storage = storage;
+        }
+
+        public void process() {
+            Scanner scanner = new Scanner(System.in);
+            for (int num = scanner.nextInt(); num != 0; num = scanner.nextInt()) {
+                scanner.nextLine();
+                switch(num) {
+                    case 1:
+                        System.out.println("Enter a name or email to search all suitable people");
+                        storage.findPeople(scanner.nextLine());
+                        break;
+                    case 2:
+                        storage.printAll();
+                        break;
+                    default:
+                        System.out.println("Incorrect option! Try again.");
+                }
+            }
+            System.out.println("Bye!");
+        }
+    }
+  learner_created: true
+- name: src/search/Main.java
+  visible: true
+  text: |
+    package search;
+
+    import java.io.File;
+
+    public class Main {
+        public static void main(String[] args) {
+            DataStorage storage = new DataStorage(new File(args[1]));
+            DataProcessor processor = new DataProcessor(storage);
+            processor.process();
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/66/stages/358/implement
 status: Unchecked
 record: -1
