@@ -14,16 +14,7 @@ public class DataStorage {
     }
 
     public void findPeople(String searchTerm) {
-        boolean found = false;
-        for (int i = 0; i < lines.size(); i++) {
-            if (lines.get(i).toLowerCase().matches(".*" + searchTerm.toLowerCase() + ".*")) {
-                System.out.println(lines.get(i));
-                found = true;
-            }
-        }
-        if (!found) {
-            System.out.println("No matching people found.");
-        }
+        
     }
 
     public void printAll() {
