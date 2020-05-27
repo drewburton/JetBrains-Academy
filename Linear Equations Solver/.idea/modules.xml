@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Linear_Equations_Solver.iml" filepath="$PROJECT_DIR$/.idea/modules/Linear_Equations_Solver.iml" group="Linear_Equations_Solver" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Area of a circle/Problems-Area_of_a_circle.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Area of a circle/Problems-Area_of_a_circle.iml" group="Linear_Equations_Solver/Problems-Area_of_a_circle" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Area of a circle/Problems-Area_of_a_circle_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Area of a circle/Problems-Area_of_a_circle_main.iml" group="Linear_Equations_Solver/Problems-Area_of_a_circle" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Area of a circle/Problems-Area_of_a_circle_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Area of a circle/Problems-Area_of_a_circle_test.iml" group="Linear_Equations_Solver/Problems-Area_of_a_circle" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Difference between two doubles/Problems-Difference_between_two_doubles.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Difference between two doubles/Problems-Difference_between_two_doubles.iml" group="Linear_Equations_Solver/Problems-Difference_between_two_doubles" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Difference between two doubles/Problems-Difference_between_two_doubles_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Difference between two doubles/Problems-Difference_between_two_doubles_main.iml" group="Linear_Equations_Solver/Problems-Difference_between_two_doubles" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Difference between two doubles/Problems-Difference_between_two_doubles_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Difference between two doubles/Problems-Difference_between_two_doubles_test.iml" group="Linear_Equations_Solver/Problems-Difference_between_two_doubles" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Distance/Problems-Distance.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Distance/Problems-Distance.iml" group="Linear_Equations_Solver/Problems-Distance" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Distance/Problems-Distance_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Distance/Problems-Distance_main.iml" group="Linear_Equations_Solver/Problems-Distance" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Distance/Problems-Distance_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Distance/Problems-Distance_test.iml" group="Linear_Equations_Solver/Problems-Distance" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util.iml" group="Linear_Equations_Solver/util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_main.iml" group="Linear_Equations_Solver/util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_test.iml" group="Linear_Equations_Solver/util" />
+    </modules>
+  </component>
+</project>
