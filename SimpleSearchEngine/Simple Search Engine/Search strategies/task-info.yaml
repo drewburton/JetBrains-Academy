@@ -315,6 +315,88 @@ files:
         }
     }
   learner_created: false
+- name: src/search/DataStorage.java
+  visible: true
+  text: "package search;\n\nimport java.io.File;\nimport java.io.FileNotFoundException;\n\
+    import java.lang.reflect.Array;\nimport java.util.ArrayList;\nimport java.util.Scanner;\n\
+    import java.util.SortedMap;\nimport java.util.TreeMap;\n\npublic class DataStorage\
+    \ {\n    File file;\n    ArrayList<String> lines;\n    SortedMap<String, ArrayList<Integer>>\
+    \ searchMap;\n\n    public DataStorage(File file) {\n        this.file = file;\n\
+    \        readLines();\n    }\n\n    public void findPeople(String searchTerm,\
+    \ String strategy) {\n        String[] terms = searchTerm.split(\"\\\\s\");\n\
+    \        for (String term : terms) {\n            searchMap.forEach((k, v) ->\
+    \ {\n                if (k.equals(term)) {\n                    v.forEach(i ->\
+    \ System.out.println(lines.get(i)));\n                }\n            });\n   \
+    \     }\n    }\n\n    private void strategyAny() {\n\n    }\n\n    private void\
+    \ strategyAll() {\n\n    }\n\n    private void strategyNone() {\n        \n  \
+    \  }\n\n    public void printAll() {\n        System.out.println(\"=== List of\
+    \ people ===\");\n        for (int i = 0; i < lines.size(); i++) {\n         \
+    \   System.out.println(lines.get(i));\n        }\n    }\n\n    private void readLines()\
+    \ {\n        try {\n            Scanner scanner = new Scanner(file);\n\n     \
+    \       lines = new ArrayList<>();\n            while (scanner.hasNextLine())\
+    \ {\n                lines.add(scanner.nextLine());\n            }\n         \
+    \   scanner.close();\n            buildIndex();\n        } catch (FileNotFoundException\
+    \ e) {\n            System.out.println(e.getMessage());\n        }\n    }\n\n\
+    \    private void buildIndex() {\n        searchMap = new TreeMap<>();\n     \
+    \   for (int i = 0; i < lines.size(); i++) {\n            String[] words = lines.get(i).split(\"\
+    \\\\s\");\n            for (String word : words) {\n                ArrayList<Integer>\
+    \ indexes;\n\n                if (searchMap.get(word) == null) {\n           \
+    \         indexes = new ArrayList<>();\n                } else {\n           \
+    \         indexes = searchMap.get(word);\n                }\n\n              \
+    \  indexes.add(i);\n                searchMap.put(word, indexes);\n          \
+    \  }\n        }\n    }\n}\n"
+  learner_created: true
+- name: src/search/DataProcessor.java
+  visible: true
+  text: |
+    package search;
+
+    import java.util.Scanner;
+
+    public class DataProcessor {
+        DataStorage storage;
+
+        public DataProcessor(DataStorage storage) {
+            this.storage = storage;
+        }
+
+        public void process() {
+            Scanner scanner = new Scanner(System.in);
+            for (int num = scanner.nextInt(); num != 0; num = scanner.nextInt()) {
+                scanner.nextLine();
+                switch(num) {
+                    case 1:
+                        System.out.println("Select a matching strategy: ALL, ANY, NONE");
+                        String strategy = scanner.nextLine();
+                        System.out.println("Enter a name or email to search all suitable people");
+                        storage.findPeople(scanner.nextLine(), strategy);
+                        break;
+                    case 2:
+                        storage.printAll();
+                        break;
+                    default:
+                        System.out.println("Incorrect option! Try again.");
+                }
+            }
+            System.out.println("Bye!");
+        }
+    }
+  learner_created: true
+- name: src/search/Main.java
+  visible: true
+  text: |
+    package search;
+
+    import java.io.File;
+
+    public class Main {
+        public static void main(String[] args) {
+            DataStorage storage = new DataStorage(new File(args[1]));
+            DataProcessor processor = new DataProcessor(storage);
+            processor.process();
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/66/stages/359/implement
-status: Unchecked
+status: Solved
 record: -1

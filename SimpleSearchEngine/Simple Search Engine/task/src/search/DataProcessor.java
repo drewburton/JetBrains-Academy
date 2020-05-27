@@ -15,8 +15,10 @@ public class DataProcessor {
             scanner.nextLine();
             switch(num) {
                 case 1:
+                    System.out.println("Select a matching strategy: ALL, ANY, NONE");
+                    String strategy = scanner.nextLine();
                     System.out.println("Enter a name or email to search all suitable people");
-                    storage.findPeople(scanner.nextLine());
+                    storage.findPeople(scanner.nextLine(), strategy);
                     break;
                 case 2:
                     storage.printAll();
