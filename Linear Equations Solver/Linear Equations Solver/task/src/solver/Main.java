@@ -1,8 +1,10 @@
 package solver;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        Solver solver = new LinearSystemSolver();
-        solver.solve();
+        LinearEquation equation = new LinearEquation();
+        ArrayList<Double> answers = equation.solve();
     }
 }
