@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class LinearEquation {
     private Matrix matrix;
 
-    public LinearEquation() {
+    public LinearEquation(String[] args) {
         matrix = new Matrix();
-        matrix.getCoefficients();
+        matrix.getCoefficients(args);
     }
 
     public ArrayList<Double> solve() {
@@ -34,10 +34,14 @@ public class LinearEquation {
 
     private void reducedEchelonForm() {
         System.out.println("Reducing to reduced echelon");
+        for (int i = matrix.size() - 1; i > 0; i--) {
+            matrix.nullAboveElements(i);
+        }
+        matrix.print();
     }
 
     private boolean isGoodMatrix() {
         System.out.println("Checking for valid matrix");
-        return false;
+        return true;
     }
 }

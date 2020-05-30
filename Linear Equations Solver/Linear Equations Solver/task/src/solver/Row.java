@@ -30,12 +30,20 @@ public class Row extends Matrix {
         return added;
     }
 
-    public Row subtractFrom(Row row) {
+    public Row subtract(Row row) {
         Row subtracted = new Row();
 
         for (int i = 0; i < row.size(); i++) {
             subtracted.add(this.row.get(i) - row.get(i));
         }
         return subtracted;
+    }
+
+    public Row multiply(double factor) {
+        Row multiplied = new Row();
+        for (int i = 0; i < row.size(); i++) {
+             multiplied.add(row.get(i) * factor);
+        }
+        return multiplied;
     }
 }

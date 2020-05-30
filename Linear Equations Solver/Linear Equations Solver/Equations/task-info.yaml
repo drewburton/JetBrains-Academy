@@ -280,6 +280,12 @@ files:
 - name: src/solver/test.txt
   visible: true
   learner_created: true
+- name: out.txt
+  visible: true
+  learner_created: true
+- name: output.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/40/stages/211/implement
-status: Failed
+status: Solved
 record: -1
