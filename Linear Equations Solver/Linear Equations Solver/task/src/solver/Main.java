@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         LinearEquation equation = new LinearEquation(args);
-        ArrayList<Double> answers = equation.solve();
+        ArrayList<String> answers = equation.solve();
 
         try {
             File file = new File(args[3]);
@@ -16,7 +16,7 @@ public class Main {
             FileWriter writer = new FileWriter(args[3]);
 
             System.out.println("Writing to file:");
-            for (double answer : answers) {
+            for (String answer : answers) {
                 System.out.println(answer);
                 writer.write(answer + "\n");
             }

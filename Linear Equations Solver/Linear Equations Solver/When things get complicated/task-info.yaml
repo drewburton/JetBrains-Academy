@@ -482,6 +482,24 @@ files:
         }
     }
   learner_created: false
+- name: src/solver/test.txt
+  visible: true
+  learner_created: true
+- name: src/solver/LinearEquation.java
+  visible: true
+  learner_created: true
+- name: src/solver/Matrix.java
+  visible: true
+  learner_created: true
+- name: src/solver/Row.java
+  visible: true
+  learner_created: true
+- name: src/solver/Main.java
+  visible: true
+  learner_created: true
+- name: src/solver/SolutionException.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/40/stages/212/implement
 status: Unchecked
 record: -1

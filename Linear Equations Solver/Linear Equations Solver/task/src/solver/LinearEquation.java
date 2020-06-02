@@ -11,16 +11,14 @@ public class LinearEquation {
         matrix.getCoefficients(args);
     }
 
-    public ArrayList<Double> solve() {
+    public ArrayList<String> solve() {
         echelonForm();
         reducedEchelonForm();
 
-        ArrayList<Double> variables = null;
-        if (isGoodMatrix()) {
-            System.out.println("Valid Matrix");
-            variables = matrix.getVariablesColumn();
-            System.out.println("Solution = " + variables.toString());
-        }
+        ArrayList<String> variables = null;
+        System.out.println("Valid Matrix");
+        variables = matrix.getVariablesColumn();
+        System.out.println("Solution = " + variables.toString());
         return variables;
     }
 
@@ -38,10 +36,5 @@ public class LinearEquation {
             matrix.nullAboveElements(i);
         }
         matrix.print();
-    }
-
-    private boolean isGoodMatrix() {
-        System.out.println("Checking for valid matrix");
-        return true;
     }
 }
