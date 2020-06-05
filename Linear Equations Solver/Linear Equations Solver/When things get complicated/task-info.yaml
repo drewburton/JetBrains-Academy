@@ -500,6 +500,12 @@ files:
 - name: src/solver/SolutionException.java
   visible: true
   learner_created: true
+- name: src/solver/EchelonMatrix.java
+  visible: true
+  learner_created: true
+- name: src/solver/ReducedEchelonMatrix.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/40/stages/212/implement
-status: Unchecked
+status: Failed
 record: -1

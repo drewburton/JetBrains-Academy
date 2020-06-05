@@ -30,6 +30,10 @@ public class Row extends Matrix {
         return added;
     }
 
+    public double set(int index, double element) {
+        return row.set(index, element);
+    }
+
     public Row subtract(Row row) {
         Row subtracted = new Row();
 
@@ -45,5 +49,9 @@ public class Row extends Matrix {
              multiplied.add(row.get(i) * factor);
         }
         return multiplied;
+    }
+
+    public ArrayList<Double> toList() {
+        return row;
     }
 }

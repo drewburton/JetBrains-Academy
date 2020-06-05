@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.484s</div>
+<div class="counter">0.609s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,13 +61,137 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Standard output</a>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="start"></a>
+<h3 class="failures">start</h3>
+<span class="code">
+<pre>java.lang.AssertionError: Wrong answer in test #16
+
+Test exactly like in the example
+
+Please find below the output of your program during this failed test.
+
+---
+
+Arguments: -in in.txt -out out.txt
+
+Retrieving coefficients
+0.0 1.0 2.0 9.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+Reducing to echelon
+rearranging...
+Swapped rows: 0 &amp; 2
+1.0 0.0 6.0 0.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+1.0 0.0 6.0 0.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+
+rearranging...
+Swapped rows: 0 &amp; 2
+1.0 0.0 6.0 0.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+1.0 0.0 6.0 0.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+
+Infinity NaN Infinity NaN 
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+
+Reducing to reduced echelon
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+
+Valid Matrix
+Solution = [NaN, NaN, NaN, NaN]
+created: out.txt
+Writing to file:
+NaN
+NaN
+NaN
+NaN
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:97)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:175)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:157)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -78,13 +202,13 @@
 </tr>
 </thead>
 <tr>
-<td class="success">start</td>
-<td class="success">0.484s</td>
-<td class="success">passed</td>
+<td class="failures">start</td>
+<td class="failures">0.609s</td>
+<td class="failures">failed</td>
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
 <pre>?[1;31m
@@ -104,7 +228,6 @@ Reducing to reduced echelon
 0.0 1.0 0.0 2.0 
 -0.0 -0.0 1.0 3.0 
 
-Checking for valid matrix
 Valid Matrix
 Solution = [1.0, 2.0, 3.0]
 created: out.txt
@@ -126,7 +249,6 @@ Reducing to reduced echelon
 1.0 0.0 1.0 
 0.0 1.0 1.0 
 
-Checking for valid matrix
 Valid Matrix
 Solution = [1.0, 1.0]
 created: out.txt
@@ -147,7 +269,6 @@ Reducing to reduced echelon
 1.0 0.0 1.0 
 0.0 1.0 1.0 
 
-Checking for valid matrix
 Valid Matrix
 Solution = [1.0, 1.0]
 created: out.txt
@@ -168,7 +289,6 @@ Reducing to reduced echelon
 1.0 0.0 1.0 
 0.0 1.0 1.0 
 
-Checking for valid matrix
 Valid Matrix
 Solution = [1.0, 1.0]
 created: output.txt
@@ -189,7 +309,6 @@ Reducing to reduced echelon
 1.0 0.0 2.0 
 0.0 1.0 2.0 
 
-Checking for valid matrix
 Valid Matrix
 Solution = [2.0, 2.0]
 created: out.txt
@@ -210,7 +329,6 @@ Reducing to reduced echelon
 1.0 0.0 1.0 
 0.0 1.0 1.0 
 
-Checking for valid matrix
 Valid Matrix
 Solution = [1.0, 1.0]
 created: out.txt
@@ -231,7 +349,6 @@ Reducing to reduced echelon
 1.0 0.0 -1.0 
 -0.0 1.0 1.0 
 
-Checking for valid matrix
 Valid Matrix
 Solution = [-1.0, 1.0]
 created: out.txt
@@ -306,7 +423,6 @@ Reducing to reduced echelon
 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 1.0 0.0 1.1994857698862837 
 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 -0.0 1.0 1.5398839412090333 
 
-Checking for valid matrix
 Valid Matrix
 Solution = [0.542821776526762, -2.3922825985616174, 1.578926934509262, -1.3678947771664687, 0.6433030653636074, -1.753103267200887, -0.04324128026591356, -0.7503475351543276, -0.8244865584266824, -0.4561665764343621, -1.2162958191593773, 0.3093022604858257, -0.11050351822849946, 1.171744500569423, -0.5872949333823545, -1.393311835224773, 1.1229328991804892, 3.069345410455943, 1.1994857698862837, 1.5398839412090333]
 created: out.txt
@@ -399,7 +515,6 @@ Reducing to reduced echelon
 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0 0.6354996520638136 
 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1.0 0.47156285858406827 
 
-Checking for valid matrix
 Valid Matrix
 Solution = [0.21820058234235296, 0.3886357097625328, 0.23368846425840228, 0.5804130341264104, -0.18672509518968186, 0.3535599775759053, -0.5596661622083989, -0.47057133049683186, -0.3945589792856226, -0.4577408854539498, 0.371044695707244, -0.19593567201465412, 1.1402904217137635, 0.28081610303503196, -0.8712103045039047, -0.33548695376012494, -0.13089208871108768, -0.3007993374368587, 0.6354996520638136, 0.47156285858406827]
 created: out.txt
@@ -424,6 +539,602 @@ Writing to file:
 -0.3007993374368587
 0.6354996520638136
 0.47156285858406827
+?[1;31m
+Start test 10?[0m
+Retrieving coefficients
+0.0 1.0 1.0 
+1.0 0.0 1.0 
+
+Reducing to echelon
+rearranging...
+Swapped rows: 0 &amp; 1
+1.0 0.0 1.0 
+1.0 0.0 1.0 
+
+1.0 0.0 1.0 
+1.0 0.0 1.0 
+
+
+Infinity NaN Infinity 
+NaN NaN NaN 
+
+Reducing to reduced echelon
+NaN NaN NaN 
+NaN NaN NaN 
+
+Valid Matrix
+Solution = [NaN, NaN]
+created: out.txt
+Writing to file:
+NaN
+NaN
+?[1;31m
+Start test 11?[0m
+Retrieving coefficients
+0.0 1.0 1.0 
+1.0 0.0 2.0 
+
+Reducing to echelon
+rearranging...
+Swapped rows: 0 &amp; 1
+1.0 0.0 2.0 
+1.0 0.0 2.0 
+
+1.0 0.0 2.0 
+1.0 0.0 2.0 
+
+
+Infinity NaN Infinity 
+NaN NaN NaN 
+
+Reducing to reduced echelon
+NaN NaN NaN 
+NaN NaN NaN 
+
+Valid Matrix
+Solution = [NaN, NaN]
+created: out.txt
+Writing to file:
+NaN
+NaN
+?[1;31m
+Start test 12?[0m
+Retrieving coefficients
+2.0 6.0 1.0 3.0 9.0 1.0 6.0 
+9.0 2.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 9.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 2.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 3.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 9.0 6.0 
+
+Reducing to echelon
+1.0 3.0 0.5 1.5 4.5 0.5 3.0 
+-0.0 1.0 0.02 0.42 1.38 0.14 0.88 
+0.0 0.0 1.0 -0.4057507987220447 -0.8083067092651761 0.1309904153354633 -0.08945686900958474 
+0.0 0.0 0.0 1.0 18.284210526315782 5.410526315789472 5.305263157894734 
+-0.0 -0.0 -0.0 -0.0 1.0 0.30049261083743845 0.1814449917898193 
+0.0 0.0 0.0 0.0 0.0 1.0 0.2849136964806096 
+
+Reducing to reduced echelon
+1.0 0.0 0.0 0.0 0.0 0.0 -0.5174848688634837 
+0.0 1.0 0.0 0.0 0.0 0.0 -0.15232010759919276 
+0.0 0.0 1.0 0.0 0.0 0.0 0.7668684151535529 
+0.0 0.0 0.0 1.0 0.0 0.0 2.0115444967496074 
+-0.0 -0.0 -0.0 -0.0 1.0 0.0 0.09583053127101542 
+0.0 0.0 0.0 0.0 0.0 1.0 0.2849136964806096 
+
+Valid Matrix
+Solution = [-0.5174848688634837, -0.15232010759919276, 0.7668684151535529, 2.0115444967496074, 0.09583053127101542, 0.2849136964806096]
+created: out.txt
+Writing to file:
+-0.5174848688634837
+-0.15232010759919276
+0.7668684151535529
+2.0115444967496074
+0.09583053127101542
+0.2849136964806096
+?[1;31m
+Start test 13?[0m
+Retrieving coefficients
+0.0 6.0 1.0 3.0 9.0 1.0 6.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+Reducing to echelon
+rearranging...
+Swapped rows: 0 &amp; 1
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+
+rearranging...
+Swapped rows: 0 &amp; 1
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+
+rearranging...
+Swapped rows: 0 &amp; 1
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+
+rearranging...
+Swapped rows: 0 &amp; 1
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+
+rearranging...
+Swapped rows: 0 &amp; 1
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+9.0 0.0 4.0 3.0 6.0 1.0 5.0 
+6.0 5.0 0.0 1.0 4.0 2.0 6.0 
+4.0 1.0 1.0 0.0 9.0 2.0 4.0 
+5.0 4.0 6.0 2.0 0.0 1.0 6.0 
+3.0 5.0 4.0 1.0 7.0 0.0 6.0 
+
+
+Infinity NaN Infinity Infinity Infinity Infinity Infinity 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+
+Reducing to reduced echelon
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+
+Valid Matrix
+Solution = [NaN, NaN, NaN, NaN, NaN, NaN]
+created: out.txt
+Writing to file:
+NaN
+NaN
+NaN
+NaN
+NaN
+NaN
+?[1;31m
+Start test 14?[0m
+Retrieving coefficients
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 1.0 4.0 2.0 6.0 
+0.0 0.0 0.0 2.0 9.0 2.0 4.0 
+0.0 0.0 0.0 2.0 3.0 1.0 6.0 
+0.0 0.0 5.0 1.0 7.0 9.0 6.0 
+
+Reducing to echelon
+rearranging...
+Swapped rows: 2 &amp; 5
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 5.0 1.0 7.0 9.0 6.0 
+0.0 0.0 0.0 2.0 9.0 2.0 4.0 
+0.0 0.0 0.0 2.0 3.0 1.0 6.0 
+0.0 0.0 5.0 1.0 7.0 9.0 6.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 5.0 1.0 7.0 9.0 6.0 
+0.0 0.0 0.0 2.0 9.0 2.0 4.0 
+0.0 0.0 0.0 2.0 3.0 1.0 6.0 
+0.0 0.0 5.0 1.0 7.0 9.0 6.0 
+
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 5.0 1.0 7.0 9.0 6.0 
+-0.0 -0.0 1.0 -0.0 0.5 1.6 0.8 
+-0.0 -0.0 -0.0 -0.0 1.0 0.16666666666666666 -0.3333333333333333 
+NaN NaN NaN NaN NaN NaN NaN 
+
+Reducing to reduced echelon
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+
+Valid Matrix
+Solution = [NaN, NaN, NaN, NaN, NaN, NaN]
+created: out.txt
+Writing to file:
+NaN
+NaN
+NaN
+NaN
+NaN
+NaN
+?[1;31m
+Start test 15?[0m
+Retrieving coefficients
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 0.0 2.0 6.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+Reducing to echelon
+rearranging...
+Swapped rows: 2 &amp; 3
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+
+rearranging...
+Swapped rows: 2 &amp; 4
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+
+rearranging...
+Swapped rows: 2 &amp; 3
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+
+rearranging...
+Swapped rows: 2 &amp; 5
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+
+rearranging...
+Swapped rows: 2 &amp; 4
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+
+rearranging...
+Swapped rows: 2 &amp; 3
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 0.0 2.0 2.0 4.0 
+0.0 0.0 0.0 9.0 2.0 1.0 6.0 
+0.0 0.0 7.0 1.0 7.0 9.0 6.0 
+
+
+rearranging...
+Swapped rows: 3 &amp; 4
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+
+rearranging...
+Swapped rows: 3 &amp; 4
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+
+rearranging...
+Swapped rows: 3 &amp; 5
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+
+rearranging...
+Swapped rows: 3 &amp; 4
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+
+rearranging...
+Swapped rows: 3 &amp; 4
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 0.0 9.0 1.0 0.0 4.0 
+0.0 0.0 7.0 1.0 -2.0 0.0 -12.0 
+
+
+rearranging...
+Swapped rows: 4 &amp; 5
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 2.25 0.25 0.0 1.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 2.25 0.25 0.0 1.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+
+
+rearranging...
+Swapped rows: 4 &amp; 5
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 2.25 0.25 0.0 1.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 2.25 0.25 0.0 1.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+
+
+rearranging...
+Swapped rows: 4 &amp; 5
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 2.25 0.25 0.0 1.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 2.25 0.25 0.0 1.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+0.0 0.0 7.0 28.0 1.0 0.0 0.0 
+
+
+1.0 6.0 1.0 1.0 9.0 1.0 6.0 
+0.0 1.0 4.0 3.0 2.0 1.0 5.0 
+0.0 0.0 0.0 0.0 1.0 1.0 2.0 
+0.0 0.0 0.0 2.25 0.25 0.0 1.0 
+NaN NaN Infinity Infinity Infinity NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+
+Reducing to reduced echelon
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+NaN NaN NaN NaN NaN NaN NaN 
+
+Valid Matrix
+Solution = [NaN, NaN, NaN, NaN, NaN, NaN]
+created: out.txt
+Writing to file:
+NaN
+NaN
+NaN
+NaN
+NaN
+NaN
+?[1;31m
+Start test 16?[0m
+Retrieving coefficients
+0.0 1.0 2.0 9.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+Reducing to echelon
+rearranging...
+Swapped rows: 0 &amp; 2
+1.0 0.0 6.0 0.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+1.0 0.0 6.0 0.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+
+rearranging...
+Swapped rows: 0 &amp; 2
+1.0 0.0 6.0 0.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+1.0 0.0 6.0 0.0 
+0.0 1.0 3.0 1.0 
+1.0 0.0 6.0 0.0 
+2.0 0.0 2.0 0.0 
+
+
+Infinity NaN Infinity NaN 
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+
+Reducing to reduced echelon
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+NaN NaN NaN NaN 
+
+Valid Matrix
+Solution = [NaN, NaN, NaN, NaN]
+created: out.txt
+Writing to file:
+NaN
+NaN
+NaN
+NaN
 </pre>
 </span>
 </div>
@@ -435,7 +1146,7 @@ Writing to file:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.3.1</a> at May 30, 2020, 4:55:00 PM</p>
+<a href="http://www.gradle.org">Gradle 5.3.1</a> at Jun 5, 2020, 12:54:18 PM</p>
 </div>
 </div>
 </body>

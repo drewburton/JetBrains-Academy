@@ -12,29 +12,18 @@ public class LinearEquation {
     }
 
     public ArrayList<String> solve() {
-        echelonForm();
-        reducedEchelonForm();
+        try {
+            EchelonMatrix echelon = new EchelonMatrix(matrix);
+            ReducedEchelonMatrix reduced = new ReducedEchelonMatrix(echelon);
 
-        ArrayList<String> variables = null;
-        System.out.println("Valid Matrix");
-        variables = matrix.getVariablesColumn();
-        System.out.println("Solution = " + variables.toString());
-        return variables;
-    }
-
-    private void echelonForm() {
-        System.out.println("Reducing to echelon");
-        for (int i = 0; i < matrix.size(); i++) {
-            matrix.pivot(i);
+            ArrayList<String> variables = null;
+            variables = reduced.getAnswer();
+            System.out.println("Solution = " + variables.toString());
+            return variables;
+        } catch (SolutionException e) {
+            ArrayList<String> result = new ArrayList<>();
+            result.add(e.getMessage());
+            return result;
         }
-        matrix.print();
-    }
-
-    private void reducedEchelonForm() {
-        System.out.println("Reducing to reduced echelon");
-        for (int i = matrix.size() - 1; i > 0; i--) {
-            matrix.nullAboveElements(i);
-        }
-        matrix.print();
     }
 }
