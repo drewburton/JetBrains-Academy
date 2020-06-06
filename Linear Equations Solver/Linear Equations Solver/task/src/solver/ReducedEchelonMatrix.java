@@ -2,15 +2,15 @@ package solver;
 
 import java.util.ArrayList;
 
-public class ReducedEchelonMatrix {
-    EchelonMatrix echelonMatrix;
+public class ReducedEchelonMatrix extends EchelonMatrix implements ReducedMatrix {
 
-    public ReducedEchelonMatrix(EchelonMatrix e) {
-        echelonMatrix = e;
+    public ReducedEchelonMatrix(String[] args) throws SolutionException {
+        super(args);
         reduce();
     }
 
-    private void reduce() {
+
+    public void reduce() throws SolutionException {
 
     }
 

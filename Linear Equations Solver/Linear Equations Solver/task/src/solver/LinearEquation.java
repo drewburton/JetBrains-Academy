@@ -4,26 +4,27 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class LinearEquation {
-    private Matrix matrix;
+    private ReducedEchelonMatrix matrix;
+    private String message;
 
     public LinearEquation(String[] args) {
-        matrix = new Matrix();
-        matrix.getCoefficients(args);
+        try {
+            matrix = new ReducedEchelonMatrix(args);
+        } catch (SolutionException e) {
+            message = e.getMessage();
+        }
     }
 
     public ArrayList<String> solve() {
-        try {
-            EchelonMatrix echelon = new EchelonMatrix(matrix);
-            ReducedEchelonMatrix reduced = new ReducedEchelonMatrix(echelon);
-
+        if (message == null) {
             ArrayList<String> variables = null;
-            variables = reduced.getAnswer();
+            variables = matrix.getAnswer();
             System.out.println("Solution = " + variables.toString());
             return variables;
-        } catch (SolutionException e) {
-            ArrayList<String> result = new ArrayList<>();
-            result.add(e.getMessage());
-            return result;
         }
+
+        ArrayList<String> result = new ArrayList<>();
+        result.add(message);
+        return result;
     }
 }

@@ -2,7 +2,7 @@ package solver;
 
 import java.util.ArrayList;
 
-public class Row extends Matrix {
+public class Row {
     private ArrayList<Double> row;
 
     public Row() {

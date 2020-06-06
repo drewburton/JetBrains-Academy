@@ -8,11 +8,11 @@ import java.util.Scanner;
 public class Matrix {
     private ArrayList<Row> coefficients;
 
-    public Matrix() {
-
+    public Matrix(String[] args) {
+        getCoefficients(args);
     }
 
-    public void getCoefficients(String[] args) {
+    private void getCoefficients(String[] args) {
         System.out.println("Retrieving coefficients");
 
         coefficients = new ArrayList<>();
@@ -62,13 +62,13 @@ public class Matrix {
         System.out.println();
     }
 
-    public void swapRows(int row1, int row2) {
+    protected void swapRows(int row1, int row2) {
         Row temp = coefficients.get(row1);
         coefficients.set(row1, coefficients.get(row2));
         coefficients.set(row2, temp);
     }
 
-    public void swapColumns(int column1, int column2) {
+    protected void swapColumns(int column1, int column2) {
         for (int row = 0; row < coefficients.size(); row++) {
             double temp = coefficients.get(row).get(column1);
             coefficients.get(row).set(column1, coefficients.get(row).get(column2));
@@ -76,11 +76,13 @@ public class Matrix {
         }
     }
 
-    public ArrayList<Double> getRow(int rowIndex) {
-        return coefficients.get(rowIndex).toList();
+    protected Row getRow(int rowIndex) {
+        return coefficients.get(rowIndex);
     }
 
-    public ArrayList<Double> getColumn(int columnIndex) {
+    protected double getElement(int row, int column) { return coefficients.get(row).get(column); }
+
+    protected ArrayList<Double> getColumn(int columnIndex) {
         ArrayList<Double> column = new ArrayList<>();
         for (int row = 0; row < coefficients.size(); row++) {
             column.add(coefficients.get(row).get(columnIndex));
