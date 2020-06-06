@@ -23,7 +23,16 @@ public class EchelonMatrix extends Matrix implements ReducedMatrix {
     }
 
     private void reduceFollowing(int row) {
-        
+        if (row == super.size()  - 1) {
+            return;
+        }
+
+        for (int i = row + 1; i < super.size(); i++) {
+            double nextPivot = super.getElement(i, row);
+            Row multiplied = super.getRow(row).multiply(nextPivot);
+            Row subtracted = super.getRow(i).subtract(multiplied);
+            super.setRow(row, subtracted);
+        }
     }
 
     private void findAndSwap(int row) throws SolutionException {

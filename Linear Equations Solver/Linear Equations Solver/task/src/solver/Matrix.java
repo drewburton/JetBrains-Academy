@@ -82,11 +82,7 @@ public class Matrix {
 
     protected double getElement(int row, int column) { return coefficients.get(row).get(column); }
 
-    protected ArrayList<Double> getColumn(int columnIndex) {
-        ArrayList<Double> column = new ArrayList<>();
-        for (int row = 0; row < coefficients.size(); row++) {
-            column.add(coefficients.get(row).get(columnIndex));
-        }
-        return column;
+    protected void setRow(int rowIndex, Row row) {
+        coefficients.set(rowIndex, row);
     }
 }
