@@ -51,6 +51,14 @@ public class Row {
         return multiplied;
     }
 
+    public Row divide(double factor) {
+        Row divided = new Row();
+        for (int i = 0; i < row.size(); i++) {
+            divided.add(row.get(i) / factor);
+        }
+        return divided;
+    }
+
     public ArrayList<Double> toList() {
         return row;
     }

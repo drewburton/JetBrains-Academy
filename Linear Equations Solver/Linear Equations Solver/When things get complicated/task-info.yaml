@@ -506,9 +506,6 @@ files:
 - name: src/solver/ReducedEchelonMatrix.java
   visible: true
   learner_created: true
-- name: src/solver/ReducedMatrix.java
-  visible: true
-  learner_created: true
 feedback_link: https://hyperskill.org/projects/40/stages/212/implement
-status: Failed
+status: Solved
 record: -1

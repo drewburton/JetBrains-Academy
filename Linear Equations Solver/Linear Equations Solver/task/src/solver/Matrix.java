@@ -80,9 +80,51 @@ public class Matrix {
         return coefficients.get(rowIndex);
     }
 
+    protected ArrayList<Double> getColumn(int columnIndex) {
+        ArrayList<Double> list = new ArrayList<>();
+        for (int row = 0; row < size(); row++) {
+            list.add(getElement(row, columnIndex));
+        }
+        return list;
+    }
+
     protected double getElement(int row, int column) { return coefficients.get(row).get(column); }
 
     protected void setRow(int rowIndex, Row row) {
         coefficients.set(rowIndex, row);
+    }
+
+    protected int getSigEqs() {
+        int count = 0;
+        for (int row = 0; row < size(); row++) {
+            for (int column = 0; column < coefficients.get(row).size(); column++) {
+                if (getElement(row, column) != 0) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+
+    protected int getSigVars() {
+        return getRow(0).size() - 1;
+    }
+
+    protected void removeZeroRows() {
+        ArrayList<Integer> toBeRemoved = new ArrayList<>();
+        for (int row = 0; row < size(); row++) {
+            for (int column = 0; column < getRow(row).size(); column++) {
+                if (column == getRow(row).size() - 1 && getElement(row, column) == 0) {
+                    toBeRemoved.add(row);
+                } else if (getElement(row, column) != 0) {
+                    break;
+                }
+            }
+        }
+
+        for (int index : toBeRemoved) {
+            coefficients.remove(index);
+        }
     }
 }
