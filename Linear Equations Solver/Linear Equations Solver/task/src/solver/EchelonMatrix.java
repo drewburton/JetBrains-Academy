@@ -16,12 +16,12 @@ public class EchelonMatrix extends Matrix {
         System.out.println("reducing to echelon: ");
 
         for (int row = 0; row < size(); row++) {
-            if (getElement(row, row) == 0) {
+            if ("0".equals(getElement(row, row).toString())) {
                 try { findAndSwap(row); }
                 catch(SolutionException e) { break; }
             }
 
-            double pivot = getElement(row, row);
+            Complex pivot = getElement(row, row);
             setRow(row, getRow(row).divide(pivot));
             reduceFollowing(row);
         }
@@ -38,7 +38,7 @@ public class EchelonMatrix extends Matrix {
         }
 
         for (int i = row + 1; i < size(); i++) {
-            double nextPivot = getElement(i, row);
+            Complex nextPivot = getElement(i, row);
             Row multiplied = getRow(row).multiply(nextPivot);
             Row subtracted = getRow(i).subtract(multiplied);
             super.setRow(i, subtracted);
@@ -48,7 +48,7 @@ public class EchelonMatrix extends Matrix {
     private void findAndSwap(int row) throws SolutionException {
         // scan vertically
         for (int i = row + 1; i < size(); i++) {
-            if (getElement(i, row) != 0) {
+            if (!"0".equals(getElement(i, row).toString())) {
                 swapRows(row, i);
                 return;
             }
@@ -56,7 +56,7 @@ public class EchelonMatrix extends Matrix {
 
         // scan horizontally
         for (int i = row; i < getRow(row).size() - 1; i++) {
-            if (getElement(row, i) != 0) {
+            if (!"0".equals(getElement(row, i).toString())) {
                 swapColumns(row, i);
                 swaps.add(row + " " + i);
                 return;
@@ -66,7 +66,7 @@ public class EchelonMatrix extends Matrix {
         // scan box
         for (int rowIndex = row + 1; rowIndex < size(); rowIndex++) {
             for (int column = row + 1; column < getRow(rowIndex).size() - 1; column++) {
-                if (getElement(rowIndex, column) != 0) {
+                if (!"0".equals(getElement(rowIndex, column).toString())) {
                     swapRows(row, rowIndex);
                     swapColumns(row, column);
                     swaps.add(row + " " + column);
@@ -83,10 +83,10 @@ public class EchelonMatrix extends Matrix {
 
         for (int row = 0; row < size(); row++) {
             for (int column = 0; column < getRow(row).size(); column++) {
-                if (column == getRow(row).size() - 1 && getElement(row, column) != 0) {
+                if (column == getRow(row).size() - 1 && !"0".equals(getElement(row, column).toString())) {
                     System.out.println("no solution");
                     throw new NoSolutionException();
-                } else if (getElement(row, column) != 0) {
+                } else if (!"0".equals(getElement(row, column).toString())) {
                     break;
                 }
             }

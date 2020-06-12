@@ -17,9 +17,9 @@ public class Complex {
         Pattern minusPattern = Pattern.compile("-");
         if (plusPattern.matcher(number).find()) {
             String[] parts = number.split(plusPattern.toString());
-            real = Integer.parseInt(parts[0]);
+            real = Double.parseDouble(parts[0]);
             try {
-                imaginary = Integer.parseInt(parts[1].substring(0, parts[1].length() - 1));
+                imaginary = Double.parseDouble(parts[1].substring(0, parts[1].length() - 1));
             } catch (NumberFormatException e) {
                 imaginary = 1;
             }
@@ -28,23 +28,23 @@ public class Complex {
 
             if (number.charAt(0) == '-') {
                 try {
-                    real = -Integer.parseInt(parts[1]);
-                    imaginary = -Integer.parseInt(parts[2].substring(0, parts[2].length() - 1));
+                    real = -Double.parseDouble(parts[1]);
+                    imaginary = -Double.parseDouble(parts[2].substring(0, parts[2].length() - 1));
                 } catch (NumberFormatException e) {
                     imaginary = -1;
                 }
             } else {
                 try {
-                    real = Integer.parseInt(parts[0]);
-                    imaginary = -Integer.parseInt(parts[1].substring(0, parts[1].length() - 1));
+                    real = Double.parseDouble(parts[0]);
+                    imaginary = -Double.parseDouble(parts[1].substring(0, parts[1].length() - 1));
                 } catch (NumberFormatException e) {
                     imaginary = 1;
                 }
             }
         } else {
-            real = number.contains("i") ? 0 : Integer.parseInt(number);
+            real = number.contains("i") ? 0 : Double.parseDouble(number);
             try {
-                imaginary = number.contains("i") ? Integer.parseInt(number.substring(0, number.length() - 1)) : 0;
+                imaginary = number.contains("i") ? Double.parseDouble(number.substring(0, number.length() - 1)) : 0;
             } catch (NumberFormatException e) {
                 if (number.contains("-")) {
                    imaginary = -1;
@@ -70,17 +70,25 @@ public class Complex {
     }
 
     public Complex multiply(Complex num) {
-        double real = this.real * num.real;
-        double imaginary = this.imaginary * num.imaginary;
+        double real1 = real * num.real;
+        double real2 = -(imaginary * num.imaginary);
 
-        return new Complex(real, imaginary);
+        double imaginary1 = real * num.imaginary;
+        double imaginary2 = imaginary * num.real;
+
+        return new Complex(real1 + real2, imaginary1 + imaginary2);
     }
 
     public Complex divide(Complex num) throws ArithmeticException {
-        double real = this.real / num.real;
-        double imaginary = this.imaginary / num.imaginary;
+        Complex top = multiply(num.getConjugate());
+        Complex bottom = num.multiply(num.getConjugate());
 
-        return new Complex(real, imaginary);
+        double factor = Double.parseDouble(bottom.toString());
+        return new Complex(top.real / factor, top.imaginary / factor);
+    }
+
+    private Complex getConjugate() {
+        return new Complex(real, -imaginary);
     }
 
     @Override
@@ -102,6 +110,8 @@ public class Complex {
             complexNum.append("+" + imaginary + "i");
         } else if (imaginary != 0) {
             complexNum.append(imaginary + "i");
+        } else {
+            complexNum.append("0");
         }
 
         return complexNum.toString();

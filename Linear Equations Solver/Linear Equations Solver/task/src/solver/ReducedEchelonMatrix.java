@@ -26,7 +26,7 @@ public class ReducedEchelonMatrix extends EchelonMatrix {
 
     private int getPivot(int row) {
         for (int column = 0; column < getRow(row).size(); column++) {
-            if (getElement(row, column) == 1.0) {
+            if ("1.00".equals(getElement(row, column).toString())) {
                 return column;
             }
         }
@@ -49,10 +49,10 @@ public class ReducedEchelonMatrix extends EchelonMatrix {
         swapBack();
         removeZeroRows();
 
-        ArrayList<Double> answers = getColumn(getRow(0).size() - 1);
+        ArrayList<Complex> answers = getColumn(getRow(0).size() - 1);
         ArrayList<String> stringAnswers = new ArrayList<>();
-        for (double answer : answers) {
-            stringAnswers.add(answer + "");
+        for (Complex answer : answers) {
+            stringAnswers.add(answer.toString());
         }
         return stringAnswers;
     }

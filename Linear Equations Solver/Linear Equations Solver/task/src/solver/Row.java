@@ -3,17 +3,17 @@ package solver;
 import java.util.ArrayList;
 
 public class Row {
-    private ArrayList<Double> row;
+    private ArrayList<Complex> row;
     
     public Row() {
         row = new ArrayList<>();
     }
 
-    public boolean add(double d) {
+    public boolean add(Complex d) {
         return row.add(d);
     }
 
-    public Double get(int index) {
+    public Complex get(int index) {
         return row.get(index);
     }
 
@@ -25,12 +25,12 @@ public class Row {
         Row added = new Row();
 
         for (int i = 0; i < row.size(); i++) {
-            added.add(row.get(i) + this.row.get(i));
+            added.add(row.get(i).add(this.row.get(i)));
         }
         return added;
     }
 
-    public double set(int index, double element) {
+    public Complex set(int index, Complex element) {
         return row.set(index, element);
     }
 
@@ -38,28 +38,28 @@ public class Row {
         Row subtracted = new Row();
 
         for (int i = 0; i < row.size(); i++) {
-            subtracted.add(this.row.get(i) - row.get(i));
+            subtracted.add(this.row.get(i).subtract(row.get(i)));
         }
         return subtracted;
     }
 
-    public Row multiply(double factor) {
+    public Row multiply(Complex factor) {
         Row multiplied = new Row();
         for (int i = 0; i < row.size(); i++) {
-             multiplied.add(row.get(i) * factor);
+             multiplied.add(row.get(i).multiply(factor));
         }
         return multiplied;
     }
 
-    public Row divide(double factor) {
+    public Row divide(Complex factor) {
         Row divided = new Row();
         for (int i = 0; i < row.size(); i++) {
-            divided.add(row.get(i) / factor);
+            divided.add(row.get(i).divide(factor));
         }
         return divided;
     }
 
-    public ArrayList<Double> toList() {
+    public ArrayList<Complex> toList() {
         return row;
     }
 }

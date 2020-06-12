@@ -1147,6 +1147,9 @@ files:
 - name: src/solver/Complex.java
   visible: true
   learner_created: true
+- name: out.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/40/stages/213/implement
-status: Unchecked
+status: Failed
 record: -1

@@ -2,6 +2,7 @@ package solver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.FileSystemException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class Matrix {
             try {
                 scanner = new Scanner(new File(
                         "C:\\development\\Learning\\Java\\IdeaProjects\\Linear Equations Solver" +
-                        "\\Linear Equations Solver\\task\\src\\solver\\test.txt"));
+                                "\\Linear Equations Solver\\task\\src\\solver\\test.txt"));
             } catch (FileNotFoundException f) {
                 System.out.println("no file");
                 return;
@@ -38,7 +39,7 @@ public class Matrix {
 
             Row equation = new Row();
             for (String number : numbers) {
-                double num = Double.parseDouble(number);
+                Complex num = new Complex(number);
                 equation.add(num);
             }
             coefficients.add(equation);
@@ -70,7 +71,7 @@ public class Matrix {
 
     protected void swapColumns(int column1, int column2) {
         for (int row = 0; row < coefficients.size(); row++) {
-            double temp = coefficients.get(row).get(column1);
+            Complex temp = coefficients.get(row).get(column1);
             coefficients.get(row).set(column1, coefficients.get(row).get(column2));
             coefficients.get(row).set(column2, temp);
         }
@@ -80,15 +81,15 @@ public class Matrix {
         return coefficients.get(rowIndex);
     }
 
-    protected ArrayList<Double> getColumn(int columnIndex) {
-        ArrayList<Double> list = new ArrayList<>();
+    protected ArrayList<Complex> getColumn(int columnIndex) {
+        ArrayList<Complex> list = new ArrayList<>();
         for (int row = 0; row < size(); row++) {
             list.add(getElement(row, columnIndex));
         }
         return list;
     }
 
-    protected double getElement(int row, int column) { return coefficients.get(row).get(column); }
+    protected Complex getElement(int row, int column) { return coefficients.get(row).get(column); }
 
     protected void setRow(int rowIndex, Row row) {
         coefficients.set(rowIndex, row);
@@ -98,7 +99,7 @@ public class Matrix {
         int count = 0;
         for (int row = 0; row < size(); row++) {
             for (int column = 0; column < coefficients.get(row).size(); column++) {
-                if (getElement(row, column) != 0) {
+                if (!"0".equals(getElement(row, column).toString())) {
                     count++;
                     break;
                 }
@@ -115,9 +116,9 @@ public class Matrix {
         ArrayList<Integer> toBeRemoved = new ArrayList<>();
         for (int row = 0; row < size(); row++) {
             for (int column = 0; column < getRow(row).size(); column++) {
-                if (column == getRow(row).size() - 1 && getElement(row, column) == 0) {
+                if (column == getRow(row).size() - 1 && "0".equals(getElement(row, column).toString())) {
                     toBeRemoved.add(row);
-                } else if (getElement(row, column) != 0) {
+                } else if (!"0".equals(getElement(row, column).toString())) {
                     break;
                 }
             }
