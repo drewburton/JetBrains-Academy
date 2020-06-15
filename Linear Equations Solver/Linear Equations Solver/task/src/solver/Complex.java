@@ -80,8 +80,15 @@ public class Complex {
     }
 
     public Complex divide(Complex num) throws ArithmeticException {
-        Complex top = multiply(num.getConjugate());
-        Complex bottom = num.multiply(num.getConjugate());
+        Complex top;
+        Complex bottom;
+        if (num.imaginary == 0) {
+            top = this;
+            bottom = num;
+        } else {
+            top = multiply(num.getConjugate());
+            bottom = num.multiply(num.getConjugate());
+        }
 
         double factor = Double.parseDouble(bottom.toString());
         return new Complex(top.real / factor, top.imaginary / factor);
