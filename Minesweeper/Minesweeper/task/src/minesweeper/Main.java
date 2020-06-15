@@ -1,8 +1,12 @@
 package minesweeper;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        Field field = new Field();
+        System.out.println("How many mines do you want on the field?");
+        Scanner scanner = new Scanner(System.in);
+        Field field = new Field(scanner.nextInt());
         field.print();
     }
 }

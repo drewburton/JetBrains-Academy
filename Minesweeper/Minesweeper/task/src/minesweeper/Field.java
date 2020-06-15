@@ -5,20 +5,31 @@ import java.util.Random;
 
 public class Field {
     private ArrayList<ArrayList<Boolean>> field;
+    int size = 9;
 
-    public Field() {
-        this(9, 9);
-    }
-
-    public Field(int length, int width) {
+    public Field(int mines) {
         field = new ArrayList<>();
-        Random random = new Random();
-        for (int row = 0; row < length; row++) {
+        for (int row = 0; row < size; row++) {
             ArrayList<Boolean> line = new ArrayList<>();
-            for (int column = 0; column < width; column++) {
-                line.add(random.nextBoolean());
+            for (int column = 0; column < size; column++) {
+                line.add(false);
             }
             field.add(line);
+        }
+
+        Random random = new Random();
+        for (int i = 0; i < mines; i++) {
+            int row = (int) (random.nextDouble() * size);
+            int column = (int) (random.nextDouble() * size);
+            ArrayList<Boolean> line = field.get(row);
+
+            if (line.get(column)) {
+                i--;
+                continue;
+            }
+
+            line.set(column, true);
+            field.set(row, line);
         }
     }
 
