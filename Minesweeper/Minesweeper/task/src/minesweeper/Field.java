@@ -41,4 +41,8 @@ public class Field {
             System.out.println();
         }
     }
+
+    protected boolean get(int row, int column) {
+        return field.get(row).get(column);
+    }
 }
