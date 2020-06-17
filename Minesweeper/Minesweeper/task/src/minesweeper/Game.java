@@ -23,29 +23,22 @@ public class Game {
             int y = Integer.parseInt(parts[0]) - 1;
             int x = Integer.parseInt(parts[1]) - 1;
 
-            field.mark(x, y);
+            if ("mine".equals(parts[2])) {
+                field.mark(x, y, MineCountField.Flag.MINE);
+            } else if ("free".equals(parts[2])) {
+                if (field.mark(x, y, MineCountField.Flag.FREE)) {
+                    return;
+                }
+            }
 
             field.print();
             if (isComplete()) {
-                foundAll = true;
+                return;
             }
         }
-        System.out.println("Congratulations! You found all mines!");
     }
 
     private boolean isComplete() {
-        ArrayList<Point> matched = new ArrayList<>();
-        for (Point mine : hiddenMines) {
-            for (Point mark : field.marks) {
-                if ((mine.x == mark.x) && (mine.y == mark.y)) {
-                    matched.add(mark);
-                }
-            }
-        }
-
-        if (matched.size() != field.marks.size()) {
-            return false;
-        }
         return true;
     }
 }
