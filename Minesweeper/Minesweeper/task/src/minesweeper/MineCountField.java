@@ -1,13 +1,16 @@
 package minesweeper;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class MineCountField extends Field {
     ArrayList<ArrayList<Integer>> count;
+    ArrayList<Point> marks;
 
     public MineCountField(int mines) {
         super(mines);
         count = new ArrayList<>();
+        marks = new ArrayList<>();
 
         for (int row = 0; row < size; row++) {
             ArrayList<Integer> line = new ArrayList<>();
@@ -58,19 +61,46 @@ public class MineCountField extends Field {
         return list;
     }
 
+    public void mark(int x, int y) {
+        for (Point mark : marks) {
+            if (mark.x == x && mark.y == y) {
+                marks.remove(new Point(x, y));
+                return;
+            }
+        }
+
+        if (count.get(x).get(y) > 0) {
+            System.out.println("There is a number here!");
+            return;
+        }
+
+        marks.add(new Point(x, y));
+    }
+
     @Override
     public void print() {
+        System.out.println(" |123456789|");
+        System.out.println("-|---------|");
         for (int row = 0; row < size; row++) {
+            System.out.print((row + 1) + "|");
             for (int column = 0; column < size; column++) {
-                if (get(row, column)) {
-                    System.out.print("X");
-                } else if (count.get(row).get(column) == 0) {
+                boolean done = false;
+                for (Point mark : marks) {
+                    if (mark.x == row && mark.y == column) {
+                        System.out.print("*");
+                        done = true;
+                    }
+                }
+                if (done) { continue; }
+
+                if (get(row, column) || count.get(row).get(column) == 0) {
                     System.out.print(".");
                 } else {
                     System.out.print(count.get(row).get(column));
                 }
             }
-            System.out.println();
+            System.out.print("|\n");
         }
+        System.out.println("-|---------|");
     }
 }

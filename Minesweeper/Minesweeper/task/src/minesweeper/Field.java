@@ -1,5 +1,6 @@
 package minesweeper;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -42,7 +43,19 @@ public class Field {
         }
     }
 
-    protected boolean get(int row, int column) {
+    public boolean get(int row, int column) {
         return field.get(row).get(column);
+    }
+
+    public ArrayList<Point> getMines() {
+        ArrayList<Point> list = new ArrayList<>();
+        for (int row = 0; row < size; row++) {
+            for (int column = 0; column < size; column++) {
+                if (get(row, column)) {
+                    list.add(new Point(row, column));
+                }
+            }
+        }
+        return list;
     }
 }

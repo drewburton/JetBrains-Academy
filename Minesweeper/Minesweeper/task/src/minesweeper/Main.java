@@ -7,7 +7,11 @@ public class Main {
         System.out.println("How many mines do you want on the field?");
         Scanner scanner = new Scanner(System.in);
 
-        Field field = new MineCountField(scanner.nextInt());
+        MineCountField field = new MineCountField(scanner.nextInt());
+        scanner.nextLine();
         field.print();
+
+        Game game = new Game(field);
+        game.run(scanner);
     }
 }
