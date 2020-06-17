@@ -91,16 +91,39 @@ public class MineCountField extends Field {
             for (int row = x - 1; row < x + 2; row++) {
                 for (int column = y - 1; column < y + 2; column++) {
                     if (row >= size || row < 0 || column >= size || column < 0 || (row == x && column == y)) {
-                        break;
+                        continue;
                     }
 
-                    mark(row, column, Flag.FREE);
+                    boolean done = false;
+                    for (String mark : marks) {
+                        String[] parts = mark.split("\\s");
+                        int markX = Integer.parseInt(parts[0]);
+                        int markY = Integer.parseInt(parts[1]);
+                        if (markX == row && markY == column) {
+                            done = true;
+                        }
+                    }
+
+                    if (!done) {
+                        marks.add(x + " " + y + " " + flag);
+                        mark(row, column, Flag.FREE);
+                    }
                 }
             }
+        } else {
+            boolean done = false;
+            for (String mark : marks) {
+                String[] parts = mark.split("\\s");
+                int markX = Integer.parseInt(parts[0]);
+                int markY = Integer.parseInt(parts[1]);
+                if (markX == x && markY == y) {
+                    done = true;
+                }
+            }
+            if (!done) {
+                marks.add(x + " " + y + " " + flag);
+            }
         }
-
-        marks.add(x + " " + y + " " + flag);
-
         return false;
     }
 
@@ -111,7 +134,29 @@ public class MineCountField extends Field {
         for (int row = 0; row < size; row++) {
             System.out.print((row + 1) + "|");
             for (int column = 0; column < size; column++) {
-                System.out.print(".");
+                boolean done = false;
+                for (String mark : marks) {
+                    String[] parts = mark.split("\\s");
+                    int x = Integer.parseInt(parts[0]);
+                    int y = Integer.parseInt(parts[1]);
+                    if (row == x && column == y && "MINE".equals(parts[2])) {
+                        System.out.print("*");
+                        done = true;
+                        break;
+                    } else if (row == x && column == y && "FREE".equals(parts[2]) && count.get(x).get(y) > 0) {
+                        System.out.print(count.get(x).get(y));
+                        done = true;
+                        break;
+                    } else if (row == x && column == y && "FREE".equals(parts[2])) {
+                        System.out.print("/");
+                        done = true;
+                        break;
+                    }
+                }
+
+                if (!done) {
+                    System.out.print(".");
+                }
             }
             System.out.print("|\n");
         }
