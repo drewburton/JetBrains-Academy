@@ -62,7 +62,11 @@ public class MineCountField extends Field {
         return list;
     }
 
-    public boolean mark(int x, int y, Flag flag) {
+    public boolean mark(int x, int y, Flag flag, boolean firstTime) {
+        if (flag == Flag.FREE && get(x, y) && firstTime) {
+            resetMine(x, y);
+        }
+
         if (flag == Flag.MINE) {
             for (int i = 0; i < marks.size(); i++) {
                 String mark = marks.get(i);
@@ -78,17 +82,25 @@ public class MineCountField extends Field {
             if (get(x, y)) {
                 marks.add(x + " " + y + " " + flag);
             } else if (count.get(x).get(y) > 0) {
-                System.out.println("There is a number here!");
-                return false;
+                for (String mark : marks) {
+                    String[] parts = mark.split("\\s");
+                    int markX = Integer.parseInt(parts[0]);
+                    int markY = Integer.parseInt(parts[1]);
+                    if (markX == x && markY == y) {
+                        System.out.println("There is a number here!");
+                        return false;
+                    }
+                }
+                marks.add(x + " " + y + " " + flag);
             } else {
                 marks.add(x + " " + y + " " + flag);
             }
 
             return false;
         } else if (get(x, y)) {
+            printAll();
             System.out.println("You stepped on a mine and failed");
             marks.add(x + " " + y + " " + flag);
-            print();
             return true;
         } else if (count.get(x).get(y) == 0) {
             for (int row = x - 1; row < x + 2; row++) {
@@ -105,11 +117,15 @@ public class MineCountField extends Field {
                         if (markX == row && markY == column) {
                             done = true;
                         }
+                        if (markX == row && markY == column && "MINE".equals(parts[2])) {
+                            marks.remove(markX + " " + markY + " MINE");
+                            done = false;
+                        }
                     }
 
                     if (!done) {
                         marks.add(x + " " + y + " " + flag);
-                        mark(row, column, Flag.FREE);
+                        mark(row, column, Flag.FREE, false);
                     }
                 }
             }
@@ -148,6 +164,55 @@ public class MineCountField extends Field {
                         break;
                     }
                 }
+                if (!done) {
+                    for (String mark : marks) {
+                        String[] parts = mark.split("\\s");
+                        int x = Integer.parseInt(parts[0]);
+                        int y = Integer.parseInt(parts[1]);
+                        if (row == x && column == y && "FREE".equals(parts[2]) && count.get(x).get(y) > 0) {
+                            System.out.print(count.get(x).get(y));
+                            done = true;
+                            break;
+                        } else if (row == x && column == y && "FREE".equals(parts[2])) {
+                            System.out.print("/");
+                            done = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!done) {
+                    System.out.print(".");
+                }
+            }
+            System.out.print("|\n");
+        }
+        System.out.println("-|---------|");
+    }
+
+    public void printAll() {
+        System.out.println(" |123456789|");
+        System.out.println("-|---------|");
+        for (int row = 0; row < size; row++) {
+            System.out.print((row + 1) + "|");
+            for (int column = 0; column < size; column++) {
+                boolean done = false;
+                for (String mark : marks) {
+                    String[] parts = mark.split("\\s");
+                    int x = Integer.parseInt(parts[0]);
+                    int y = Integer.parseInt(parts[1]);
+                    if (row == x && column == y && "MINE".equals(parts[2])) {
+                        System.out.print("*");
+                        done = true;
+                        break;
+                    }
+                }
+
+                if (get(row, column)) {
+                    System.out.print("X");
+                    continue;
+                }
+
                 if (!done) {
                     for (String mark : marks) {
                         String[] parts = mark.split("\\s");

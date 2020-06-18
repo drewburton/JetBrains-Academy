@@ -58,4 +58,22 @@ public class Field {
         }
         return list;
     }
+
+    public void resetMine(int x, int y) {
+        ArrayList<Boolean> list = field.get(x);
+        list.set(y, false);
+        field.set(x, list);
+
+        Random random = new Random();
+        int nux = (int) (random.nextDouble() * size);
+        int nuy = (int) (random.nextDouble() * size);
+        while (nux != x && nuy != y) {
+            nux = (int) (random.nextDouble() * size);
+            nuy = (int) (random.nextDouble() * size);
+        }
+
+        list = field.get(nux);
+        list.set(y, true);
+        field.set(x, list);
+    }
 }
