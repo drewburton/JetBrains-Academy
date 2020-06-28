@@ -110,6 +110,7 @@ public class MineCountField extends Field {
                     }
 
                     boolean done = false;
+                    ArrayList<String> removeList = new ArrayList<>();
                     for (String mark : marks) {
                         String[] parts = mark.split("\\s");
                         int markX = Integer.parseInt(parts[0]);
@@ -118,9 +119,13 @@ public class MineCountField extends Field {
                             done = true;
                         }
                         if (markX == row && markY == column && "MINE".equals(parts[2])) {
-                            marks.remove(markX + " " + markY + " MINE");
+                            removeList.add(markX + " " + markY + " MINE");
                             done = false;
                         }
+                    }
+
+                    for (String remove : removeList) {
+                        marks.remove(remove);
                     }
 
                     if (!done) {
