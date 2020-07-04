@@ -33,7 +33,7 @@ public class Board {
         }
 
         for (int i = 0; i < 7; i += 3) {
-            board.add((ArrayList<Character>) list.subList(i, i + 3));
+            board.add(new ArrayList<>(list.subList(i, i + 3)));
         }
     }
 
@@ -43,10 +43,6 @@ public class Board {
         for (int row = 0; row < 3; row++) {
             System.out.print("| ");
             for (int column = 0; column < 3; column++) {
-                if ('_' == board.get(row).get(column)) {
-                    System.out.print("  ");
-                }
-
                 System.out.print(board.get(row).get(column) + " ");
             }
             System.out.println("|");
@@ -56,10 +52,6 @@ public class Board {
 
     char getCell(int row, int column) {
         return board.get(row).get(column);
-    }
-
-    ArrayList<Character> getRow(int row) {
-        return board.get(row);
     }
 
     int getXs() {
@@ -72,5 +64,9 @@ public class Board {
 
     int get_s() {
         return _s;
+    }
+
+    int size() {
+        return board.size();
     }
 }
