@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/GameOfLife/Game of Life/task" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/An anonymous class with three methods" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Calculate the number of distinct characters" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Creating a closure" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Finding and starting a thread" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Getting current thread info" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Handling interruptions" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Interrupting a thread" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Max of two integers" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Numbers filter" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Ordering the execution of threads" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Output names of the methods" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Returning from a method" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/String processor" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Ternary predicate" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/VeganPizza" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/War and Peace" />
+            <option value="$PROJECT_DIR$/GameOfLife/Problems/Writing a thread for printing numbers" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Linear Equations Solver/task" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Area of a circle" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Arithmetic average" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Books as strings" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Circle" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Convert vehicles and cars to string" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Difference between two doubles" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Distance" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Even or odd" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Guest list of a hotel" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Heron's formula" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Is between" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Iterations" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Maximum element divisible by four" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Modifying a map" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Next even number" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Points on the 2D plane" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Pow" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Quadratic equation" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Remote Controller" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Stock Broker" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/The sum of elements" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Time as a string" />
+            <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Undo command" />
+            <option value="$PROJECT_DIR$/Minesweeper/Minesweeper/task" />
+            <option value="$PROJECT_DIR$/Minesweeper/Problems/Currencies" />
+            <option value="$PROJECT_DIR$/Minesweeper/Problems/Danger levels" />
+            <option value="$PROJECT_DIR$/Minesweeper/Problems/Representing time as a class" />
+            <option value="$PROJECT_DIR$/Minesweeper/Problems/Robot control" />
+            <option value="$PROJECT_DIR$/Minesweeper/Problems/The integer barrier" />
+            <option value="$PROJECT_DIR$/Problems/An expression with large numbers" />
+            <option value="$PROJECT_DIR$/Problems/Avoid NPE" />
+            <option value="$PROJECT_DIR$/Problems/Blacklist" />
+            <option value="$PROJECT_DIR$/Problems/Boxes are not just objects!" />
+            <option value="$PROJECT_DIR$/Problems/Check the value" />
+            <option value="$PROJECT_DIR$/Problems/Comparing numbers" />
+            <option value="$PROJECT_DIR$/Problems/Creating a map" />
+            <option value="$PROJECT_DIR$/Problems/Creating a set" />
+            <option value="$PROJECT_DIR$/Problems/Digits from 0 to 9 in a single line" />
+            <option value="$PROJECT_DIR$/Problems/Direction" />
+            <option value="$PROJECT_DIR$/Problems/Double factorial" />
+            <option value="$PROJECT_DIR$/Problems/Fill the declaration" />
+            <option value="$PROJECT_DIR$/Problems/Floor-space of the room" />
+            <option value="$PROJECT_DIR$/Problems/Getting the max element of a stack" />
+            <option value="$PROJECT_DIR$/Problems/Greedy load balance" />
+            <option value="$PROJECT_DIR$/Problems/Harry Potter" />
+            <option value="$PROJECT_DIR$/Problems/Kidnapper of Ice cream" />
+            <option value="$PROJECT_DIR$/Problems/Only true or false" />
+            <option value="$PROJECT_DIR$/Problems/Output elements" />
+            <option value="$PROJECT_DIR$/Problems/Pastry packing optimization" />
+            <option value="$PROJECT_DIR$/Problems/Pretty looking pattern" />
+            <option value="$PROJECT_DIR$/Problems/Removing elements" />
+            <option value="$PROJECT_DIR$/Problems/Return empty string when argument is null" />
+            <option value="$PROJECT_DIR$/Problems/Reversing input numbers" />
+            <option value="$PROJECT_DIR$/Problems/Safe converting" />
+            <option value="$PROJECT_DIR$/Problems/Size of parts" />
+            <option value="$PROJECT_DIR$/Problems/Tricky sub-maps" />
+            <option value="$PROJECT_DIR$/Problems/Which brackets are balanced" />
+            <option value="$PROJECT_DIR$/Problems/Working with queue" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Backward indexes" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Concat positive numbers" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Count elements of an array in another one" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Counting words" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Creating list" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Extracting big numbers from a text" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Extracting words from a text" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Filtering the list" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Find all passwords" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Find the nearest number" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/First digit" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Greek letters" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/How many nuts each squirrel will get" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Output the list's elements" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/Reversing" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/The index of the K occurrence" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/The number of occurrences" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Problems/The sum of integers from a to b" />
+            <option value="$PROJECT_DIR$/SimpleSearchEngine/Simple Search Engine/task" />
+            <option value="$PROJECT_DIR$/Smart Calculator/Smart Calculator/task" />
+            <option value="$PROJECT_DIR$/Smart Calculator/task" />
+            <option value="$PROJECT_DIR$/Testing" />
+            <option value="$PROJECT_DIR$/Tic-Tac-Toe/task" />
+            <option value="$PROJECT_DIR$/util" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
