@@ -5,8 +5,7 @@ public class Main {
         Board board = new Board();
         board.getInput();
         board.print();
-
-        Analyzer analyzer = new Analyzer(board);
-        analyzer.analyse();
+        board.getTarget();
+        board.print();
     }
 }

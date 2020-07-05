@@ -1,6 +1,7 @@
 package tictactoe;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Board {
@@ -15,6 +16,7 @@ public class Board {
         System.out.println("Enter cells: ");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
+        scanner.close();
 
         ArrayList<Character> list = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
@@ -34,6 +36,43 @@ public class Board {
 
         for (int i = 0; i < 7; i += 3) {
             board.add(new ArrayList<>(list.subList(i, i + 3)));
+        }
+    }
+
+    public void getTarget() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Enter the coordinates: ");
+            int x, y;
+            try {
+                x = scanner.nextInt();
+                y = scanner.nextInt();
+            } catch(NoSuchElementException e) {
+                System.out.println("You should enter number!");
+                continue;
+            }
+            scanner.nextLine();
+
+            int row = Math.abs(y - 3);
+            int column = x - 1;
+
+            if (x > 3 || x < 1 || y > 3 || y < 1) {
+                System.out.println("Coordinates should be from 1 to 3!");
+                continue;
+            } else if (board.get(row).get(column) != '_') {
+                System.out.println("This cell is occupied! Choose another one!");
+                continue;
+            }
+
+            ArrayList<Character> newRow = board.get(row);
+//            if (getXs() - getOs() > 0) {
+//                newRow.set(column, 'O');
+//            } else {
+//                newRow.set(column, 'X');
+//            }
+            newRow.set(column, 'X');
+            board.set(row, newRow);
+            break;
         }
     }
 
