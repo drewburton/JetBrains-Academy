@@ -10,8 +10,18 @@ public class Board {
 
     public Board() {
         board = new ArrayList<>();
+        for (int row = 0; row < 3; row++) {
+            ArrayList<Character> list = new ArrayList<>();
+            for (int column = 0; column < 3; column++) {
+                list.add(' ');
+            }
+            board.add(list);
+        }
+        _s = 9;
+        Xs = Os = 0;
     }
 
+    @Deprecated
     public void getInput() {
         System.out.println("Enter cells: ");
         Scanner scanner = new Scanner(System.in);
@@ -25,7 +35,7 @@ public class Board {
                     break;
                 case 'O': Os++;
                     break;
-                case '_': _s++;
+                case ' ': _s++;
                     break;
                 default:
                     System.out.println("bad char");
@@ -39,7 +49,7 @@ public class Board {
         }
     }
 
-    public void getTarget() {
+    public boolean getTarget() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Enter the coordinates: ");
@@ -59,21 +69,25 @@ public class Board {
             if (x > 3 || x < 1 || y > 3 || y < 1) {
                 System.out.println("Coordinates should be from 1 to 3!");
                 continue;
-            } else if (board.get(row).get(column) != '_') {
+            } else if (board.get(row).get(column) != ' ') {
                 System.out.println("This cell is occupied! Choose another one!");
                 continue;
             }
 
             ArrayList<Character> newRow = board.get(row);
-//            if (getXs() - getOs() > 0) {
-//                newRow.set(column, 'O');
-//            } else {
-//                newRow.set(column, 'X');
-//            }
-            newRow.set(column, 'X');
+            if (getXs() - getOs() > 0) {
+                newRow.set(column, 'O');
+                Os++;
+                _s--;
+            } else {
+                newRow.set(column, 'X');
+                Xs++;
+                _s--;
+            }
             board.set(row, newRow);
             break;
         }
+        return false;
     }
 
     public void print() {

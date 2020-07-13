@@ -10,21 +10,22 @@ public class Analyzer {
         this.board = board;
     }
 
-    enum Outcome { X, O, N, D, I}
+    public enum Outcome { X, O, N, D, I }
 
-    public void analyse() {
+    public boolean analyse() {
         switch(getOutcome()) {
             case X: System.out.println("X wins");
-                break;
+                return true;
             case O: System.out.println("O wins");
-                break;
-            case N: System.out.println("Game not finished");
+                return true;
+            case N:
                 break;
             case D: System.out.println("Draw");
-                break;
+                return true;
             case I: System.out.println("Impossible");
-                break;
+                return true;
         }
+        return false;
     }
 
     private boolean Impossible() {
@@ -80,7 +81,7 @@ public class Analyzer {
 
         firstTwo = board.getCell(0, 2) == board.getCell(1, 1);
         secondTwo = board.getCell(1, 1) == board.getCell(2, 0);
-        if (firstTwo && secondTwo && board.getCell(0, 0) == c) {
+        if (firstTwo && secondTwo && board.getCell(0, 2) == c) {
             return true;
         }
         return false;

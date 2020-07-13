@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Problems-Create_an_euphonious_word.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Problems-Create_an_euphonious_word.iml" group="Tic-Tac-Toe/Problems-Create_an_euphonious_word" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Problems-Create_an_euphonious_word_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Problems-Create_an_euphonious_word_main.iml" group="Tic-Tac-Toe/Problems-Create_an_euphonious_word" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Problems-Create_an_euphonious_word_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Problems-Create_an_euphonious_word_test.iml" group="Tic-Tac-Toe/Problems-Create_an_euphonious_word" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tic-Tac-Toe.iml" filepath="$PROJECT_DIR$/.idea/modules/Tic-Tac-Toe.iml" group="Tic-Tac-Toe" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tic-Tac-Toe/task/Tic-Tac-Toe-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Tic-Tac-Toe/task/Tic-Tac-Toe-task.iml" group="Tic-Tac-Toe/Tic-Tac-Toe-task" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tic-Tac-Toe/task/Tic-Tac-Toe-task_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Tic-Tac-Toe/task/Tic-Tac-Toe-task_main.iml" group="Tic-Tac-Toe/Tic-Tac-Toe-task" />
