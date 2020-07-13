@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -53,6 +52,7 @@
             <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/The sum of elements" />
             <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Time as a string" />
             <option value="$PROJECT_DIR$/Linear Equations Solver/Problems/Undo command" />
+            <option value="$PROJECT_DIR$/Maze Runner/task" />
             <option value="$PROJECT_DIR$/Minesweeper/Minesweeper/task" />
             <option value="$PROJECT_DIR$/Minesweeper/Problems/Currencies" />
             <option value="$PROJECT_DIR$/Minesweeper/Problems/Danger levels" />
@@ -110,7 +110,9 @@
             <option value="$PROJECT_DIR$/Smart Calculator/Smart Calculator/task" />
             <option value="$PROJECT_DIR$/Smart Calculator/task" />
             <option value="$PROJECT_DIR$/Testing" />
-            <option value="$PROJECT_DIR$/Tic-Tac-Toe/task" />
+            <option value="$PROJECT_DIR$/Tic-Tac-Toe (1)/task" />
+            <option value="$PROJECT_DIR$/Tic-Tac-Toe/Problems/Create an euphonious word" />
+            <option value="$PROJECT_DIR$/Tic-Tac-Toe/Tic-Tac-Toe/task" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>
