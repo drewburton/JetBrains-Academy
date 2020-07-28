@@ -298,6 +298,25 @@ files:
         }
     }
   learner_created: false
+- name: src/budget/Purchaser.java
+  visible: true
+  learner_created: true
+- name: src/budget/Manager.java
+  visible: true
+  learner_created: true
+- name: src/budget/Purchase.java
+  visible: true
+  learner_created: true
+- name: src/budget/Saver.java
+  visible: true
+  learner_created: true
+- name: purchases.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/76/stages/424/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/76/stages/424/implement">JetBrains
+    Academy</a>
+  time: Tue, 28 Jul 2020 20:34:16 UTC
 record: -1

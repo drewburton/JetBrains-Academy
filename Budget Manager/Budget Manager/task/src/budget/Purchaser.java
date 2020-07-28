@@ -1,18 +1,30 @@
 package budget;
 
-import java.io.CharArrayReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Purchaser {
     private ArrayList<Purchase> purchases;
-    private int spent;
     private Scanner scanner;
     public enum Category { FOOD, CLOTHES, ENTERTAINMENT, OTHER, ALL };
 
     public Purchaser(Scanner scanner) {
         this.scanner = scanner;
         purchases = new ArrayList<>();
+    }
+
+    public Purchaser(Scanner scanner, ArrayList<Purchase> purchases) {
+        this.scanner = scanner;
+        this.purchases = purchases;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (Purchase purchase : purchases) {
+            builder.append(purchase.getCategory() + " " + purchase.toString() + "\n");
+        }
+        return builder.toString();
     }
 
     public double addPurchase() {
@@ -23,7 +35,6 @@ public class Purchaser {
             String name = scanner.nextLine();
             System.out.println("Enter its price:");
             double price = Double.parseDouble(scanner.nextLine());
-            spent += price;
 
             purchases.add(new Purchase(name, price, category));
             System.out.println("Purhcase was added\n");
@@ -70,13 +81,13 @@ public class Purchaser {
         }
     }
 
-    private Category getCategory(boolean showAll) {
+    private Category getCategory(boolean allOption) {
         System.out.println("Choose the type of purchase");
         System.out.println("1) Food");
         System.out.println("2) Clothes");
         System.out.println("3) Entertainment");
         System.out.println("4) Other");
-        if (showAll) {
+        if (allOption) {
             System.out.println("5) All");
             System.out.println("6) Back");
         } else {
@@ -85,7 +96,7 @@ public class Purchaser {
 
         int option = Integer.parseInt(scanner.nextLine());
         System.out.println();
-        if (!showAll) {
+        if (!allOption) {
             switch (option) {
                 case 1:
                     return Category.FOOD;

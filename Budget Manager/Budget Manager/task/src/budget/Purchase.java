@@ -13,7 +13,8 @@ public class Purchase {
 
     @Override
     public String toString() {
-        return name + " $" + price;
+        String priceString = String.format("%.2f", price);
+        return name + " $" + priceString;
     }
 
     public Purchaser.Category getCategory() {

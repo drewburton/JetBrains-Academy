@@ -7,10 +7,12 @@ public class Manager {
     private Scanner scanner;
     private double balance;
     private Purchaser purchaser;
+    private Saver saver;
 
     public Manager() {
         scanner = new Scanner(System.in);
         purchaser = new Purchaser(scanner);
+        saver = new Saver();
     }
 
     public void processActions() {
@@ -20,6 +22,8 @@ public class Manager {
             System.out.println("2) Add purchase");
             System.out.println("3) Show list of purchases");
             System.out.println("4) Balance");
+            System.out.println("5) Save");
+            System.out.println("6) Load");
             System.out.println("0) Exit");
 
             int option = Integer.parseInt(scanner.nextLine());
@@ -37,6 +41,18 @@ public class Manager {
                 case 4:
                     showBalance();
                     break;
+                case 5:
+                    saver.save(purchaser, balance);
+                    System.out.println("Purchases were saved!\n");
+                    break;
+                case 6:
+                    ArrayList<Purchase> retrievedPurchases = saver.getPurchases();
+                    if (retrievedPurchases != null) {
+                        balance = saver.getBalance();
+                        purchaser = new Purchaser(scanner, retrievedPurchases);
+                        System.out.println("Purchases were loaded!\n");
+                    }
+                    break;
                 case 0:
                     System.out.println("Bye!");
                     return;
@@ -48,7 +64,7 @@ public class Manager {
         System.out.println("Enter income:");
         double income = Double.parseDouble(scanner.nextLine());
         balance += income;
-        System.out.println();
+        System.out.println("Income was added!\n");
     }
 
     private void showBalance() {
