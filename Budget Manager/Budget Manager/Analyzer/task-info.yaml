@@ -1,17 +1,6 @@
 type: edu
 custom_name: stage5
 files:
-- name: src/budget/Main.java
-  visible: true
-  text: |
-    package budget;
-
-    public class Main {
-        public static void main(String[] args) {
-            // write your code here
-        }
-    }
-  learner_created: false
 - name: test/BudgetManagerTest.java
   visible: false
   text: |
@@ -406,6 +395,28 @@ files:
         }
     }
   learner_created: false
+- name: src/budget/Saver.java
+  visible: true
+  learner_created: true
+- name: src/budget/Purchaser.java
+  visible: true
+  learner_created: true
+- name: src/budget/Manager.java
+  visible: true
+  learner_created: true
+- name: src/budget/Main.java
+  visible: true
+  learner_created: true
+- name: src/budget/Purchase.java
+  visible: true
+  learner_created: true
+- name: src/budget/Analyzer.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/76/stages/425/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/76/stages/425/implement">JetBrains
+    Academy</a>
+  time: Sun, 02 Aug 2020 16:44:16 UTC
 record: -1

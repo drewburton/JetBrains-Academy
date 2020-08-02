@@ -6,13 +6,13 @@ import java.util.Scanner;
 public class Manager {
     private Scanner scanner;
     private double balance;
-    private Purchaser purchaser;
     private Saver saver;
+    private Analyzer analyzer;
 
     public Manager() {
         scanner = new Scanner(System.in);
-        purchaser = new Purchaser(scanner);
         saver = new Saver();
+        analyzer = new Analyzer(scanner);
     }
 
     public void processActions() {
@@ -24,6 +24,7 @@ public class Manager {
             System.out.println("4) Balance");
             System.out.println("5) Save");
             System.out.println("6) Load");
+            System.out.println("7) Analyze (Sort)");
             System.out.println("0) Exit");
 
             int option = Integer.parseInt(scanner.nextLine());
@@ -33,25 +34,28 @@ public class Manager {
                     addIncome();
                     break;
                 case 2:
-                    balance -= purchaser.addPurchase();
+                    balance -= analyzer.addPurchase();
                     break;
                 case 3:
-                    purchaser.showPurchases();
+                    analyzer.showPurchases();
                     break;
                 case 4:
                     showBalance();
                     break;
                 case 5:
-                    saver.save(purchaser, balance);
+                    saver.save(analyzer, balance);
                     System.out.println("Purchases were saved!\n");
                     break;
                 case 6:
                     ArrayList<Purchase> retrievedPurchases = saver.getPurchases();
                     if (retrievedPurchases != null) {
                         balance = saver.getBalance();
-                        purchaser = new Purchaser(scanner, retrievedPurchases);
+                        analyzer = new Analyzer(scanner, retrievedPurchases);
                         System.out.println("Purchases were loaded!\n");
                     }
+                    break;
+                case 7:
+                    analyzer.analyze();
                     break;
                 case 0:
                     System.out.println("Bye!");

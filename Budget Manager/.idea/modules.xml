@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget_Manager.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget_Manager.iml" group="Budget_Manager" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager-task.iml" group="Budget_Manager/Budget_Manager-task" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager-task_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager-task_main.iml" group="Budget_Manager/Budget_Manager-task" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager-task_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager-task_test.iml" group="Budget_Manager/Budget_Manager-task" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util.iml" group="Budget_Manager/util" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_main.iml" group="Budget_Manager/util" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_test.iml" group="Budget_Manager/util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget_Manager.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget_Manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Descending sorting swaps/Budget_Manager.Problems-Descending_sorting_swaps.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Descending sorting swaps/Budget_Manager.Problems-Descending_sorting_swaps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Descending sorting swaps/Budget_Manager.Problems-Descending_sorting_swaps.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Descending sorting swaps/Budget_Manager.Problems-Descending_sorting_swaps.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Descending sorting swaps/Budget_Manager.Problems-Descending_sorting_swaps.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Descending sorting swaps/Budget_Manager.Problems-Descending_sorting_swaps.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Swaps/Budget_Manager.Problems-Swaps.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Swaps/Budget_Manager.Problems-Swaps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Swaps/Budget_Manager.Problems-Swaps.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Swaps/Budget_Manager.Problems-Swaps.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Swaps/Budget_Manager.Problems-Swaps.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Swaps/Budget_Manager.Problems-Swaps.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.test.iml" />
     </modules>
   </component>
 </project>

@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Purchaser {
-    private ArrayList<Purchase> purchases;
-    private Scanner scanner;
-    public enum Category { FOOD, CLOTHES, ENTERTAINMENT, OTHER, ALL };
+    protected ArrayList<Purchase> purchases;
+    protected Scanner scanner;
+    public enum Category { FOOD, CLOTHES, ENTERTAINMENT, OTHER, ALL }
+    protected enum SortType { ALL, FOOD, CLOTHES, ENTERTAINMENT, OTHER }
 
     public Purchaser(Scanner scanner) {
         this.scanner = scanner;
@@ -16,6 +17,45 @@ public class Purchaser {
     public Purchaser(Scanner scanner, ArrayList<Purchase> purchases) {
         this.scanner = scanner;
         this.purchases = purchases;
+    }
+
+    public void sort(SortType type) {
+        purchases.sort((purchase, t1) -> {
+            switch (type) {
+                case FOOD:
+                    return compareCategory(purchase, t1, Category.FOOD);
+                case OTHER:
+                    return compareCategory(purchase, t1, Category.OTHER);
+                case CLOTHES:
+                    return compareCategory(purchase, t1, Category.CLOTHES);
+                case ENTERTAINMENT:
+                    return compareCategory(purchase, t1, Category.ENTERTAINMENT);
+                case ALL:
+                    if (purchase.getPrice() > t1.getPrice()) {
+                        return -1;
+                    } else if (purchase.getPrice() < t1.getPrice()) {
+                        return 1;
+                    }
+                    return 0;
+            }
+            return 0;
+        });
+    }
+
+    private int compareCategory(Purchase purchase, Purchase t1, Category category) {
+        if (purchase.getCategory() == category &&
+                t1.getCategory() != category) {
+            return 1;
+        } else if (purchase.getCategory() != category &&
+                t1.getCategory() == category) {
+            return -1;
+        } else if (purchase.getPrice() > t1.getPrice()) {
+            return -1;
+        } else if (purchase.getPrice() < t1.getPrice()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -57,13 +97,18 @@ public class Purchaser {
         }
     }
 
-    private void showCategoryPurchases(Category category) {
+    protected void showCategoryPurchases(Category category) {
         switch (category) {
             case FOOD: System.out.println("Food:");
+                break;
             case ENTERTAINMENT: System.out.println("Entertainment:");
+                break;
             case CLOTHES: System.out.println("Clothes:");
+                break;
             case OTHER: System.out.println("Other");
+                break;
             case ALL: System.out.println("All:");
+                break;
         }
 
         double categoryCost = 0;
@@ -81,7 +126,7 @@ public class Purchaser {
         }
     }
 
-    private Category getCategory(boolean allOption) {
+    protected Category getCategory(boolean allOption) {
         System.out.println("Choose the type of purchase");
         System.out.println("1) Food");
         System.out.println("2) Clothes");
