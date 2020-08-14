@@ -83,14 +83,16 @@ topics:
     theory_id: 7929
   - title: Computer algorithms
     theory_id: 4953
-  - title: The big O notation
-    theory_id: 4991
-  - title: Data structures
-    theory_id: 5161
   - title: Pseudocode basics
     theory_id: 8228
   - title: Complex constructions in pseudocode
     theory_id: 8233
+  - title: Introducing the first algorithm
+    theory_id: 10336
+  - title: The big O notation
+    theory_id: 4991
+  - title: Data structures
+    theory_id: 5161
   - title: Fixed-size array
     theory_id: 7255
   - title: Dynamic array
@@ -165,8 +167,6 @@ topics:
   - title: Interface
     theory_id: 3615
   3:
-  - title: Computer programming
-    theory_id: 8739
   - title: Hierarchy of exceptions
     theory_id: 3570
   - title: Exception handling

@@ -12,7 +12,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Budget Manager/task" />
+            <option value="$PROJECT_DIR$/Problems/Creating instances" />
             <option value="$PROJECT_DIR$/Problems/Descending sorting swaps" />
+            <option value="$PROJECT_DIR$/Problems/Initializing an array of integers" />
             <option value="$PROJECT_DIR$/Problems/Swaps" />
             <option value="$PROJECT_DIR$/util" />
           </set>
