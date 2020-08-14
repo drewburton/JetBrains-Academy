@@ -313,6 +313,83 @@ files:
         // just empty class, but not abstract so it can be run
     }
   learner_created: false
+- name: src/flashcards/Menu.java
+  visible: true
+  learner_created: true
+- name: src/flashcards/Saver.java
+  visible: true
+  learner_created: true
+- name: src/flashcards/ActionManager.java
+  visible: true
+  text: |
+    package flashcards;
+
+    import java.util.HashMap;
+    import java.util.LinkedHashMap;
+    import java.util.Map;
+    import java.util.Scanner;
+
+    public class IOManager {
+        private Map<String, String> cards;
+        private Scanner scanner;
+
+        public IOManager() {
+            scanner = new Scanner(System.in);
+        }
+
+        public void read() {
+            System.out.println("Input the number of cards:");
+            int num = Integer.parseInt(scanner.nextLine());
+            cards = new LinkedHashMap<>();
+
+            for (int i = 1; i <= num; i++) {
+                System.out.println("The card #" + i + ":");
+                String term = scanner.nextLine();
+                while (cards.containsKey(term)) {
+                    System.out.println("The card \"" + term + "\" already exists. Try again:");
+                    term = scanner.nextLine();
+                }
+                System.out.println("The definition of the card #" + i + ":");
+                String definition = scanner.nextLine();
+                while (cards.containsValue(definition)) {
+                    System.out.println("The definition \"" + definition + "\" already exists. Try again:");
+                    definition = scanner.nextLine();
+                }
+                cards.put(term, definition);
+            }
+        }
+
+        public void quiz() {
+            Scanner scanner = new Scanner(System.in);
+            cards.forEach((k, v) -> {
+                System.out.println("Print the definition of \"" + k + "\":");
+                String answer = scanner.nextLine();
+                if (v.equals(answer)) {
+                    System.out.println("Correct!");
+                } else {
+                    System.out.print("Wrong. The right answer is \"" + v + "\"");
+                    // check to see if another term has the definition given
+                    for (String key : cards.keySet()) {
+                        if (cards.get(key).equals(answer)) {
+                            System.out.print(", but your definition is correct for \"" + key + "\"");
+                        }
+                    }
+                    System.out.println(".");
+                }
+            });
+        }
+    }
+  learner_created: true
+- name: capitalsNew.txt
+  visible: true
+  learner_created: true
+- name: capitals.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/44/stages/236/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/44/stages/236/implement">JetBrains
+    Academy</a>
+  time: Fri, 14 Aug 2020 17:56:17 UTC
 record: -1
