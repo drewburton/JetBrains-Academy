@@ -20,39 +20,41 @@ public class ActionManager {
     }
 
     public void add() {
-        System.out.println("The card:");
-        String term = scanner.nextLine();
+        Saver.println("The card:");
+        String term = Saver.nextLine(scanner);
         if (cards.containsKey(term)) {
-            System.out.println("The card \"" + term + "\" already exists.");
+            Saver.println("The card \"" + term + "\" already exists.");
             return;
         }
 
-        System.out.println("The definition of the card:");
-        String definition = scanner.nextLine();
+        Saver.println("The definition of the card:");
+        String definition = Saver.nextLine(scanner);
         if (cards.containsValue(definition)) {
-            System.out.println("The definition \"" + definition + "\" already exists.");
+            Saver.println("The definition \"" + definition + "\" already exists.");
             return;
         }
         cards.put(term, definition);
-        System.out.println("The pair (\"" + term + "\":\"" + definition + "\") has been added.");
+        Saver.println("The pair (\"" + term + "\":\"" + definition + "\") has been added.\n");
     }
 
     public void remove() {
-        System.out.println("The card:");
-        String term = scanner.nextLine();
+        Saver.println("The card:");
+        String term = Saver.nextLine(scanner);
         if (cards.containsKey(term)) {
             cards.remove(term);
-            System.out.println("The card has been removed.");
+            StatsManager.remove(term);
+            Saver.println("The card has been removed.");
         } else {
-            System.out.println("Can't remove \"" + term + "\": there is no such card.");
+            Saver.println("Can't remove \"" + term + "\": there is no such card.\n");
         }
     }
 
     public void ask() {
-        System.out.println("How many times to ask?");
-        int times = Integer.parseInt(scanner.nextLine());
+        Saver.println("How many times to ask?");
+        int times = Integer.parseInt(Saver.nextLine(scanner));
         Iterator<String> iterator = (new HashSet<>(cards.keySet())).iterator();
         ask(times, iterator);
+        Saver.println("");
     }
 
     private void ask(int times, Iterator<String> iterator) {
@@ -60,20 +62,24 @@ public class ActionManager {
             iterator = (new HashSet<>(cards.keySet())).iterator();
         }
         String term = iterator.next();
-        System.out.println("Print the definition of \"" + term + "\":");
-        String answer = scanner.nextLine();
+        Saver.println("Print the definition of \"" + term + "\":");
+        String answer = Saver.nextLine(scanner);
         String definition = cards.get(term);
         if (answer.equals(definition)) {
-            System.out.println("Correct!");
+            Saver.println("Correct!");
         } else {
-            System.out.print("Wrong. The right answer is \"" + definition + "\"");
+            StatsManager.addMistake(term);
+
+            StringBuilder print = new StringBuilder();
+            print.append("Wrong. The right answer is \"" + definition + "\"");
 
             for (String key : cards.keySet()) {
                 if (cards.get(key).equals(answer)) {
-                    System.out.print(", but your definition is correct for \"" + key + "\"");
+                    print.append(", but your definition is correct for \"" + key + "\"");
                 }
             }
-            System.out.println(".");
+            print.append(".");
+            Saver.println(print.toString());
         }
 
         times--;

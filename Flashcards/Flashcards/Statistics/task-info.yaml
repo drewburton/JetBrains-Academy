@@ -481,6 +481,240 @@ files:
         // just empty class, but not abstract so it can be run
     }
   learner_created: false
+- name: capitals.txt
+  visible: true
+  text: |
+    Great Britain:London
+  learner_created: true
+- name: src/flashcards/Saver.java
+  visible: true
+  text: |
+    package flashcards;
+
+    import java.io.File;
+    import java.io.FileNotFoundException;
+    import java.io.FileWriter;
+    import java.io.IOException;
+    import java.util.HashMap;
+    import java.util.LinkedHashMap;
+    import java.util.Map;
+    import java.util.Scanner;
+
+    public class Saver {
+        private Scanner scanner;
+
+        public Saver(Scanner scanner) {
+            this.scanner = scanner;
+        }
+
+        public Map<String, String> importData() {
+            System.out.println("File name:");
+            File file = new File(scanner.nextLine());
+
+            if (file.exists()) {
+                try {
+                    Scanner fileScanner = new Scanner(file);
+                    Map<String, String> cards = new HashMap<>();
+
+                    int count = 0;
+                    while (fileScanner.hasNextLine()) {
+                        String line = fileScanner.nextLine();
+                        String[] parts = line.split(":");
+                        cards.put(parts[0], parts[1]);
+                        count++;
+                    }
+                    System.out.println(count + " cards have been loaded.");
+                    fileScanner.close();
+                    return cards;
+                } catch (FileNotFoundException e) {
+                    System.out.println("File not found");
+                    return null;
+                }
+            }
+
+            System.out.println("File not found");
+            return null;
+        }
+
+        public void exportData(Map<String, String> cards) {
+            System.out.println("File name:");
+            File file = new File(scanner.nextLine());
+            try {
+                file.createNewFile();
+
+                FileWriter writer = new FileWriter(file);
+                int count = 0;
+                for (String key : cards.keySet()) {
+                    try {
+                        writer.write(key + ":" + cards.get(key) + "\n");
+                        count++;
+                    } catch(IOException e) {
+                        System.out.println("Failed to write file");
+                    }
+                }
+                writer.close();
+                System.out.println(count + " cards have been saved.");
+            } catch (IOException e) {
+                System.out.println("Failed to create file");
+            }
+        }
+    }
+  learner_created: true
+- name: capitalsNew.txt
+  visible: true
+  text: |
+    France:Paris
+  learner_created: true
+- name: src/flashcards/Menu.java
+  visible: true
+  text: |
+    package flashcards;
+
+    import java.util.Map;
+    import java.util.Scanner;
+
+    public class Menu {
+        private Scanner scanner;
+        private ActionManager manager;
+        private Saver saver;
+
+        public Menu() {
+            scanner = new Scanner(System.in);
+            manager = new ActionManager(scanner);
+            saver = new Saver(scanner);
+        }
+
+        public void runProgram() {
+            while (true) {
+                System.out.println("Input the action (add, remove, import, export, ask, exit):");
+                String action = scanner.nextLine();
+
+                switch (action) {
+                    case "add":
+                        manager.add();
+                        break;
+                    case "remove":
+                        manager.remove();
+                        break;
+                    case "import":
+                        Map<String, String> cards = saver.importData();
+                        if (cards != null) {
+                            manager.setCards(cards);
+                        }
+                        break;
+                    case "export":
+                        saver.exportData(manager.getCards());
+                        break;
+                    case "ask":
+                        manager.ask();
+                        break;
+                    case "exit":
+                        System.out.println("Bye bye!");
+                        return;
+                    default:
+                }
+            }
+        }
+    }
+  learner_created: true
+- name: src/flashcards/ActionManager.java
+  visible: true
+  text: |
+    package flashcards;
+
+    import java.util.*;
+
+    public class ActionManager {
+        private Map<String, String> cards;
+        private Scanner scanner;
+
+        public ActionManager(Scanner scanner) {
+            cards = new HashMap<>();
+            this.scanner = scanner;
+        }
+
+        public Map<String, String> getCards() {
+            return cards;
+        }
+
+        public void setCards(Map<String, String> cards) {
+            cards.forEach((k, v) -> this.cards.put(k, v));
+        }
+
+        public void add() {
+            System.out.println("The card:");
+            String term = scanner.nextLine();
+            if (cards.containsKey(term)) {
+                System.out.println("The card \"" + term + "\" already exists.");
+                return;
+            }
+
+            System.out.println("The definition of the card:");
+            String definition = scanner.nextLine();
+            if (cards.containsValue(definition)) {
+                System.out.println("The definition \"" + definition + "\" already exists.");
+                return;
+            }
+            cards.put(term, definition);
+            System.out.println("The pair (\"" + term + "\":\"" + definition + "\") has been added.");
+        }
+
+        public void remove() {
+            System.out.println("The card:");
+            String term = scanner.nextLine();
+            if (cards.containsKey(term)) {
+                cards.remove(term);
+                System.out.println("The card has been removed.");
+            } else {
+                System.out.println("Can't remove \"" + term + "\": there is no such card.");
+            }
+        }
+
+        public void ask() {
+            System.out.println("How many times to ask?");
+            int times = Integer.parseInt(scanner.nextLine());
+            Iterator<String> iterator = (new HashSet<>(cards.keySet())).iterator();
+            ask(times, iterator);
+        }
+
+        private void ask(int times, Iterator<String> iterator) {
+            if (!iterator.hasNext()) {
+                iterator = (new HashSet<>(cards.keySet())).iterator();
+            }
+            String term = iterator.next();
+            System.out.println("Print the definition of \"" + term + "\":");
+            String answer = scanner.nextLine();
+            String definition = cards.get(term);
+            if (answer.equals(definition)) {
+                System.out.println("Correct!");
+            } else {
+                System.out.print("Wrong. The right answer is \"" + definition + "\"");
+
+                for (String key : cards.keySet()) {
+                    if (cards.get(key).equals(answer)) {
+                        System.out.print(", but your definition is correct for \"" + key + "\"");
+                    }
+                }
+                System.out.println(".");
+            }
+
+            times--;
+            if (times != 0) {
+                ask(times, iterator);
+            }
+        }
+    }
+  learner_created: true
+- name: src/flashcards/StatsManager.java
+  visible: true
+  learner_created: true
+- name: testLog.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/44/stages/237/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/44/stages/237/implement">JetBrains
+    Academy</a>
+  time: Sun, 16 Aug 2020 15:28:22 UTC
 record: -1

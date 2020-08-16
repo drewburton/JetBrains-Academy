@@ -4,21 +4,57 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Saver {
     private Scanner scanner;
+    private static ArrayList<String> log;
 
     public Saver(Scanner scanner) {
         this.scanner = scanner;
     }
 
+    public static void println(String message) {
+        if (log == null) {
+            log = new ArrayList<>();
+        }
+        log.add(message + "\n");
+        System.out.println(message);
+    }
+
+    public static String nextLine(Scanner s) {
+        String input = s.nextLine();
+        if (log == null) {
+            log = new ArrayList<>();
+        }
+        log.add(input + "\n");
+        return input;
+    }
+
+    public void log() {
+        println("File name:");
+        File file = new File(nextLine(scanner));
+        println("The log has been saved.");
+        try {
+            file.createNewFile();
+
+            FileWriter writer = new FileWriter(file);
+            for (String line : log) {
+                try {
+                    writer.write(line);
+                } catch(IOException e) {
+                    System.out.println("Failed to write file");
+                }
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Failed to create file");
+        }
+    }
+
     public Map<String, String> importData() {
-        System.out.println("File name:");
-        File file = new File(scanner.nextLine());
+        println("File name:");
+        File file = new File(nextLine(scanner));
 
         if (file.exists()) {
             try {
@@ -30,9 +66,10 @@ public class Saver {
                     String line = fileScanner.nextLine();
                     String[] parts = line.split(":");
                     cards.put(parts[0], parts[1]);
+                    StatsManager.addMistake(parts[0], Integer.parseInt(parts[2]));
                     count++;
                 }
-                System.out.println(count + " cards have been loaded.");
+                println(count + " cards have been loaded.");
                 fileScanner.close();
                 return cards;
             } catch (FileNotFoundException e) {
@@ -46,8 +83,8 @@ public class Saver {
     }
 
     public void exportData(Map<String, String> cards) {
-        System.out.println("File name:");
-        File file = new File(scanner.nextLine());
+        println("File name:");
+        File file = new File(nextLine(scanner));
         try {
             file.createNewFile();
 
@@ -55,14 +92,14 @@ public class Saver {
             int count = 0;
             for (String key : cards.keySet()) {
                 try {
-                    writer.write(key + ":" + cards.get(key) + "\n");
+                    writer.write(key + ":" + cards.get(key) + ":" + StatsManager.getMistakes(key) + "\n");
                     count++;
                 } catch(IOException e) {
                     System.out.println("Failed to write file");
                 }
             }
             writer.close();
-            System.out.println(count + " cards have been saved.");
+            println(count + " cards have been saved.");
         } catch (IOException e) {
             System.out.println("Failed to create file");
         }

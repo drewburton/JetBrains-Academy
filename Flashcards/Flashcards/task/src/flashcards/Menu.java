@@ -7,17 +7,19 @@ public class Menu {
     private Scanner scanner;
     private ActionManager manager;
     private Saver saver;
+    private StatsManager statsManager;
 
     public Menu() {
         scanner = new Scanner(System.in);
         manager = new ActionManager(scanner);
         saver = new Saver(scanner);
+        statsManager = new StatsManager(scanner);
     }
 
     public void runProgram() {
         while (true) {
-            System.out.println("Input the action (add, remove, import, export, ask, exit):");
-            String action = scanner.nextLine();
+            Saver.println("Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):");
+            String action = Saver.nextLine(scanner);
 
             switch (action) {
                 case "add":
@@ -39,8 +41,17 @@ public class Menu {
                     manager.ask();
                     break;
                 case "exit":
-                    System.out.println("Bye bye!");
+                    Saver.println("Bye bye!");
                     return;
+                case "log":
+                    saver.log();
+                    break;
+                case "hardest card":
+                    statsManager.hardestCard();
+                    break;
+                case "reset stats":
+                    statsManager.resetStats();
+                    break;
                 default:
             }
         }
