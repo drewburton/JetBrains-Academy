@@ -16,8 +16,10 @@ public class Menu {
         statsManager = new StatsManager(scanner);
     }
 
-    public void runProgram() {
-        while (true) {
+    public void runProgram(String[] args) {
+        startProgram(args);
+        boolean exit = false;
+        while (!exit) {
             Saver.println("Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):");
             String action = Saver.nextLine(scanner);
 
@@ -42,7 +44,8 @@ public class Menu {
                     break;
                 case "exit":
                     Saver.println("Bye bye!");
-                    return;
+                    exit = true;
+                    break;
                 case "log":
                     saver.log();
                     break;
@@ -54,6 +57,32 @@ public class Menu {
                     break;
                 default:
             }
+        }
+        exitProgram(args);
+    }
+
+    private void startProgram(String[] args) {
+        if (args.length == 0) {
+            return;
+        }
+
+        // checks if either the first or second argument is import or export, but only the second if it exists
+        if ("-import".equals(args[0]) || (args.length > 2 && "-import".equals(args[2]))) {
+            Map<String, String> cards = saver.importData(args[1]);
+            if (cards != null) {
+                manager.setCards(cards);
+            }
+        }
+    }
+
+    private void exitProgram(String[] args) {
+        if (args.length == 0) {
+            return;
+        }
+
+        // checks if either the first or second argument is import or export, but only the second if it exists
+        if ("-export".equals(args[0]) || (args.length > 2 && "-export".equals(args[2]))) {
+            saver.exportData(manager.getCards(), args[1]);
         }
     }
 }

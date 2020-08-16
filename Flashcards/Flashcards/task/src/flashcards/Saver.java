@@ -54,7 +54,11 @@ public class Saver {
 
     public Map<String, String> importData() {
         println("File name:");
-        File file = new File(nextLine(scanner));
+        return importData(nextLine(scanner));
+    }
+
+    public Map<String, String> importData(String filename) {
+        File file = new File(filename);
 
         if (file.exists()) {
             try {
@@ -84,7 +88,12 @@ public class Saver {
 
     public void exportData(Map<String, String> cards) {
         println("File name:");
-        File file = new File(nextLine(scanner));
+        exportData(cards, nextLine(scanner));
+    }
+
+    public void exportData(Map<String, String> cards, String filename) {
+        File file = new File(filename);
+
         try {
             file.createNewFile();
 

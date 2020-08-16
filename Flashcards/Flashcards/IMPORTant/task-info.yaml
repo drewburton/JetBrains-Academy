@@ -484,6 +484,379 @@ files:
         // just empty class, but not abstract so it can be run
     }
   learner_created: false
+- name: src/flashcards/Saver.java
+  visible: true
+  text: |
+    package flashcards;
+
+    import java.io.File;
+    import java.io.FileNotFoundException;
+    import java.io.FileWriter;
+    import java.io.IOException;
+    import java.util.*;
+
+    public class Saver {
+        private Scanner scanner;
+        private static ArrayList<String> log;
+
+        public Saver(Scanner scanner) {
+            this.scanner = scanner;
+        }
+
+        public static void println(String message) {
+            if (log == null) {
+                log = new ArrayList<>();
+            }
+            log.add(message + "\n");
+            System.out.println(message);
+        }
+
+        public static String nextLine(Scanner s) {
+            String input = s.nextLine();
+            if (log == null) {
+                log = new ArrayList<>();
+            }
+            log.add(input + "\n");
+            return input;
+        }
+
+        public void log() {
+            println("File name:");
+            File file = new File(nextLine(scanner));
+            println("The log has been saved.");
+            try {
+                file.createNewFile();
+
+                FileWriter writer = new FileWriter(file);
+                for (String line : log) {
+                    try {
+                        writer.write(line);
+                    } catch(IOException e) {
+                        System.out.println("Failed to write file");
+                    }
+                }
+                writer.close();
+            } catch (IOException e) {
+                System.out.println("Failed to create file");
+            }
+        }
+
+        public Map<String, String> importData() {
+            println("File name:");
+            File file = new File(nextLine(scanner));
+
+            if (file.exists()) {
+                try {
+                    Scanner fileScanner = new Scanner(file);
+                    Map<String, String> cards = new HashMap<>();
+
+                    int count = 0;
+                    while (fileScanner.hasNextLine()) {
+                        String line = fileScanner.nextLine();
+                        String[] parts = line.split(":");
+                        cards.put(parts[0], parts[1]);
+                        StatsManager.addMistake(parts[0], Integer.parseInt(parts[2]));
+                        count++;
+                    }
+                    println(count + " cards have been loaded.");
+                    fileScanner.close();
+                    return cards;
+                } catch (FileNotFoundException e) {
+                    System.out.println("File not found");
+                    return null;
+                }
+            }
+
+            System.out.println("File not found");
+            return null;
+        }
+
+        public void exportData(Map<String, String> cards) {
+            println("File name:");
+            File file = new File(nextLine(scanner));
+            try {
+                file.createNewFile();
+
+                FileWriter writer = new FileWriter(file);
+                int count = 0;
+                for (String key : cards.keySet()) {
+                    try {
+                        writer.write(key + ":" + cards.get(key) + ":" + StatsManager.getMistakes(key) + "\n");
+                        count++;
+                    } catch(IOException e) {
+                        System.out.println("Failed to write file");
+                    }
+                }
+                writer.close();
+                println(count + " cards have been saved.");
+            } catch (IOException e) {
+                System.out.println("Failed to create file");
+            }
+        }
+    }
+  learner_created: true
+- name: src/flashcards/Menu.java
+  visible: true
+  text: |
+    package flashcards;
+
+    import java.util.Map;
+    import java.util.Scanner;
+
+    public class Menu {
+        private Scanner scanner;
+        private ActionManager manager;
+        private Saver saver;
+        private StatsManager statsManager;
+
+        public Menu() {
+            scanner = new Scanner(System.in);
+            manager = new ActionManager(scanner);
+            saver = new Saver(scanner);
+            statsManager = new StatsManager(scanner);
+        }
+
+        public void runProgram() {
+            while (true) {
+                Saver.println("Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):");
+                String action = Saver.nextLine(scanner);
+
+                switch (action) {
+                    case "add":
+                        manager.add();
+                        break;
+                    case "remove":
+                        manager.remove();
+                        break;
+                    case "import":
+                        Map<String, String> cards = saver.importData();
+                        if (cards != null) {
+                            manager.setCards(cards);
+                        }
+                        break;
+                    case "export":
+                        saver.exportData(manager.getCards());
+                        break;
+                    case "ask":
+                        manager.ask();
+                        break;
+                    case "exit":
+                        Saver.println("Bye bye!");
+                        return;
+                    case "log":
+                        saver.log();
+                        break;
+                    case "hardest card":
+                        statsManager.hardestCard();
+                        break;
+                    case "reset stats":
+                        statsManager.resetStats();
+                        break;
+                    default:
+                }
+            }
+        }
+    }
+  learner_created: true
+- name: src/flashcards/StatsManager.java
+  visible: true
+  text: |
+    package flashcards;
+
+    import java.util.ArrayList;
+    import java.util.HashMap;
+    import java.util.Scanner;
+
+    public class StatsManager {
+        private static HashMap<String, Integer> mistakes;
+        private Scanner scanner;
+
+        public StatsManager(Scanner scanner) {
+            this.scanner = scanner;
+        }
+
+        public String hardestCard() {
+            if (mistakes == null || mistakes.size() == 0) {
+                Saver.println("There are no cards with errors\n");
+            } else {
+                ArrayList<String> hardest = new ArrayList<>();
+                int highestMistakes = 0;
+                for (String key : mistakes.keySet()) {
+                    int mistakeCount = mistakes.get(key);
+                    if (mistakeCount > highestMistakes) {
+                        highestMistakes = mistakeCount;
+                        hardest = new ArrayList<>();
+                        hardest.add(key);
+                    } else if (mistakeCount == highestMistakes) {
+                        hardest.add(key);
+                    }
+                }
+
+                StringBuilder message = new StringBuilder();
+                if (hardest.size() == 1) {
+                    message.append("The hardest card is ");
+                } else {
+                    message.append("The hardest cards are ");
+                }
+
+                int mistake = 0;
+                for (String key : hardest) {
+                    message.append("\"" + key + "\", ");
+                    mistake = mistakes.get(key);
+                }
+                message.replace(message.length() - 2, message.length(), ". ");
+                message.append("You have " + mistake + " errors answering ");
+
+                if (hardest.size() == 1) {
+                    message.append("it.\n");
+                } else {
+                    message.append("them.\n");
+                }
+                Saver.println(message.toString());
+            }
+            return null;
+        }
+
+        public void resetStats() {
+            mistakes = new HashMap<>();
+            Saver.println("Card statistics has been reset");
+        }
+
+        public static void addMistake(String key) {
+            if (mistakes == null) {
+                mistakes = new HashMap<>();
+                mistakes.put(key, 1);
+            } else if (mistakes.containsKey(key)) {
+                mistakes.put(key, mistakes.get(key) + 1);
+            } else {
+                mistakes.put(key, 1);
+            }
+        }
+
+        public static void addMistake(String key, int mistakesCount) {
+            if (mistakes == null) {
+                mistakes = new HashMap<>();
+                mistakes.put(key, mistakesCount);
+            } else if (mistakes.containsKey(key)) {
+                mistakes.put(key, mistakesCount);
+            } else {
+                mistakes.put(key, mistakesCount);
+            }
+        }
+
+        public static void remove(String key) {
+            mistakes.remove(key);
+        }
+
+        public static int getMistakes(String key) {
+            return mistakes.get(key);
+        }
+    }
+  learner_created: true
+- name: src/flashcards/ActionManager.java
+  visible: true
+  text: |
+    package flashcards;
+
+    import java.util.*;
+
+    public class ActionManager {
+        private Map<String, String> cards;
+        private Scanner scanner;
+
+        public ActionManager(Scanner scanner) {
+            cards = new HashMap<>();
+            this.scanner = scanner;
+        }
+
+        public Map<String, String> getCards() {
+            return cards;
+        }
+
+        public void setCards(Map<String, String> cards) {
+            cards.forEach((k, v) -> this.cards.put(k, v));
+        }
+
+        public void add() {
+            Saver.println("The card:");
+            String term = Saver.nextLine(scanner);
+            if (cards.containsKey(term)) {
+                Saver.println("The card \"" + term + "\" already exists.");
+                return;
+            }
+
+            Saver.println("The definition of the card:");
+            String definition = Saver.nextLine(scanner);
+            if (cards.containsValue(definition)) {
+                Saver.println("The definition \"" + definition + "\" already exists.");
+                return;
+            }
+            cards.put(term, definition);
+            Saver.println("The pair (\"" + term + "\":\"" + definition + "\") has been added.\n");
+        }
+
+        public void remove() {
+            Saver.println("The card:");
+            String term = Saver.nextLine(scanner);
+            if (cards.containsKey(term)) {
+                cards.remove(term);
+                StatsManager.remove(term);
+                Saver.println("The card has been removed.");
+            } else {
+                Saver.println("Can't remove \"" + term + "\": there is no such card.\n");
+            }
+        }
+
+        public void ask() {
+            Saver.println("How many times to ask?");
+            int times = Integer.parseInt(Saver.nextLine(scanner));
+            Iterator<String> iterator = (new HashSet<>(cards.keySet())).iterator();
+            ask(times, iterator);
+            Saver.println("");
+        }
+
+        private void ask(int times, Iterator<String> iterator) {
+            if (!iterator.hasNext()) {
+                iterator = (new HashSet<>(cards.keySet())).iterator();
+            }
+            String term = iterator.next();
+            Saver.println("Print the definition of \"" + term + "\":");
+            String answer = Saver.nextLine(scanner);
+            String definition = cards.get(term);
+            if (answer.equals(definition)) {
+                Saver.println("Correct!");
+            } else {
+                StatsManager.addMistake(term);
+
+                StringBuilder print = new StringBuilder();
+                print.append("Wrong. The right answer is \"" + definition + "\"");
+
+                for (String key : cards.keySet()) {
+                    if (cards.get(key).equals(answer)) {
+                        print.append(", but your definition is correct for \"" + key + "\"");
+                    }
+                }
+                print.append(".");
+                Saver.println(print.toString());
+            }
+
+            times--;
+            if (times != 0) {
+                ask(times, iterator);
+            }
+        }
+    }
+  learner_created: true
+- name: capitalsNew.txt
+  visible: true
+  learner_created: true
+- name: capitals.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/44/stages/238/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/44/stages/238/implement">JetBrains
+    Academy</a>
+  time: Sun, 16 Aug 2020 16:55:27 UTC
 record: -1
