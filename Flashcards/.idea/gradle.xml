@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Flashcards/task" />
+            <option value="$PROJECT_DIR$/Problems/Complex numbers" />
             <option value="$PROJECT_DIR$/Problems/Extracting a substring" />
             <option value="$PROJECT_DIR$/Problems/Right Rotation" />
             <option value="$PROJECT_DIR$/Problems/Sherlock Holmes and removing of characters" />

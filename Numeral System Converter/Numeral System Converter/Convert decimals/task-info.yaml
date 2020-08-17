@@ -1,0 +1,354 @@
+type: edu
+custom_name: stage3
+files:
+- name: src/converter/Main.java
+  visible: true
+  text: |
+    package converter;
+
+    public class Main {
+        public static void main(String[] args) {
+            System.out.println("Hello world!");
+        }
+    }
+  learner_created: false
+- name: test/ConverterTest.java
+  visible: false
+  text: |
+    import converter.Main;
+    import org.hyperskill.hstest.stage.StageTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testcase.TestCase;
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    class Clue {
+        // you can store here any variables you need for test
+
+        final String input;
+        final String answer;
+        final boolean provideAnswer;
+
+        Clue(final String input, final String answer, final boolean provideAnswer) {
+            this.input = input;
+            this.answer = answer;
+            this.provideAnswer = provideAnswer;
+        }
+
+        Clue(final String input, final String answer) {
+            this(input, answer, false);
+        }
+
+        Clue(final String input) {
+            this(input, null, false);
+        }
+    }
+
+
+    public class ConverterTest extends StageTest<Clue> {
+
+        public ConverterTest() {
+            super(Main.class);
+        }
+
+        static String prefix(final int base) {
+            if (base == 2) {
+                return "0b";
+            } else if (base == 8) {
+                return "0";
+            } else {
+                return "0x";
+            }
+        }
+
+        public static List<TestCase<Clue>> iToTest(final int i, final boolean provideAnswer) {
+            final List<TestCase<Clue>> tests = new ArrayList<>();
+
+            for (final int base : new int[]{16, 8, 2}) {
+                final String answer = prefix(base) + Integer.toString(i, base);
+                final String input = i + "\n" + base;
+
+                tests.add(new TestCase<Clue>()
+                    .setAttach(new Clue(input, answer, provideAnswer))
+                    .setInput(input)
+                );
+            }
+
+            return tests;
+        }
+
+        @Override
+        public List<TestCase<Clue>>  generate() {
+            final List<TestCase<Clue>> tests = new ArrayList<>();
+
+            /* Tests with a hint: */
+            tests.addAll(iToTest(11, true));
+            tests.addAll(iToTest(8, true));
+            tests.addAll(iToTest(0, true));
+
+            /* Tests without a hint: */
+            for (int i = 101; i <= 104; ++i) {
+                tests.addAll(iToTest(i, true));
+            }
+
+            return tests;
+        }
+
+        @Override
+        public CheckResult check(String reply, Clue clue) {
+            final String[] lines = reply
+                .lines()
+                .filter(line -> !line.isEmpty())
+                .toArray(String[]::new);
+
+            if (lines.length == 0) {
+                return new CheckResult(
+                    false,
+                    "Your program doesn't print any line."
+                );
+            }
+
+            final String answer = lines[lines.length - 1];
+
+            if (!answer.equals(clue.answer)) {
+                if (clue.provideAnswer) {
+                    return new CheckResult(
+                        false,
+                        "Your answer is wrong.\n" +
+                            "This is a sample test so we give you a hint.\n" +
+                            "Input: " + clue.input + "\n" +
+                            "Your answer: " + answer + "\n" +
+                            "Correct answer: " + clue.answer
+                    );
+                } else {
+                    return new CheckResult(
+                        false,
+                        "Your answer is wrong."
+                    );
+                }
+            }
+
+            return new CheckResult(true);
+        }
+    }
+  learner_created: false
+- name: src/converter/Octal.java
+  visible: true
+  text: |
+    package converter;
+
+    import java.util.ArrayList;
+    import java.util.Collections;
+
+    public class Octal extends NumeralSystem {
+        public Octal(String number) {
+            super (number);
+        }
+
+        public Octal(NumeralSystem system) {
+            super(system.number);
+        }
+
+        @Override
+        protected int toDecimal(String number) {
+            number = number.substring(1);
+            int decimal = 0;
+            while (number.length() > 0) {
+                int digit = Integer.parseInt(number.charAt(0) + "");
+                decimal += digit * Math.pow(8, number.length() - 1);
+                number = number.substring(1);
+            }
+            return decimal;
+        }
+
+        @Override
+        public String toString() {
+            ArrayList<Integer> remainders = new ArrayList<>();
+            int nextNumber = number;
+            while (nextNumber >= 1) {
+                remainders.add((int) (((nextNumber / 8.0) - (nextNumber / 8)) * 8));
+                nextNumber /= 8;
+            }
+            Collections.reverse(remainders);
+
+            StringBuilder octal = new StringBuilder();
+            octal.append("0");
+            for (int num : remainders) {
+                octal.append(num);
+            }
+            return octal.toString();
+        }
+    }
+  learner_created: true
+- name: src/converter/Converter.java
+  visible: true
+  text: |
+    package converter;
+
+    public class Converter {
+        public enum NumberType { BINARY, DECIMAL, OCTAL, HEXADECIMAL }
+
+        private Converter() {}
+
+        public static NumeralSystem convert(NumberType type, NumeralSystem number) {
+            switch(type) {
+                case BINARY:
+                    return new Binary(number);
+                case DECIMAL:
+                    return new Decimal(number);
+                case OCTAL:
+                    return new Octal(number);
+                case HEXADECIMAL:
+                    return new Hexadecimal(number);
+            }
+            return null;
+        }
+
+        public static NumeralSystem convert(int radix, NumeralSystem number) {
+            switch(radix) {
+                case 2:
+                    return convert(NumberType.BINARY, number);
+                case 8:
+                    return convert(NumberType.OCTAL, number);
+                case 10:
+                    return convert(NumberType.DECIMAL, number);
+                case 16:
+                    return convert(NumberType.HEXADECIMAL, number);
+            }
+            return null;
+        }
+    }
+  learner_created: true
+- name: src/converter/NumeralSystem.java
+  visible: true
+  text: |
+    package converter;
+
+    public abstract class NumeralSystem {
+        protected int number;
+
+        public NumeralSystem(String number) {
+            this.number = toDecimal(number);
+        }
+
+        public NumeralSystem(int number) {
+            this.number = number;
+        }
+
+        protected abstract int toDecimal(String number);
+
+        @Override
+        public abstract String toString();
+    }
+  learner_created: true
+- name: src/converter/Binary.java
+  visible: true
+  text: |
+    package converter;
+
+    import java.util.ArrayList;
+    import java.util.Collections;
+
+    public class Binary extends NumeralSystem {
+        public Binary(String number) {
+            super(number);
+        }
+
+        public Binary(NumeralSystem system) {
+            super(system.number);
+        }
+
+        @Override
+        protected int toDecimal(String number) {
+            number = number.substring(2);
+            int decimal = 0;
+            while (number.length() > 0) {
+                int bit = Integer.parseInt(number.charAt(0) + "");
+                decimal += bit * Math.pow(2, number.length() - 1);
+                number = number.substring(1);
+            }
+            return decimal;
+        }
+
+        @Override
+        public String toString() {
+            ArrayList<Integer> remainders = new ArrayList<>();
+            int nextNumber = number;
+            while (nextNumber > 1) {
+                if (nextNumber % 2 == 0) {
+                    remainders.add(0);
+                } else {
+                    remainders.add(1);
+                }
+                nextNumber /= 2;
+            }
+            remainders.add(1);
+            Collections.reverse(remainders);
+
+            StringBuilder binary = new StringBuilder();
+            binary.append("0b");
+            for (int num : remainders) {
+                binary.append(num);
+            }
+            return binary.toString();
+        }
+    }
+  learner_created: true
+- name: src/converter/Decimal.java
+  visible: true
+  text: |
+    package converter;
+
+    public class Decimal extends NumeralSystem{
+        public Decimal(int number) {
+            super(number);
+        }
+
+        public Decimal(NumeralSystem system) {
+            super(system.number);
+        }
+
+        @Override
+        protected int toDecimal(String number) {
+            return Integer.parseInt(number);
+        }
+
+        @Override
+        public String toString() {
+            return number + "";
+        }
+    }
+  learner_created: true
+- name: src/converter/Hexadecimal.java
+  visible: true
+  text: |
+    package converter;
+
+    public class Hexadecimal extends NumeralSystem{
+        public Hexadecimal(String number) {
+            super (number);
+        }
+
+        public Hexadecimal(NumeralSystem system) {
+            super(system.number);
+        }
+
+        @Override
+        protected int toDecimal(String number) {
+            return 0;
+        }
+
+        @Override
+        public String toString() {
+            return null;
+        }
+    }
+  learner_created: true
+feedback_link: https://hyperskill.org/projects/41/stages/216/implement
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/41/stages/216/implement">JetBrains
+    Academy</a>
+  time: Mon, 17 Aug 2020 18:56:28 UTC
+record: 3
