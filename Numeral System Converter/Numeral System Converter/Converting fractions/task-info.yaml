@@ -156,6 +156,46 @@ files:
         }
     }
   learner_created: false
+- name: src/converter/NumeralSystem.java
+  visible: true
+  text: |
+    package converter;
+
+    public class NumeralSystem {
+        private int number;
+        private int radix;
+
+
+        public NumeralSystem(String number, int radix) {
+            if (radix == 1) {
+                this.number = number.length();
+            } else {
+                this.number = Integer.parseInt(number, radix);
+            }
+            this.radix = radix;
+        }
+
+        public void convert(int newRadix) {
+            radix = newRadix;
+        }
+
+        @Override
+        public String toString() {
+            if (radix == 1) {
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < number; i++) {
+                    builder.append("1");
+                }
+                return builder.toString();
+            }
+            return Integer.toString(number, radix);
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/41/stages/218/implement
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/41/stages/218/implement">JetBrains
+    Academy</a>
+  time: Tue, 18 Aug 2020 19:02:28 UTC
+record: 5
