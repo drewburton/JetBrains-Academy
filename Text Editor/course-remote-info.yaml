@@ -6,12 +6,16 @@ hyperskill_project:
 stages:
 - id: 201
   step: 5258
+  is_completed: false
 - id: 202
   step: 5259
+  is_completed: false
 - id: 203
   step: 5260
+  is_completed: false
 - id: 204
   step: 5261
+  is_completed: false
 topics:
   0:
   - title: Units of information
@@ -163,10 +167,6 @@ topics:
   3:
   - title: Computer algorithms
     theory_id: 4953
-  - title: Pseudocode basics
-    theory_id: 8228
-  - title: Complex constructions in pseudocode
-    theory_id: 8233
   - title: Introducing the first algorithm
     theory_id: 10336
   - title: The big O notation
@@ -185,6 +185,8 @@ topics:
     theory_id: 5357
   - title: Regexps basics
     theory_id: 7580
+  - title: Computer programming
+    theory_id: 8739
   - title: Regexps in Java
     theory_id: 3670
   - title: Sets, ranges, alternations
@@ -199,20 +201,6 @@ topics:
     theory_id: 3712
   - title: Match results
     theory_id: 3716
-  - title: Basics of multithreading
-    theory_id: 3600
-  - title: Threads as objects
-    theory_id: 4875
-  - title: Custom threads
-    theory_id: 4876
-  - title: Thread management
-    theory_id: 3619
-  - title: Exceptions in threads
-    theory_id: 4882
-  - title: Working with shared data and problems
-    theory_id: 3610
-  - title: Thread synchronization
-    theory_id: 3557
   - title: Generics and Object
     theory_id: 3493
   - title: What are collections
@@ -229,8 +217,26 @@ topics:
     theory_id: 3576
   - title: Iterator and Iterable
     theory_id: 3574
+  - title: Synchronous, asynchronous, parallel
+    theory_id: 9332
+  - title: Concurrency and parallelism
+    theory_id: 9341
+  - title: Processes and threads
+    theory_id: 9420
+  - title: Threads as objects
+    theory_id: 4875
+  - title: Custom threads
+    theory_id: 4876
   - title: Multithreading in SWING
     theory_id: 6613
+  - title: Thread management
+    theory_id: 3619
+  - title: Exceptions in threads
+    theory_id: 4882
+  - title: Working with shared data and problems
+    theory_id: 3610
+  - title: Thread synchronization
+    theory_id: 3557
   - title: Iterating over arrays
     theory_id: 3602
   - title: The Object class

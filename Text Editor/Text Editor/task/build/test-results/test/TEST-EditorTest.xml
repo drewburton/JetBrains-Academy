@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="EditorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-29T19:04:24" hostname="LAPTOP-016GJG3B" time="0.904">
+  <properties/>
+  <testcase name="start" classname="EditorTest" time="0.904"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+?[1;31m
+Start test 2?[0m
+?[1;31m
+Start test 3?[0m
+?[1;31m
+Start test 4?[0m
+?[1;31m
+Start test 5?[0m
+?[1;31m
+Start test 6?[0m
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
