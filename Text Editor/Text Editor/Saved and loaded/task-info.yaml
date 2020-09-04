@@ -357,6 +357,19 @@ files:
         }
     }
   learner_created: false
+- name: src/editor/Saver.java
+  visible: true
+  learner_created: true
+- name: SomeFile.txt
+  visible: true
+  learner_created: true
+- name: AnotherFile.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/38/stages/202/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/38/stages/202/implement">JetBrains
+    Academy</a>
+  time: Fri, 04 Sep 2020 19:55:43 UTC
 record: -1
