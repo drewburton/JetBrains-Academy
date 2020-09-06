@@ -923,6 +923,24 @@ files:
     Here also
 
   learner_created: true
+- name: src/editor/save.png
+  visible: true
+  learner_created: true
+- name: src/editor/import.png
+  visible: true
+  learner_created: true
+- name: src/editor/search.png
+  visible: true
+  learner_created: true
+- name: src/editor/left.png
+  visible: true
+  learner_created: true
+- name: src/editor/right.png
+  visible: true
+  learner_created: true
+- name: src/editor/Searcher.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/38/stages/204/implement
 status: Unchecked
 record: -1

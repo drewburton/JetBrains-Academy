@@ -11,9 +11,14 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Problems/Countdown counter" />
             <option value="$PROJECT_DIR$/Problems/Finding the max number" />
             <option value="$PROJECT_DIR$/Problems/Iterable range" />
+            <option value="$PROJECT_DIR$/Problems/Multithreaded counter" />
+            <option value="$PROJECT_DIR$/Problems/Printing only the longest line" />
             <option value="$PROJECT_DIR$/Problems/Remove elements of a collection" />
+            <option value="$PROJECT_DIR$/Problems/Testing the factorial" />
+            <option value="$PROJECT_DIR$/Problems/Thread-safe account" />
             <option value="$PROJECT_DIR$/Text Editor/task" />
             <option value="$PROJECT_DIR$/util" />
           </set>

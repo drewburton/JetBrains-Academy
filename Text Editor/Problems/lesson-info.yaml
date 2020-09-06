@@ -2,3 +2,8 @@ content:
 - Remove elements of a collection
 - Finding the max number
 - Iterable range
+- Printing only the longest line
+- Testing the factorial
+- Multithreaded counter
+- Countdown counter
+- Thread-safe account
