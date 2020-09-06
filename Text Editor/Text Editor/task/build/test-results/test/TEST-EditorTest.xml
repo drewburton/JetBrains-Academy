@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="EditorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-04T19:55:34" hostname="LAPTOP-016GJG3B" time="8.682">
+<testsuite name="EditorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-05T17:44:49" hostname="LAPTOP-016GJG3B" time="25.206">
   <properties/>
-  <testcase name="start" classname="EditorTest" time="8.682"/>
+  <testcase name="start" classname="EditorTest" time="25.206"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 ?[1;31m
@@ -32,54 +32,62 @@ Start test 13?[0m
 Start test 14?[0m
 ?[1;31m
 Start test 15?[0m
-wrote: 
-Basic text editor
-Type here too
-Here also
-
-
 ?[1;31m
 Start test 16?[0m
-wrote: 
-                Sonnet I
-     
-     
-FROM fairest creatures we desire increase,
-That thereby beauty's rose might never die,
-But as the riper should by time decease,
-His tender heir might bear his memory:
-But thou, contracted to thine own bright eyes,
-Feed'st thy light'st flame with self-substantial fuel,
-Making a famine where abundance lies,
-Thyself thy foe, to thy sweet self too cruel.
-Thou that art now the world's fresh ornament
-And only herald to the gaudy spring,
-Within thine own bud buriest thy content
-And, tender churl, makest waste in niggarding.
-Pity the world, or else this glutton be,
-To eat the world's due, by the grave and thee.
-
-                 Sonnet II                   
-
-
-When forty winters shall beseige thy brow,
-And dig deep trenches in thy beauty's field,
-Thy youth's proud livery, so gazed on now,
-Will be a tatter'd weed, of small worth held:
-Then being ask'd where all thy beauty lies,
-Where all the treasure of thy lusty days,
-To say, within thine own deep-sunken eyes,
-Were an all-eating shame and thriftless praise.
-How much more praise deserved thy beauty's use,
-If thou couldst answer 'This fair child of mine
-Shall sum my count and make my old excuse,'
-Proving his beauty by succession thine!
-This were to be new made when thou art old,
-And see thy blood warm when thou feel'st it cold.
 ?[1;31m
 Start test 17?[0m
 ?[1;31m
 Start test 18?[0m
+?[1;31m
+Start test 19?[0m
+wrote: 
+Basic text editor
+Type here too
+Here also
+
+
+?[1;31m
+Start test 20?[0m
+wrote: 
+                Sonnet I
+     
+     
+FROM fairest creatures we desire increase,
+That thereby beauty's rose might never die,
+But as the riper should by time decease,
+His tender heir might bear his memory:
+But thou, contracted to thine own bright eyes,
+Feed'st thy light'st flame with self-substantial fuel,
+Making a famine where abundance lies,
+Thyself thy foe, to thy sweet self too cruel.
+Thou that art now the world's fresh ornament
+And only herald to the gaudy spring,
+Within thine own bud buriest thy content
+And, tender churl, makest waste in niggarding.
+Pity the world, or else this glutton be,
+To eat the world's due, by the grave and thee.
+
+                 Sonnet II                   
+
+
+When forty winters shall beseige thy brow,
+And dig deep trenches in thy beauty's field,
+Thy youth's proud livery, so gazed on now,
+Will be a tatter'd weed, of small worth held:
+Then being ask'd where all thy beauty lies,
+Where all the treasure of thy lusty days,
+To say, within thine own deep-sunken eyes,
+Were an all-eating shame and thriftless praise.
+How much more praise deserved thy beauty's use,
+If thou couldst answer 'This fair child of mine
+Shall sum my count and make my old excuse,'
+Proving his beauty by succession thine!
+This were to be new made when thou art old,
+And see thy blood warm when thou feel'st it cold.
+?[1;31m
+Start test 21?[0m
+?[1;31m
+Start test 22?[0m
 wrote: 
                 Sonnet I
      
@@ -123,9 +131,115 @@ Here also
 
 
 ?[1;31m
-Start test 19?[0m
+Start test 23?[0m
 ?[1;31m
-Start test 20?[0m
+Start test 24?[0m
+wrote: 
+
+?[1;31m
+Start test 25?[0m
+?[1;31m
+Start test 26?[0m
+?[1;31m
+Start test 27?[0m
+?[1;31m
+Start test 28?[0m
+?[1;31m
+Start test 29?[0m
+wrote: 
+Basic text editor
+Type here too
+Here also
+
+
+?[1;31m
+Start test 30?[0m
+wrote: 
+                Sonnet I
+     
+     
+FROM fairest creatures we desire increase,
+That thereby beauty's rose might never die,
+But as the riper should by time decease,
+His tender heir might bear his memory:
+But thou, contracted to thine own bright eyes,
+Feed'st thy light'st flame with self-substantial fuel,
+Making a famine where abundance lies,
+Thyself thy foe, to thy sweet self too cruel.
+Thou that art now the world's fresh ornament
+And only herald to the gaudy spring,
+Within thine own bud buriest thy content
+And, tender churl, makest waste in niggarding.
+Pity the world, or else this glutton be,
+To eat the world's due, by the grave and thee.
+
+                 Sonnet II                   
+
+
+When forty winters shall beseige thy brow,
+And dig deep trenches in thy beauty's field,
+Thy youth's proud livery, so gazed on now,
+Will be a tatter'd weed, of small worth held:
+Then being ask'd where all thy beauty lies,
+Where all the treasure of thy lusty days,
+To say, within thine own deep-sunken eyes,
+Were an all-eating shame and thriftless praise.
+How much more praise deserved thy beauty's use,
+If thou couldst answer 'This fair child of mine
+Shall sum my count and make my old excuse,'
+Proving his beauty by succession thine!
+This were to be new made when thou art old,
+And see thy blood warm when thou feel'st it cold.
+?[1;31m
+Start test 31?[0m
+?[1;31m
+Start test 32?[0m
+wrote: 
+                Sonnet I
+     
+     
+FROM fairest creatures we desire increase,
+That thereby beauty's rose might never die,
+But as the riper should by time decease,
+His tender heir might bear his memory:
+But thou, contracted to thine own bright eyes,
+Feed'st thy light'st flame with self-substantial fuel,
+Making a famine where abundance lies,
+Thyself thy foe, to thy sweet self too cruel.
+Thou that art now the world's fresh ornament
+And only herald to the gaudy spring,
+Within thine own bud buriest thy content
+And, tender churl, makest waste in niggarding.
+Pity the world, or else this glutton be,
+To eat the world's due, by the grave and thee.
+
+                 Sonnet II                   
+
+
+When forty winters shall beseige thy brow,
+And dig deep trenches in thy beauty's field,
+Thy youth's proud livery, so gazed on now,
+Will be a tatter'd weed, of small worth held:
+Then being ask'd where all thy beauty lies,
+Where all the treasure of thy lusty days,
+To say, within thine own deep-sunken eyes,
+Were an all-eating shame and thriftless praise.
+How much more praise deserved thy beauty's use,
+If thou couldst answer 'This fair child of mine
+Shall sum my count and make my old excuse,'
+Proving his beauty by succession thine!
+This were to be new made when thou art old,
+And see thy blood warm when thou feel'st it cold.
+wrote: 
+Basic text editor
+Type here too
+Here also
+
+
+?[1;31m
+Start test 33?[0m
+?[1;31m
+Start test 34?[0m
 wrote: 
 
 ]]></system-out>
@@ -137,7 +251,7 @@ wrote:
 	at java.base/sun.nio.fs.WindowsFileSystemProvider.implDelete(WindowsFileSystemProvider.java:274)
 	at java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)
 	at java.base/java.nio.file.Files.delete(Files.java:1141)
-	at EditorTest.deleteFiles(EditorTest.java:317)
+	at EditorTest.deleteFiles(EditorTest.java:497)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

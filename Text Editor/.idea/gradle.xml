@@ -11,6 +11,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Problems/Finding the max number" />
+            <option value="$PROJECT_DIR$/Problems/Iterable range" />
+            <option value="$PROJECT_DIR$/Problems/Remove elements of a collection" />
             <option value="$PROJECT_DIR$/Text Editor/task" />
             <option value="$PROJECT_DIR$/util" />
           </set>

@@ -2,7 +2,14 @@ package editor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileReader;
+
+/*
+todo
+ - add images to buttons
+ - make load use FileChooser
+ - add search panel (checkbox for reg exp.)
+ - add search menu
+ */
 
 public class TextEditor extends JFrame {
     JPanel saveLoadPanel;
@@ -14,7 +21,10 @@ public class TextEditor extends JFrame {
     JScrollPane scrollPane;
     JTextArea textArea;
 
-    String text;
+    JMenu menu;
+    JMenuItem loadMenuItem;
+    JMenuItem saveMenuItem;
+    JMenuItem exitMenuItem;
 
     public TextEditor() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,10 +32,36 @@ public class TextEditor extends JFrame {
         setVisible(true);
         setTitle("Text Editor");
 
+        createMenu();
         createSaveLoadPanel();
         createTextArea();
 
         validate();
+    }
+
+    private void createMenu() {
+        JMenuBar menuBar = new JMenuBar();
+        menu = new JMenu("File");
+        menu.setName("MenuFile");
+
+        loadMenuItem = new JMenuItem("Load");
+        saveMenuItem = new JMenuItem("Save");
+        exitMenuItem = new JMenuItem("Exit");
+
+        loadMenuItem.setName("MenuLoad");
+        saveMenuItem.setName("MenuSave");
+        exitMenuItem.setName("MenuExit");
+
+        menu.add(loadMenuItem);
+        menu.add(saveMenuItem);
+        menu.addSeparator();
+        menu.add(exitMenuItem);
+        menuBar.add(menu);
+        setJMenuBar(menuBar);
+
+        loadMenuItem.addActionListener(actionEvent -> Saver.load(filenameField, textArea));
+        saveMenuItem.addActionListener(actionEvent -> Saver.save(filenameField.getText(), textArea.getText()));
+        exitMenuItem.addActionListener(actionEvent -> dispose());
     }
 
     private void createSaveLoadPanel() {
@@ -34,17 +70,11 @@ public class TextEditor extends JFrame {
 
         saveButton = new JButton("Save" );
         saveButton.setName("SaveButton");
-        saveButton.addActionListener(actionEvent -> {
-
-            String currentText = textArea.getText();
-            Saver.save(filenameField.getText(), currentText);
-        });
+        saveButton.addActionListener(actionEvent -> Saver.save(filenameField.getText(), textArea.getText()));
 
         loadButton = new JButton("Load");
         loadButton.setName("LoadButton");
-        loadButton.addActionListener(actionEvent -> {
-            Saver.load(filenameField, textArea);
-        });
+        loadButton.addActionListener(actionEvent -> Saver.load(filenameField, textArea));
 
         saveLoadPanel = new JPanel();
         saveLoadPanel.setLayout(new BoxLayout(saveLoadPanel, BoxLayout.X_AXIS));

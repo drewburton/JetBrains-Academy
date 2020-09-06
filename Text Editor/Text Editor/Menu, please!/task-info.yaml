@@ -537,6 +537,52 @@ files:
         }
     }
   learner_created: false
+- name: src/editor/Saver.java
+  visible: true
+  text: |
+    package editor;
+
+    import javax.swing.*;
+    import java.io.*;
+    import java.util.Scanner;
+    import java.util.concurrent.atomic.AtomicInteger;
+
+    public class Saver {
+        private Saver() {}
+
+        public static void save(String filename, String text) {
+            File file = new File(filename);
+            try {
+                FileWriter writer = new FileWriter(file);
+                writer.write(text);
+                System.out.println("wrote: ");
+                System.out.println(text);
+                writer.close();
+            } catch(IOException e) {
+               System.out.println("couldn't write file");
+            }
+        }
+
+        public static void load(JTextField filenameField, JTextArea textArea) {
+            try {
+                FileReader reader = new FileReader(filenameField.getText());
+                textArea.read(reader, filenameField.getText());
+            } catch(Exception e) {
+                textArea.setText("");
+            }
+        }
+    }
+  learner_created: true
+- name: SomeFile.txt
+  visible: true
+  learner_created: true
+- name: AnotherFile.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/38/stages/203/implement
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/38/stages/203/implement">JetBrains
+    Academy</a>
+  time: Sat, 05 Sep 2020 17:45:14 UTC
+record: 3
