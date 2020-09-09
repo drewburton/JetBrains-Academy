@@ -5,10 +5,8 @@ import java.awt.*;
 
 /*
 todo
- - add images to buttons
  - make load use FileChooser
- - add search panel (checkbox for reg exp.)
- - add search menu
+ - make searching work
  */
 
 public class TextEditor extends JFrame {
@@ -26,9 +24,12 @@ public class TextEditor extends JFrame {
         setVisible(true);
         setTitle("Text Editor");
 
+        // for testing
+//        fileChooser = new JFileChooser(
+//                "C:\\development\\Learning\\Java\\IdeaProjects\\Text Editor");
         fileChooser = new JFileChooser();
         fileChooser.setName("FileChooser");
-        fileChooser.setVisible(false);
+        add(fileChooser);
 
         createMenuBar();
         createSaveLoadPanel();
@@ -66,7 +67,7 @@ public class TextEditor extends JFrame {
         fileMenu.addSeparator();
         fileMenu.add(exitMenuItem);
 
-        openMenuItem.addActionListener(actionEvent -> Saver.load(filenameField, textArea));
+        openMenuItem.addActionListener(actionEvent -> Saver.load(fileChooser, textArea));
         saveMenuItem.addActionListener(actionEvent -> Saver.save(filenameField.getText(), textArea.getText()));
         exitMenuItem.addActionListener(actionEvent -> dispose());
     }
@@ -89,7 +90,7 @@ public class TextEditor extends JFrame {
         searchMenu.add(nextMenuItem);
         searchMenu.add(regExpMenuItem);
 
-        startSearchMenuItem.addActionListener(actionEvent -> new Thread(() -> Searcher.startSearch(textArea.getText(), useRegex)).start());
+        startSearchMenuItem.addActionListener(actionEvent -> new Thread(() -> Searcher.startSearch(textArea, filenameField.getText(), useRegex)).start());
         previousMenuItem.addActionListener(actionEvent -> new Thread(Searcher::previousMatch).start());
         nextMenuItem.addActionListener(actionEvent -> new Thread(Searcher::nextMatch).start());
         regExpMenuItem.addActionListener(actionEvent -> {
@@ -100,8 +101,36 @@ public class TextEditor extends JFrame {
 
     private void createSaveLoadPanel() {
         filenameField = new JTextField();
-        filenameField.setName("FilenameField");
+        filenameField.setName("SearchField");
 
+        JButton[] buttons = getButtons();
+
+        regExpCheckBox = new JCheckBox("Use regex");
+        regExpCheckBox.setName("UseRegExCheckbox");
+        regExpCheckBox.addActionListener(actionEvent -> useRegex = regExpCheckBox.isSelected());
+
+        JPanel saveLoadPanel = new JPanel();
+        saveLoadPanel.setLayout(new BoxLayout(saveLoadPanel, BoxLayout.X_AXIS));
+        saveLoadPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+
+        saveLoadPanel.add(buttons[0]);
+        saveLoadPanel.add(Box.createHorizontalStrut(10));
+        saveLoadPanel.add(buttons[1]);
+        saveLoadPanel.add(Box.createHorizontalStrut(10));
+        saveLoadPanel.add(filenameField);
+        saveLoadPanel.add(Box.createHorizontalStrut(10));
+        saveLoadPanel.add(buttons[2]);
+        saveLoadPanel.add(Box.createHorizontalStrut(10));
+        saveLoadPanel.add(buttons[3]);
+        saveLoadPanel.add(Box.createHorizontalStrut(10));
+        saveLoadPanel.add(buttons[4]);
+        saveLoadPanel.add(Box.createHorizontalStrut(10));
+        saveLoadPanel.add(regExpCheckBox);
+
+        add(saveLoadPanel, BorderLayout.NORTH);
+    }
+
+    private JButton[] getButtons() {
         JButton saveButton = new JButton(new ImageIcon(
                 "C:\\development\\Learning\\Java\\IdeaProjects\\Text Editor\\Text Editor\\task\\src\\editor\\save.png"));
         saveButton.setPreferredSize(new Dimension(35, 30));
@@ -112,13 +141,13 @@ public class TextEditor extends JFrame {
                 "C:\\development\\Learning\\Java\\IdeaProjects\\Text Editor\\Text Editor\\task\\src\\editor\\import.png"));
         loadButton.setPreferredSize(new Dimension(35, 30));
         loadButton.setName("OpenButton");
-        loadButton.addActionListener(actionEvent -> Saver.load(filenameField, textArea));
+        loadButton.addActionListener(actionEvent -> Saver.load(fileChooser, textArea));
 
         JButton searchButton = new JButton(new ImageIcon(
                 "C:\\development\\Learning\\Java\\IdeaProjects\\Text Editor\\Text Editor\\task\\src\\editor\\search.png"));
         searchButton.setPreferredSize(new Dimension(35, 30));
         searchButton.setName("StartSearchButton");
-        searchButton.addActionListener(actionEvent -> new Thread(() -> Searcher.startSearch(textArea.getText(), useRegex)).start());
+        searchButton.addActionListener(actionEvent -> new Thread(() -> Searcher.startSearch(textArea, filenameField.getText(), useRegex)).start());
 
         JButton previousButton = new JButton(new ImageIcon(
                 "C:\\development\\Learning\\Java\\IdeaProjects\\Text Editor\\Text Editor\\task\\src\\editor\\left.png"));
@@ -132,29 +161,13 @@ public class TextEditor extends JFrame {
         nextButton.setName("NextMatchButton");
         nextButton.addActionListener(actionEvent -> new Thread(Searcher::nextMatch).start());
 
-        regExpCheckBox = new JCheckBox("Use regex");
-        regExpCheckBox.setName("UseRegExCheckBox");
-        regExpCheckBox.addActionListener(actionEvent -> useRegex = regExpCheckBox.isSelected());
-
-        JPanel saveLoadPanel = new JPanel();
-        saveLoadPanel.setLayout(new BoxLayout(saveLoadPanel, BoxLayout.X_AXIS));
-        saveLoadPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
-
-        saveLoadPanel.add(saveButton);
-        saveLoadPanel.add(Box.createHorizontalStrut(10));
-        saveLoadPanel.add(loadButton);
-        saveLoadPanel.add(Box.createHorizontalStrut(10));
-        saveLoadPanel.add(filenameField);
-        saveLoadPanel.add(Box.createHorizontalStrut(10));
-        saveLoadPanel.add(searchButton);
-        saveLoadPanel.add(Box.createHorizontalStrut(10));
-        saveLoadPanel.add(previousButton);
-        saveLoadPanel.add(Box.createHorizontalStrut(10));
-        saveLoadPanel.add(nextButton);
-        saveLoadPanel.add(Box.createHorizontalStrut(10));
-        saveLoadPanel.add(regExpCheckBox);
-
-        add(saveLoadPanel, BorderLayout.NORTH);
+        JButton[] buttons = new JButton[5];
+        buttons[0] = saveButton;
+        buttons[1] = loadButton;
+        buttons[2] = searchButton;
+        buttons[3] = previousButton;
+        buttons[4] = nextButton;
+        return buttons;
     }
 
     private void createTextArea() {

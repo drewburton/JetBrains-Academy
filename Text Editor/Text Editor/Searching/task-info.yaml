@@ -876,9 +876,6 @@ files:
         }
     }
   learner_created: false
-- name: SomeFile.txt
-  visible: true
-  learner_created: true
 - name: src/editor/Saver.java
   visible: true
   text: |
@@ -915,14 +912,6 @@ files:
         }
     }
   learner_created: true
-- name: AnotherFile.txt
-  visible: true
-  text: |+
-    Basic text editor
-    Type here too
-    Here also
-
-  learner_created: true
 - name: src/editor/save.png
   visible: true
   learner_created: true
@@ -942,5 +931,11 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/38/stages/204/implement
-status: Unchecked
+status: Failed
+feedback:
+  message: "Wrong answer in test #38\n\nFileChooser doesn&#39;t appear on the second\
+    \ press on SaveButton but should appear every time\n\nPlease find below the output\
+    \ of your program during this failed test.\n\n---\n\nwrote: \nBasic text editor\n\
+    Type here too\nHere also"
+  time: Wed, 09 Sep 2020 01:10:20 UTC
 record: -1

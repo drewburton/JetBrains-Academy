@@ -2,8 +2,6 @@ package editor;
 
 import javax.swing.*;
 import java.io.*;
-import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Saver {
     private Saver() {}
@@ -21,12 +19,16 @@ public class Saver {
         }
     }
 
-    public static void load(JTextField filenameField, JTextArea textArea) {
-        try {
-            FileReader reader = new FileReader(filenameField.getText());
-            textArea.read(reader, filenameField.getText());
-        } catch(Exception e) {
-            textArea.setText("");
+    public static void load(JFileChooser fileChooser, JTextArea textArea) {
+        int validFile = fileChooser.showOpenDialog(null);
+        if (validFile == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            try {
+                FileReader reader = new FileReader(file);
+                textArea.read(reader, file);
+            } catch (Exception e) {
+                textArea.setText("");
+            }
         }
     }
 }
