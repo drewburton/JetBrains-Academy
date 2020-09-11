@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ContactsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-11T21:00:30" hostname="LAPTOP-016GJG3B" time="0.069">
+  <properties/>
+  <testcase name="start" classname="ContactsTest" time="0.069"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+Enter the name of the person:
+> John
+Enter the surname of the person:
+> Smith
+Enter the number:
+> 1-234-567-890
+A record created!
+A Phone Book with a single record created!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

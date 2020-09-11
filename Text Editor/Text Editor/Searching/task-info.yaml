@@ -930,12 +930,16 @@ files:
 - name: src/editor/Searcher.java
   visible: true
   learner_created: true
+- name: SomeFile.txt
+  visible: true
+  learner_created: true
+- name: AnotherFile.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/38/stages/204/implement
-status: Failed
+status: Solved
 feedback:
-  message: "Wrong answer in test #38\n\nFileChooser doesn&#39;t appear on the second\
-    \ press on SaveButton but should appear every time\n\nPlease find below the output\
-    \ of your program during this failed test.\n\n---\n\nwrote: \nBasic text editor\n\
-    Type here too\nHere also"
-  time: Wed, 09 Sep 2020 01:10:20 UTC
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/38/stages/204/implement">JetBrains
+    Academy</a>
+  time: Fri, 11 Sep 2020 20:38:12 UTC
 record: -1

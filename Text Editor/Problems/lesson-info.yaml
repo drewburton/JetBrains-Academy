@@ -7,3 +7,4 @@ content:
 - Multithreaded counter
 - Countdown counter
 - Thread-safe account
+- The index of the last occurrence

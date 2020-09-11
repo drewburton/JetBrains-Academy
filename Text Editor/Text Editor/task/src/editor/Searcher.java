@@ -19,10 +19,12 @@ public class Searcher {
     public static synchronized void startSearch(JTextArea textArea, String keywords, boolean useRegex) {
         Searcher.textArea = textArea;
         Searcher.text = textArea.getText();
+        if (text.length() == 0) return;
         System.out.println("starting search " + (useRegex ? "with" : "without") + " regular expressions");
 
          occurences = new ArrayList<>();
          occurenceLocations = new ArrayList<>();
+         occurenceIndex = 0;
 
         if (useRegex) {
             Pattern pattern = Pattern.compile(keywords);
@@ -37,10 +39,12 @@ public class Searcher {
             occurenceLocations.forEach(System.out::println);
         } else {
             int index = text.indexOf(keywords);
+            System.out.println("First index: " + index);
             while (index != -1 && index < text.length()) {
                 occurenceLocations.add(index);
                 occurences.add(text.substring(index, index + keywords.length()));
                 index = text.indexOf(keywords, index + keywords.length());
+                System.out.println(index);
             }
         }
 

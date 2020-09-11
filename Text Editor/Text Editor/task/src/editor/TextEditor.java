@@ -24,9 +24,6 @@ public class TextEditor extends JFrame {
         setVisible(true);
         setTitle("Text Editor");
 
-        // for testing
-//        fileChooser = new JFileChooser(
-//                "C:\\development\\Learning\\Java\\IdeaProjects\\Text Editor");
         fileChooser = new JFileChooser();
         fileChooser.setName("FileChooser");
         add(fileChooser);
@@ -68,7 +65,7 @@ public class TextEditor extends JFrame {
         fileMenu.add(exitMenuItem);
 
         openMenuItem.addActionListener(actionEvent -> Saver.load(fileChooser, textArea));
-        saveMenuItem.addActionListener(actionEvent -> Saver.save(filenameField.getText(), textArea.getText()));
+        saveMenuItem.addActionListener(actionEvent -> Saver.save(fileChooser, textArea.getText()));
         exitMenuItem.addActionListener(actionEvent -> dispose());
     }
 
@@ -135,7 +132,7 @@ public class TextEditor extends JFrame {
                 "C:\\development\\Learning\\Java\\IdeaProjects\\Text Editor\\Text Editor\\task\\src\\editor\\save.png"));
         saveButton.setPreferredSize(new Dimension(35, 30));
         saveButton.setName("SaveButton");
-        saveButton.addActionListener(actionEvent -> Saver.save(filenameField.getText(), textArea.getText()));
+        saveButton.addActionListener(actionEvent -> Saver.save(fileChooser, textArea.getText()));
 
         JButton loadButton = new JButton(new ImageIcon(
                 "C:\\development\\Learning\\Java\\IdeaProjects\\Text Editor\\Text Editor\\task\\src\\editor\\import.png"));
