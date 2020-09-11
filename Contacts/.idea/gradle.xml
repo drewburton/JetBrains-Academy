@@ -11,6 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Contacts/task" />
+            <option value="$PROJECT_DIR$/Problems/Geek Builder" />
+            <option value="$PROJECT_DIR$/Problems/Robot Builder" />
+            <option value="$PROJECT_DIR$/Problems/Subway Sandwich" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>

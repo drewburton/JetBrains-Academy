@@ -223,6 +223,58 @@ files:
     \        }\n        catch (Exception ex) {\n            return new CheckResult(false,\
     \ \"Can't check the answer\");\n        }\n    }\n}\n"
   learner_created: false
+- name: src/contacts/Contact.java
+  visible: true
+  text: |
+    package contacts;
+
+    public class Contact {
+        private String firstName;
+        private String lastName;
+        private String number;
+
+        public Contact(String firstName, String lastName, String number) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.number = number;
+        }
+    }
+  learner_created: true
+- name: src/contacts/PhoneBook.java
+  visible: true
+  text: |
+    package contacts;
+
+    import java.util.ArrayList;
+    import java.util.Scanner;
+
+    public class PhoneBook {
+        private Scanner scanner;
+        private ArrayList<Contact> contacts;
+
+        public PhoneBook() {
+            scanner = new Scanner(System.in);
+            contacts = new ArrayList<>();
+        }
+
+        public void createContact() {
+            System.out.println("Enter the name of the person:");
+            String firstName = scanner.nextLine();
+
+            System.out.println("Enter the surname of the person:");
+            String lastName = scanner.nextLine();
+
+            System.out.println("Enter the number:");
+            String number = scanner.nextLine();
+
+            contacts.add(new Contact(firstName, lastName, number));
+            System.out.println("A record created!");
+        }
+    }
+  learner_created: true
+- name: src/contacts/PhoneNumber.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/43/stages/229/implement
 status: Unchecked
 record: -1
