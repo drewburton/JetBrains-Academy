@@ -1,10 +1,256 @@
 [1;31m
 Start test 1[0m
-Enter the name of the person:
-> John
- Enter the surname of the person:
-> Smith
-Enter the number:
-> 1-234-567-890
-A record created!
-*A Phone Book with a single record created!
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 2[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 3[0m
+5Enter action (add, remove, edit, count, list, exit): > edit
+No records to edit!
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 4[0m
+5Enter action (add, remove, edit, count, list, exit): 	> remove
+No records to remove!
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 5[0m
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John
+Enter the surname: > Smith
+Enter the number: > 123 456 789
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 1 records.
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 6[0m
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123-456-78912
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123-456-78912
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 7[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 8[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: 
+> 123 abc
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123 abc
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 9[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: 
+> 123-ABC
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123-ABC
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 10[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123 456 xyz
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123 456 xyz
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 11[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123-456-XYZ
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123-456-XYZ
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 12[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123 456-789
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123 456-789
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 13[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123-456 789
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123-456 789
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 14[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123 45-up-89
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123 45-up-89
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 15[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > (123)
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, (123)
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 16[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > (123) 456
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, (123) 456
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 17[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123-(456)
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123-(456)
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 18[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123 (456) 789
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123 (456) 789
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 19[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123-(456)-789
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123-(456)-789
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 20[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > (123) 456-789
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, (123) 456-789
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 21[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > (123)-456 789
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, (123)-456 789
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 22[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123 (45)-67-89
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123 (45)-67-89
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 23[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > +(phone)
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, +(phone)
+5Enter action (add, remove, edit, count, list, exit): > exit
+[1;31m
+Start test 24[0m
+5Enter action (add, remove, edit, count, list, exit): > count
+The Phone Book has 0 records.
+5Enter action (add, remove, edit, count, list, exit): > add
+Enter the name: > John1
+Enter the surname: 	> Smith2
+Enter the number: > 123+456 78912
+The record added.
+5Enter action (add, remove, edit, count, list, exit): > list
+1. John1 Smith2, 123+456 78912
+5Enter action (add, remove, edit, count, list, exit): > exit

@@ -276,5 +276,27 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/43/stages/229/implement
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #24
+
+    Test contains an illegal phone number &quot;123+456 78912&quot;, you should print &quot;[no number]&quot; instead of this number
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    Enter action (add, remove, edit, count, list, exit): &gt; count
+    The Phone Book has 0 records.
+    Enter action (add, remove, edit, count, list, exit): &gt; add
+    Enter the name: &gt; John1
+    Enter the surname: &gt; Smith2
+    Enter the number: &gt; 123+456 78912
+    The record added.
+    Enter action (add, remove, edit, count, list, exit): &gt; list
+    1. John1 Smith2, 123+456 78912
+    Enter action (add, remove, edit, count, list, exit): &gt; exit
+  time: Sat, 12 Sep 2020 00:05:32 UTC
 record: -1

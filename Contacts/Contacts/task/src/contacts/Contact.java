@@ -1,5 +1,7 @@
 package contacts;
 
+import java.util.Scanner;
+
 public class Contact {
     private String firstName;
     private String lastName;
@@ -11,8 +13,24 @@ public class Contact {
         this.number = number;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     public PhoneNumber getNumber() {
         return number;
+    }
+
+    @Override
+    public String toString() {
+        if ("".equals(number.getPhoneNumber())) {
+            return firstName + " " + lastName + ", [no number]";
+        }
+        return firstName + " " + lastName + ", " + number.getPhoneNumber();
     }
 
     public static class Builder {
@@ -20,18 +38,36 @@ public class Contact {
         private String lastName;
         private PhoneNumber number;
 
+        public Builder setFirstName(Scanner scanner) {
+            System.out.print("Enter the name: ");
+            firstName = scanner.nextLine();
+            return this;
+        }
+
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
 
-        public Builder setLastName(String lastName) {
-            this.lastName = lastName;
+        public Builder setLastName(Scanner scanner) {
+            System.out.print("Enter the surname: ");
+            lastName = scanner.nextLine();
             return this;
         }
 
-        public Builder setNumber(String number) {
-            this.number = new PhoneNumber(number);
+        public Builder setLastName(String lastname) {
+            this.lastName = lastname;
+            return this;
+        }
+
+        public Builder setNumber(Scanner scanner) {
+            System.out.print("Enter the number: ");
+            number = new PhoneNumber(scanner.nextLine());
+            return this;
+        }
+
+        public Builder setNumber(PhoneNumber number) {
+            this.number = number;
             return this;
         }
 
